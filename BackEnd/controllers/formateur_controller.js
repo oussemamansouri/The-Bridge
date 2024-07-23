@@ -24,6 +24,10 @@ const SchemaValidation = Joi.object({
   experience: Joi.string().allow(''),
 });
 
+
+
+///////// register formateur ///////////
+
 const register = async (firstname, lastname, email, password, imgPath, tel,dob,address ,cvPath, portfolio, statu, linkedin, niveau, experience) => {
   try {
     const validation = SchemaValidation.validate({
@@ -75,6 +79,7 @@ const register = async (firstname, lastname, email, password, imgPath, tel,dob,a
   }
 };
 
+/////////// buy points //////////
 
 const buyPoints = async (user_id, nbPoints) => {
   try {
@@ -127,6 +132,10 @@ const buyPoints = async (user_id, nbPoints) => {
 // })
 // }
 
+
+
+//////////// update profile ////////
+
 const SchemaValidation2=Joi.object({
   firstname:Joi.string().alphanum().min(2).max(15).required(),
   lastname:Joi.string().alphanum().min(2).max(15).required(),
@@ -164,6 +173,7 @@ const updateprofile = (firstname,lastname,dob,address,tel,portfolio,statu,linked
   })
 }
 
+//////////// delete profile ////////
 
 const DeleteProfile = (req, res) => {
     const id = req.params.id;
@@ -190,7 +200,7 @@ const DeleteProfile = (req, res) => {
   };
 
 
-    ///////////////////////////////////////////////////////
+//////////// update profile image ////////
 
 const SchemaValidationimage=Joi.object({
   img:Joi.string().required(),
@@ -226,7 +236,7 @@ async function updateimage(img, id) {
  }
 }
 
-///////////////////////////////////
+/////////// update cv //////////
 const SchemaValidationcv=Joi.object({
   cv:Joi.string().required(),
 })
@@ -260,7 +270,7 @@ async function updatecv(cv, id) {
    throw new Error(err);
  }
 }
-/////////////////////
+//////////// update password //////////
 
 const SchemaValidationpassword = Joi.object({
   oldPassword: Joi.string().min(8).required(),
