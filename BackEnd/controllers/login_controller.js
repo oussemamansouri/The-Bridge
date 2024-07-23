@@ -4,6 +4,7 @@ const jwt=require('jsonwebtoken')
 
 
 
+/////////// login end point /////////
 
 const PrivatKey = "this is private key fdgsfdgsdfgsdfgdsfgdsgfdfgsgdfgdgdfgdsfgsfdgsdfgsdfgdfgdfbds";
 exports.login = (email, password) => {
