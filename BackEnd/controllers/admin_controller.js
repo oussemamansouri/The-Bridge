@@ -14,6 +14,8 @@ const SchemaValidation = Joi.object({
   tel: Joi.number().integer().required(),
 });
 
+// register admin by Postman **this is temporary** the admin account well be created automatically**
+
 const register = async (username, email, password, imgPath, tel) => {
   try {
     const validation = SchemaValidation.validate({
@@ -53,8 +55,7 @@ const register = async (username, email, password, imgPath, tel) => {
 
 
 
-
-//////////////////////////////////////////////////
+// update admin profile 
 
 const SchemaValidation2=Joi.object({
   username: Joi.string().alphanum().min(2).max(15).required(),
@@ -84,7 +85,7 @@ const updateprofile = (username, email, tel,id)=>{
 
 
 
-    ///////////////////////////////////////////////////////
+ // update admin image 
 
 const SchemaValidationimage=Joi.object({
   img:Joi.string().required(),
@@ -121,7 +122,7 @@ async function updateimage(img, id) {
 }
 
 
-/////////////////////
+// update admin password 
 
 const SchemaValidationpassword = Joi.object({
   oldPassword: Joi.string().min(8).required(),
