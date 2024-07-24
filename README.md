@@ -13,3 +13,6 @@
 - **Frontend**: Angular 14
 - **Backend**: Node.js with Express
 - **Database**: MySQL with Sequelize ORM
+
+## still working on this project
+
