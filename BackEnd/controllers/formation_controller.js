@@ -7,6 +7,7 @@ const path=require('path')
 // require('dotenv').config()
 
 
+/////////// add formation /////////
 
 const SchemaValidation = Joi.object({
   titre: Joi.string().required(),
@@ -68,7 +69,7 @@ const addformation = (titre, description, imgPath, modeformation, besoin, domain
 
 
 
-///////////////////////////////////////////////////////////////////////
+//////////// update formation //////////
   
 const updateformation = (titre, description, pointsf, modeformation, besoin, domaine, id) => {
     return new Promise((resolve, reject) => {
@@ -87,7 +88,8 @@ const updateformation = (titre, description, pointsf, modeformation, besoin, dom
 
 
   
-  
+ //////////// delete formation ///////////
+ 
 const Deleteformation = (req, res) => {
     const id = req.params.id;
   
@@ -143,14 +145,13 @@ const upload = multer({
   
   
 
-
+/////////// update image ///////////
   
   const SchemaValidationimage=Joi.object({
     img:Joi.string().required(),
   })
   
-  
-  
+ 
   async function updateimage(img, id) {
    try {
      const validationResult = SchemaValidationimage.validate({ img });
