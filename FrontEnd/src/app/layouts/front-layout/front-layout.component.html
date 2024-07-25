@@ -1,0 +1,63 @@
+
+<header id="header" class="fixed-top" >
+  <div class="container d-flex align-items-center">
+
+    <div class="logo mr-auto">
+      <h1 class="text-light"><a href="index.html"><span style="font-family: 'Arial Black', sans-serif; font-size: 40px; color: #0888f0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"><i class="fas fa-users"></i>C<span style="font-size: 32px; color:#0888f0 ;">onnected</span></span></a></h1>
+    </div>
+    <nav class="nav-menu d-none d-lg-block">
+      <ul class="navbar">
+          <li class="active"><a href="index.html">Accueil</a></li>
+          <li class="dropdown">
+              <a routerLink="formation" id="nos-formations">Nos Formations</a>
+          </li>
+          <li><a routerLink="tarifs">Tarifs</a></li>
+          <li><a routerLink="contact">Contact</a></li>
+          <!-- Ajout de l'élément de solde de points -->
+          <li><a href="lien_vers_page_solde_points"><i class="fas fa-coins" style="color: yellow;"></i> Solde de points</a></li>
+
+      </ul>
+  </nav>
+
+
+
+<div *ngIf="asf.logedin()" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top space">
+  <!-- Topbar Navbar -->
+  <ul class="navbar-nav ml-auto">
+
+      <div class="topbar-divider d-none d-sm-block"></div>
+
+      <!-- Nav Item - User Information -->
+      <li class="nav-item dropdown no-arrow">
+          <a  class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
+              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ data.username | titlecase}}</span>
+              <img class="img-profile rounded-circle"
+              src="{{imagepath}}{{data.img}}">
+
+          </a>
+          <!-- Dropdown - User Information -->
+          <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
+              <a style="cursor: pointer;" class="dropdown-item" *ngIf="data" (click)="navigateprofile()"  >
+                  <i  class="fas fa-user fa-sm fa-fw mr-2 text-gray-400" ></i>
+                  Profile
+              </a>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item"  data-toggle="modal" data-target="#logoutModal" style="cursor: pointer;" (click)="logout()">
+                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                  Déconnexion
+              </a>
+          </div>
+      </li>
+  </ul>
+</div>
+
+
+  <a routerLink="/loginuser" class="btn btn-outline-primary" *ngIf="!asf.logedin()">
+    <i class="icofont-user icofont-1x" ></i> Connexion
+</a>
+
+
+</div>
+</header><!-- End Header -->
+<router-outlet></router-outlet>
