@@ -1,0 +1,74 @@
+<form #f="ngForm" (ngSubmit)="addformateur(f)">
+    <div class="form-group">
+        <label for="firstname">Prénom :</label>
+        <input type="text" required name="firstname" #firstname="ngModel" ngModel >
+    </div>
+    
+    <div class="form-group">
+        <label for="lastname">Nom :</label>
+        <input type="text" required name="lastname" #lastname="ngModel" ngModel  >
+    </div>
+    
+    <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="email" required name="email" #email="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Mot de passe :</label>
+        <input type="password" required name="password" #password="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="img">Image de profil :</label>
+        <input type="file" name="img" #img="ngModel" ngModel><!-- Utilisez "text" au lieu de "file" si img est une URL -->
+    </div>
+    
+    <div class="form-group">
+        <label for="tel">Téléphone :</label>
+        <input type="tel" required name="tel" #tel="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="dob">Date de naissance :</label>
+        <input type="date"  required name="dob" #dob="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="address">Adresse :</label>
+        <input type="text"  required name="address" #address="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="cv">CV :</label>
+        <input type="file" name="cv" #cv="ngModel" ngModel><!-- Utilisez "text" au lieu de "file" si cv est une URL -->
+    </div>
+    
+    <div class="form-group">
+        <label for="portfolio">Portfolio :</label>
+        <input type="text" name="portfolio" #portfolio="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="statu">Statut :</label>
+        <input type="text" required name="statu" #statu="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="linkedin">Profil LinkedIn :</label>
+        <input type="text" name="linkedin" #linkedin="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="niveau">Niveau :</label>
+        <input type="text" required name="niveau" #niveau="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="experience">Expérience :</label>
+        <input type="text" required name="experience" #experience="ngModel" ngModel>
+    </div>
+    
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter Formateur</button>
+
+</form>
