@@ -1,0 +1,46 @@
+/* CSS */
+.navbar li a {
+    position: relative;
+    text-decoration: none;
+    color: #000000; /* Couleur du texte */
+  }
+
+  .navbar li a:after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    width: 0;
+    height: 2px;
+    background-color: blue; /* Couleur du soulignement */
+    transition: width 0.3s ease, left 0.3s ease; /* Transition fluide de la largeur et de la position */
+  }
+
+  .navbar li a:hover:after {
+    width: 100%; /* Élargir le soulignement au survol */
+    left: 0; /* Centrer le soulignement */
+  }
+
+
+  .user-profile {
+    display: flex;
+    align-items: center;
+  }
+  .user-name {
+    margin-right: 10px; /* Espacement entre le nom et l'image */
+    font-size: 14px; /* Taille de la police */
+    font-weight: bold; /* Gras */
+    color: #000000; /* Couleur du texte */
+    font-family: Arial, sans-serif; /* Police de caractères */
+  }
+
+
+
+
+
+
+
+
+
+
+
