@@ -1,0 +1,197 @@
+<style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f4f4f4;
+    }
+    .container {
+      width: 70%;
+      margin: 50px auto;
+      background-color: #fff;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+    h2 {
+      text-align: center;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    form {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: #666;
+    }
+    input[type="text"],
+    input[type="number"],
+    textarea,
+    select {
+      width: 100%;
+      padding: 15px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-sizing: border-box;
+      font-size: 16px;
+    }
+    select {
+      appearance: none;
+      -webkit-appearance: none;
+      -moz-appearance: none;
+      background: url('data:image/svg+xml;utf8,<svg fill="#666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>') no-repeat right 10px center;
+      background-size: 12px;
+    }
+    input[type="file"] {
+      margin-top: 10px;
+    }
+    button[type="submit"] {
+      background-color: #007bff;
+      color: #fff;
+      border: none;
+      padding: 15px 20px;
+      border-radius: 4px;
+      cursor: pointer;
+      font-size: 16px;
+      display: block;
+      margin: 0 auto;
+    }
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+  </style>
+  
+    <div class="container">
+      <h2>Ajouter une formation</h2>
+      <form action="#">
+        <label for="nom_formation">Nom de la formation :</label>
+        <input type="text" id="nom_formation" name="nom_formation" required>
+        <label for="description">Description :</label>
+        <textarea id="description" name="description" rows="5" required></textarea>
+        <label for="formateur">Formateur :</label>
+        <input type="text" id="formateur" name="formateur" required>
+        <label for="duree">Durée (en heures) :</label>
+        <input type="number" id="duree" name="duree" required>
+        <label for="pack">Pack :</label>
+        <select id="pack" name="pack" required>
+          <option value="">--Choisir un pack--</option>
+          <option value="pack1">Pack 1</option>
+          <option value="pack2">Pack 2</option>
+          <option value="pack3">Pack 3</option>
+        </select>
+        <label for="photo">Photo de la formation :</label>
+        <input type="file" id="photo" name="photo" accept="image/*" required>
+        <label for="document_pdf">Document PDF :</label>
+        <input type="file" id="document_pdf" name="document_pdf" accept="application/pdf">
+        <label for="type_formation">Type de formation :</label>
+        <select id="type_formation" name="type_formation" required>
+          <option value="">--Choisir un type--</option>
+          <option value="en_ligne">En ligne</option>
+          <option value="presentielle">Présentielle</option>
+        </select>
+        <button type="submit">Ajouter la formation</button>
+      </form>
+    </div>
+
+    <style>
+  body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+  }
+  .container {
+    width: 70%;
+    margin: 50px auto;
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+  }
+  form {
+    max-width: 600px;
+    margin: 0 auto;
+  }
+  label {
+    display: block;
+    margin-bottom: 10px;
+    color: #666;
+  }
+  input[type="text"],
+  input[type="number"],
+  textarea,
+  select {
+    width: 100%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+  }
+  select {
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    background: url('data:image/svg+xml;utf8,<svg fill="#666" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/></svg>') no-repeat right 10px center;
+    background-size: 12px;
+  }
+  input[type="file"] {
+    margin-top: 10px;
+  }
+  button[type="submit"] {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 16px;
+    display: block;
+    margin: 0 auto;
+  }
+  button[type="submit"]:hover {
+    background-color: #0056b3;
+  }
+</style>
+
+  <div class="container">
+    <h2>Ajouter une formation</h2>
+    <form action="#">
+      <label for="nom_formation">Nom de la formation :</label>
+      <input type="text" id="nom_formation" name="nom_formation" required>
+      <label for="description">Description :</label>
+      <textarea id="description" name="description" rows="5" required></textarea>
+      <label for="formateur">Formateur :</label>
+      <input type="text" id="formateur" name="formateur" required>
+      <label for="duree">Durée (en heures) :</label>
+      <input type="number" id="duree" name="duree" required>
+      <label for="pack">Pack :</label>
+      <select id="pack" name="pack" required>
+        <option value="">--Choisir un pack--</option>
+        <option value="pack1">Pack 1</option>
+        <option value="pack2">Pack 2</option>
+        <option value="pack3">Pack 3</option>
+      </select>
+      <label for="photo">Photo de la formation :</label>
+      <input type="file" id="photo" name="photo" accept="image/*" required>
+      <label for="document_pdf">Document PDF :</label>
+      <input type="file" id="document_pdf" name="document_pdf" accept="application/pdf">
+      <label for="type_formation">Type de formation :</label>
+      <select id="type_formation" name="type_formation" required>
+        <option value="">--Choisir un type--</option>
+        <option value="en_ligne">En ligne</option>
+        <option value="presentielle">Présentielle</option>
+      </select>
+      <button type="submit">Ajouter la formation</button>
+    </form>
+  </div>
