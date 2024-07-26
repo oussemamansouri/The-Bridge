@@ -1,0 +1,25 @@
+.custom-table th,
+.custom-table td {
+    vertical-align: middle;
+}
+
+.custom-table th {
+    font-weight: bold;
+}
+
+.custom-table thead th {
+    background-color: #f8f9fa;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.ModeratorImage{
+  width: 100px;
+  height: auto;
+}

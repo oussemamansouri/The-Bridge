@@ -1,0 +1,113 @@
+<section class="p-3">
+    <div class="row">
+        <div class="col-12">
+            <div class="text-right mb-3">
+                <button routerLink="/admin/addformateur" class="btn btn-primary" id="ajouterFormateurBtn">Ajouter Moderateur</button>
+            </div>
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mt-3 text-center table-bordered custom-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Username</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let item of dataArray;index as i">
+                            <td> <img class="ModeratorImage" src="{{imagepath}}{{item.img}}"> </td>
+                            <td>{{item.username}} </td>
+                            <td>{{item.firstname}}</td>
+                            <td>{{item.lastname}}</td>
+                            <td>{{item.tel}}</td>
+                            <td>{{item.email}}</td>
+                            <!-- <td>{{item.email}}</td>
+                            <td>{{item.tel}}</td> -->
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Actions">
+                                    <button class="btn btn-sm btn-primary" (click)="details(item.id)">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-secondary" (click)="getdata(item.username,item.firstname,item.lastname,item.tel,item.email,item.id)" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" (click)="delete(item.id,i)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
+
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+<!-- modal -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document" style="max-width: 50%;">
+        <div class="modal-content" style="background-color: white; color: black;">
+            <div class="modal-header" style="background-color: white; color: black;">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-color: white; color: black;">
+                <form #f="ngForm" (ngSubmit)="updatenewmoderateur(f)">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="firstname">Nom d'utilisateur :</label>
+                                <input type="text" required name="username" [(ngModel)]="datamoderateur.username" #username="ngModel" ngModel class="form-control" placeholder="Nom d'utilisateur">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="firstname">Prénom :</label>
+                                <input type="text" required name="firstname" [(ngModel)]="datamoderateur.firstname"  #firstname="ngModel" ngModel class="form-control" placeholder="Prénom">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="lastname">Nom :</label>
+                                <input type="text" required name="lastname" [(ngModel)]="datamoderateur.lastname" #lastname="ngModel" ngModel class="form-control" placeholder="Nom">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="tel">Email :</label>
+                            <input type="email" required name="email" [(ngModel)]="datamoderateur.email" #email="ngModel" ngModel class="form-control" placeholder="Email">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="tel">Téléphone :</label>
+                            <input type="tel" required name="tel" [(ngModel)]="datamoderateur.tel" #tel="ngModel" ngModel class="form-control" placeholder="Téléphone">
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="background-color: white; color: black;">
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button  class="btn btn-primary" >Mettre à jour</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer" style="background-color: white; color: black;">
+                <div class="alert alert-success text-center" *ngIf="messagesuccess">
+                    {{messagesuccess}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
