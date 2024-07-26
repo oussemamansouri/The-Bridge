@@ -1,0 +1,36 @@
+<form #f="ngForm" (ngSubmit)="addmoderateur(f)">
+    <div class="form-group">
+        <label for="firstname">Prénom :</label>
+        <input type="text" required name="firstname" #firstname="ngModel" ngModel >
+    </div>
+    
+    <div class="form-group">
+        <label for="lastname">Nom :</label>
+        <input type="text" required name="lastname" #lastname="ngModel" ngModel  >
+    </div>
+    <div class="form-group">
+        <label for="username">Nom d'utilisateur :</label>
+        <input type="text" required name="username" #username="ngModel" ngModel  >
+    </div>
+    <div class="form-group">
+        <label for="email">Email :</label>
+        <input type="email" required name="email" #email="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="password">Mot de passe :</label>
+        <input type="password" required name="password" #password="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="img">Image de profil :</label>
+        <input type="file" name="img" #img="ngModel" ngModel>
+    </div>
+    
+    <div class="form-group">
+        <label for="tel">Téléphone :</label>
+        <input type="tel" required name="tel" #tel="ngModel" ngModel>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter Moderateur</button>
+
+</form>
