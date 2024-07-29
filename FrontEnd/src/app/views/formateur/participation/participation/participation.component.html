@@ -1,0 +1,154 @@
+<div class="title">
+    <h1>Ma Participation</h1>
+  </div>
+  
+
+<div class="main">
+
+    <!--cards -->
+
+    <div class="card">
+        <div class="image">
+            <img src="assets/formation/dev.jpg" alt="Développement Web">
+        </div>
+        <div class="title">
+            <h1>Développement Web</h1>
+        </div>
+        <div class="des">
+            <p>Une description courte de la formation de développement web.</p>
+            <a href="#"> <!-- Lien fictif, veuillez le remplacer par l'URL souhaitée -->
+                <button>En savoir plus...</button>
+            </a>
+        </div>
+    </div>
+    
+    <!--cards -->
+
+    <!-- Ajoutez d'autres cartes de formation ici -->
+
+    <!-- Carte de formation en informatique 1 -->
+    <div class="card">
+      <div class="image">
+          <img src="assets/formation/cyber securite.jpeg" alt="Formation en Cyber Sécurité">
+      </div>
+      <div class="title">
+          <h1>Formation en Cyber Sécurité</h1>
+      </div>
+      <div class="des">
+          <p>Une description courte de la formation en cyber sécurité.</p>
+          <button href="lien_vers_votre_page.html">En savoir plus...</button>
+      </div>
+  </div>
+  
+
+<!-- Carte de formation en informatique 2 -->
+<div class="card">
+  <div class="image">
+      <img src="assets/formation/data science.jpg" alt="Formation en Data Science">
+  </div>
+  <div class="title">
+      <h1>Formation en Data Science</h1>
+  </div>
+  <div class="des">
+      <p>Une description courte de la formation en data science.</p>
+      <button href="lien_vers_votre_page.html">En savoir plus...</button>
+  </div>
+</div>
+
+</div> 
+
+<style>
+
+.title {
+  text-align: center;
+  padding: 20px;
+}
+
+.title h1 {
+  font-size: 36px;
+  font-weight: bold;
+}
+
+
+
+ * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.title {
+    padding: 20px;
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.des {
+    padding: 20px;
+    text-align: center;
+}
+
+.des p {
+    font-size: 16px;
+    color: #666;
+}
+
+button {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.card:hover .image img {
+    transform: scale(1.05); /* Zoom effect */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+
+
+</style>
