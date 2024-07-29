@@ -1,0 +1,110 @@
+<header>
+    <h1>Demandes pour la Formation</h1>
+  </header>
+  
+ 
+    <div class="container">
+      <div class="demandes">
+        <div class="demande">
+          <div class="demande-info">
+            <h2>Nom de la personne 1</h2>
+            <p>Email: email@example.com</p>
+            <p>Téléphone: +1234567890</p>
+            <p>Message: Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          </div>
+          <div class="actions">
+            <button class="accept">Accepter</button>
+            <button class="reject">Rejeter</button>
+          </div>
+        </div>
+  
+        <div class="demande">
+          <div class="demande-info">
+            <h2>Nom de la personne 2</h2>
+            <p>Email: email2@example.com</p>
+            <p>Téléphone: +9876543210</p>
+            <p>Message: Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+          </div>
+          <div class="actions">
+            <button class="accept">Accepter</button>
+            <button class="reject">Rejeter</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  
+  
+<style>
+ body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f0f0;
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+h1 {
+  text-align: center;
+  color: #333;
+}
+
+.demandes {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.demande {
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  margin: 20px;
+  padding: 20px;
+  width: 300px;
+}
+
+.demande-info h2 {
+  color: #333;
+  margin-top: 0;
+}
+
+.demande-info p {
+  color: #666;
+  margin: 5px 0;
+}
+
+.actions {
+  display: flex;
+  justify-content: center;
+}
+
+button {
+  background-color: #007bff;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  padding: 10px 20px;
+  margin: 5px;
+  transition: background-color 0.3s ease;
+}
+
+button:hover {
+  background-color: #0056b3;
+}
+
+button.accept {
+  background-color: #28a745;
+}
+
+button.reject {
+  background-color: #dc3545;
+}
+
+</style>
