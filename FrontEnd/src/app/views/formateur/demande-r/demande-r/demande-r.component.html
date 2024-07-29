@@ -1,0 +1,72 @@
+
+    <div class="container">
+        <h1>Demandes Reçues</h1>
+        <div class="demande">
+            <div class="demande-header">
+                <h2>Nom de l'expéditeur</h2>
+                <p>Date de réception</p>
+            </div>
+            <div class="demande-content">
+                <p>Contenu de la demande...</p>
+            </div>
+            <div class="demande-actions">
+                <button>Accepter</button>
+                <button>Rejeter</button>
+            </div>
+        </div>
+        <!-- Ajouter d'autres demandes ici -->
+    </div>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.demande {
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    margin-bottom: 20px;
+    padding: 10px;
+}
+
+.demande-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.demande-actions button {
+    padding: 8px 16px;
+    margin-right: 10px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.demande-actions button:first-child {
+    background-color: #4caf50;
+    color: #fff;
+}
+
+.demande-actions button:last-child {
+    background-color: #f44336;
+    color: #fff;
+}
+
+.demande-content p {
+    margin: 0;
+}
+
+    </style>
