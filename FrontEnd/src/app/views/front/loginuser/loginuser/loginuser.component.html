@@ -1,0 +1,165 @@
+<div class="card signup_v4 mb-30 space">
+    <div class="card-body ">
+
+        <ul class="nav nav-tabs" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Connexion</a>
+            </li>
+            <li class="nav-item" role="presentation">
+                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">S'inscrire</a>
+            </li>
+        </ul>
+
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+                <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;" style="color: rgb(8, 8, 8)">Connexion</h4>
+
+
+
+
+                <form #f="ngForm" class="professional-form" (ngSubmit)="loginuser(f)">
+                    <div class="form-group">
+                        <label for="inputEmail">Adresse e-mail :</label>
+                        <input type="email" class="form-control" id="inputEmail" placeholder="Entrez votre adresse e-mail" name="email" #email="ngModel" ngModel>
+                    </div>
+                    <div class="form-group">
+                        <label for="inputPassword">Mot de passe :</label>
+                        <input type="password" class="form-control" id="inputPassword" placeholder="Entrez votre mot de passe" name="password" #password="ngModel" ngModel>
+                    </div>
+                    <div class="alert alert-danger" *ngIf="messageError">
+                        {{messageError}}
+                    </div>
+                    <div>
+                      <button class="btn btn-primary btn-block" type="submit" >Connexion</button>
+                    </div>
+                </form>
+
+                <div class="social-area">
+                    <h3 class="title">Ou</h3>
+                    <p class="text">Se connecter avec les réseaux sociaux</p>
+                    <ul class="social-links">
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-facebook-f"></i>
+                            </a>
+                        </li>
+
+                        <li>
+                            <a href="#">
+                                <i class="fab fa-google-plus-g"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
+
+
+            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+                <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;">S'inscrire</h4>
+                <form #f1="ngForm" (ngSubmit)="register(f1)">
+                    <div class="form-row">
+                        <div class="form-group col-lg-6">
+                            <label for="inputName" style="color: rgb(8, 8, 8)">Nom</label>
+                            <input type="text" class="form-control" placeholder="Entrez votre nom" required name="firstname" ngModel #firstname="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputName" style="color: rgb(8, 8, 8)">Prénom</label>
+                            <input type="text" class="form-control"  placeholder="Entrez votre prénom" required name="lastname" ngModel #lastname="ngModel">
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label for="inputDOB" style="color: rgb(8, 8, 8)">Date de naissance</label>
+                            <input type="date" class="form-control"  required name="dob" ngModel #dob="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputImage" style="color: rgb(8, 8, 8)">Image (téléchargement de documents)</label>
+                            <input type="file" class="form-control-file" name="img" ngModel #img="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputPortfolio" style="color: rgb(8, 8, 8)">Portfolio URL</label>
+                            <input type="text" class="form-control"  placeholder="Entrez l'URL de votre portfolio si disponible" name="portfolio" ngModel #portfolio="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputLocation" style="color: rgb(8, 8, 8)">Adresse</label>
+                            <input type="text" class="form-control"  placeholder="Entrez votre pays, ville, code postal"  name="address" ngModel #address="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputEmail" style="color: rgb(8, 8, 8)">Adresse mail</label>
+                            <input type="email" class="form-control"  placeholder="Entrez votre adresse e-mail" required name="email" ngModel #email="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputPhone" style="color: rgb(8, 8, 8)">N° de Tél</label>
+                            <input type="tel" class="form-control"  placeholder="Entrez votre numéro de téléphone" required name="tel" ngModel #tel="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputPassword" style="color: rgb(8, 8, 8)">Mot de passe</label>
+                            <input type="password" class="form-control"  placeholder="Entrez votre mot de passe" required name="password" ngModel #password="ngModel">
+                        </div>
+
+                        <div class="form-group col-lg-6">
+                            <label for="inputStatus" style="color: rgb(8, 8, 8)">Statut professionnel actuel</label>
+                            <select class="form-control" name="statu" ngModel #statu="ngModel">
+                                <option value="" disabled selected style="color: rgb(8, 8, 8)">Sélectionnez votre statut professionnel</option>
+                                <option value="Étudiant">Étudiant</option>
+                                <option value="Employé">Employé</option>
+                                <option value="Indépendant">Indépendant</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputCV" style="color: rgb(8, 8, 8)">CV (téléchargement de documents)</label>
+                            <input type="file" class="form-control-file" id="inputCV"  name="cv" ngModel #cv="ngModel">
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputEducation" style="color: rgb(8, 8, 8)">Niveau d'éducation</label>
+                            <select class="form-control" name="niveau" ngModel #niveau="ngModel">
+                                <option value="" disabled selected style="color: rgb(8, 8, 8)">Sélectionnez votre niveau d'éducation</option>
+                                <option value="Bac">Bac</option>
+                                <option value="Bac +2">Bac +2</option>
+                                <option value="Bac +3">Bac +3</option>
+                                <option value="Bac +5 et plus">Bac +5 et plus</option>
+                                <option value="Autre">Autre</option>
+                            </select>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputExperience" style="color: rgb(8, 8, 8)">Expérience professionnelle</label>
+                            <textarea class="form-control"  rows="3" placeholder="Entrez votre expérience professionnelle" name="experience" ngModel #experience="ngModel"></textarea>
+                        </div>
+                        <div class="form-group col-lg-6">
+                            <label for="inputLinkedIn" style="color: rgb(8, 8, 8)">Lien vers LinkedIn</label>
+                            <input type="text" class="form-control"  placeholder="Entrez le lien vers votre profil LinkedIn si disponible" name="linkedin" ngModel #linkedin="ngModel">
+                        </div>
+                    </div>
+
+                    <div class="form-group form-row">
+                        <div class="col-md-12">
+                            <label class="custom-control custom-checkbox checkbox-lg" style="display: flex; align-items: center;">
+                                <input type="checkbox" class="custom-control-input"  >
+                                <div class="custom-control-label" for="customCheck1" style="color: rgb(8, 8, 8); margin-left: 5px; margin-bottom: 0;">J'accepte les <a href="#" target="_blank" style="color:rgb(0, 60, 255)">conditions générales</a></div>
+                            </label>
+                        </div>
+                    </div>
+
+
+
+                    <hr class="mt-3 mb-4">
+                    <div class="col-12">
+                        <div class="d-flex flex-wrap justify-content-between align-items-center">
+                            <div class="custom-checkbox d-block">
+                                <a routerLink="/loginuser" class="nav-link-inline font-size-sm" style="color: rgb(8, 8, 8) ">Déjà un compte? Connexion</a>
+                            </div>
+                            <button class="btn btn-primary mt-3 mt-sm-0" type="submit">S'inscrire</button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+
+
