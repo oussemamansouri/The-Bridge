@@ -1,0 +1,111 @@
+/* Style pour les titres */
+    h4.text-center.mt-4.mb-4 {
+        color: #000; /* Couleur du texte en noir */
+    }
+
+    /* Centre tous les cadres */
+    .card.signup_v4 {
+        max-width: 1000px; /* Largeur maximale du cadre */
+        margin: 0 auto; /* Centre horizontalement */
+        padding: 20px;
+        border: 1px solid #0435bd;
+        border-radius: 5px;
+    }
+
+    /* Centre la zone de contenu du cadre */
+    .card-body {
+        text-align: center;
+    }
+
+    /* Style pour les champs de formulaire */
+    .card-body input[type="text"],
+    .card-body input[type="password"],
+    .card-body input[type="email"],
+    .card-body input[type="tel"],
+    .card-body input[type="date"],
+    .card-body select,
+    .card-body textarea {
+        width: 100%;
+        padding: 10px;
+        margin: 5px 0;
+        border: 1px solid #0435bd;
+        border-radius: 3px;
+        box-sizing: border-box; /* Garantit que la largeur inclut le padding et la bordure */
+        font-size: 16px;
+        height: 50%;
+    }
+
+    /* Style pour les boutons */
+    .card-body button {
+        width: 100%;
+        padding: 10px;
+        margin: 10px 0;
+        border: none;
+        border-radius: 3px;
+        background-color: #007bff;
+        color: #fff;
+        font-size: 16px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+    }
+
+    .card-body button:hover {
+        background-color: #0056b3;
+    }
+
+    /* Style pour les liens */
+    .card-body a {
+        color: #fff;
+    }
+
+    .card-body a:hover {
+        color: #fbfcfd;
+    }
+
+
+
+///////:::::::::::::::::::::::::::::::::::after
+
+.space{
+  margin: 120px auto !important ;
+  border-radius: 2% !important;
+
+}
+
+.btn-block{
+  margin: 40px auto !important;
+}
+
+
+.professional-form {
+  /* Ajoutez vos styles personnalisés ici */
+  /* Par exemple : */
+  margin: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.professional-form label {
+  color: #080808;
+  font-weight: bold;
+}
+
+.professional-form .form-group {
+  margin-bottom: 20px ;
+}
+/* .btn-primary {
+  background-color: #007bff;
+  border-color: #007bff;
+  color: #fff;
+  transition: all 0.3s ease-in-out;
+}
+
+.btn-primary:hover {
+  background-color: #0056b3;
+  border-color: #0056b3;
+}
+
+.btn-primary:focus {
+  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
+} */
