@@ -3,12 +3,11 @@ const db=require('../models');
 const { where } = require('sequelize');
 
 
-const SchemaValidation=Joi.object({
-    Demander :Joi.number().integer().positive().required(),
-    FormationId :Joi.number().integer().positive().required(),
-    ReceiverId :Joi.number().integer().positive().required(),
-})
-
+const SchemaValidation = Joi.object({
+  Demander: Joi.number().integer().positive().required(),
+  FormationId: Joi.number().integer().positive().required(),
+  ReceiverId: Joi.number().integer().positive().required(),
+});
 
 const envDemande = async (Demander, FormationId, ReceiverId) => {
   try {
@@ -22,6 +21,18 @@ const envDemande = async (Demander, FormationId, ReceiverId) => {
       if (Demander === ReceiverId) {
           throw new Error("Demander and ReceiverId cannot be the same.");
       }
+
+      // Check if the formation belongs to the Receiver
+      const formation = await db.Formation.findOne({ where: { id: FormationId, FormateurId: ReceiverId } });
+      if (!formation) {
+          throw new Error("The formation does not belong to the receiver.");
+      }
+
+       // Check if the formation not all ready participate in the formation
+       const participation = await db.Participation.findOne({ where: { FormateurId	: Demander	, FormationId: FormationId,ReceiverId:ReceiverId  } });
+       if (participation) {
+           throw new Error("The formation is all ready participate in the formation");
+       }
 
       // Check if a similar request already exists
       const demandeCount = await db.Demande.count({ where: { FormateurId: Demander, FormationId: FormationId, ReceiverId: ReceiverId } });
@@ -65,11 +76,13 @@ const envDemande = async (Demander, FormationId, ReceiverId) => {
 
 
 const Deletedemande = (req, res) => {
-    const clientid = req.params.FormateurId;
-    const formationid = req.params.FormationId;
+    const FormateurId = req.params.FormateurId;
+    const FormationId = req.params.FormationId;
+    const ReceiverId = req.params.ReceiverId;
+    
 
     db.Demande.destroy({
-      where: { FormateurId: clientid,FormationId: formationid}
+      where: { FormateurId: FormateurId,FormationId: FormationId,ReceiverId:ReceiverId}
     })
       .then(num => {
         if (num == 1) {
@@ -78,7 +91,7 @@ const Deletedemande = (req, res) => {
           });
         } else {
           res.send({
-            message: `Cannot delete demande with clientid=${clientid} and formationid=${formationid}. Maybe demande was not found!`
+            message: `Cannot delete demande with clientid=${FormateurId} and formationid=${FormationId}. Maybe demande was not found!`
           });
         }
       })
@@ -93,8 +106,4 @@ const Deletedemande = (req, res) => {
 module.exports = {
     envDemande,
     Deletedemande
-
-    
-    
-
 }
