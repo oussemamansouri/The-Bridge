@@ -1,24 +1,29 @@
 const express = require('express');
 const router = express.Router();
-const jwt = require('jsonwebtoken'); // Importer jwt
-const { ChatMessage } = require('../models');
-const chat_Controller = require('../controllers/chat_controller');
+const chatController = require('../controllers/chat_controller');
 
-// Middleware pour vérifier le token JWT
-const verifyToken = (req, res, next) => {
-  const token = req.headers.authorization;
-  if (!token) return res.status(401).json({ error: 'Accès non autorisé. Token manquant.' });
-  jwt.verify(token, process.env.JWT_SECRET, (err, decoded) => {
-    if (err) return res.status(403).json({ error: 'Accès non autorisé. Token invalide.' });
-    req.user = decoded;
-    next();
-  });
-};
+// Route pour récupérer tous les messages d'un utilisateur spécifique
+router.get('/get-all-messages/:recipientId', async (req, res) => {
+  const { recipientId } = req.params;
+  try {
+    const messages = await chatController.getAllMessages(recipientId);
+    res.status(200).json({ success: true, messages });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 
-// Créer un nouveau message
-router.post('/createmessages', verifyToken, chat_Controller.createMessage);
-
-// Récupérer tous les messages de chat
-router.get('/messages', verifyToken, chat_Controller.getAllMessages);
+// Route pour envoyer un message à un destinataire spécifique
+router.post('/send-message', async (req, res) => {
+  const { message, senderId, recipientId } = req.body;
+  try {
+    const savedMessage = await chatController.saveMessage(message, senderId, recipientId);
+    res.status(200).json({ success: true, message: savedMessage });
+  } catch (error) {
+    res.status(500).json({ success: false, message: error.message });
+  }
+});
 
 module.exports = router;
+
+
