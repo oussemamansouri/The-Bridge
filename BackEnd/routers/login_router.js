@@ -4,7 +4,6 @@ const login_controller=require('../controllers/login_controller')
 
 
 
-
 route.post('/login',(req,res)=>{
     login_controller.login(req.body.email,req.body.password)
     .then(token=>res.status(200).json({token:token}))
@@ -12,6 +11,5 @@ route.post('/login',(req,res)=>{
     
     })
 
-     
 
 module.exports=route
