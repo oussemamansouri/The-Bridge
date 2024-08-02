@@ -88,9 +88,6 @@ const updateprofile = (firstname, lastname, username, email, tel, id)=>{
 }
 
 
-
-
-
 /////////////////////////////////////////////////////////////////////////////////
 
 
@@ -161,34 +158,6 @@ const SchemaValidationcv=Joi.object({
 })
 
 
-
-// async function updatecv(cv, id) {
-//  try {
-//    const validationResult = SchemaValidationcv.validate({ cv });
-//    if (validationResult.error) {
-//      const errorDetails = validationResult.error.details[0];
-//      let errorMessage = '';
-
-//      switch (errorDetails.context.key) {
-//        case 'cv':
-//          errorMessage = 'Cv URL is invalid';
-//          break;
-//        default:
-//          errorMessage = errorDetails.message;
-//      }
-
-//      throw new Error(errorMessage);
-//    }
-   
-//    const response = await db.Moderateur.update({
-//      cv: cv
-//    }, { where: { id: id } });
-
-//    return response;
-//  } catch (err) {
-//    throw new Error(err);
-//  }
-// }
 /////////////////////
 
 const SchemaValidationpassword = Joi.object({
@@ -289,53 +258,6 @@ const uploadimg = multer({
   }
 }).single('img')
 // .single('img')   ||  .fields([{ name: 'img', maxCount: 1 }, { name: 'cv', maxCount: 1 }])
-
-
-// const uploadcv = multer({
-//   storage: storage,
-//   limits: { fileSize: '10000000' },
-//   fileFilter: (req, file, cb) => {
-//       const fileTypes = /pdf|doc|docx|rtf|txt|jpeg|jpg|png/
-//       const mimeType = fileTypes.test(file.mimetype)  
-//       const extname = fileTypes.test(path.extname(file.originalname))
-
-//       if(mimeType && extname) {
-//           return cb(null, true)
-//       }
-//       cb('Give proper files formate to upload')
-//   }
-// }).single('cv')
-
-
-
-
-
-// const PrivatKey=process.env.PRIVATKEY
-// const login=(email,password)=>{
-// return new Promise((resolve, reject) => {
-    
-// db.Client.findOne({where:{email:email}}).then(user=>{
-// if(!user){
-//     reject("invalid email or password !")
-// }else{
-// bcrypt.compare(password,user.password).then(same=>{
-// if(same){
-// let token=jwt.sign({id:user.id,firstname:user.firstname,lastname:user.lastname,role:"client"},PrivatKey,{expiresIn:"8h"})
-// resolve(token)
-// }else{
-
-//     reject("invalid email or password !")
-// }
-
-// })
-
-// }
-
-// })
-
-// })
-// }
-
 
 
   module.exports = {
