@@ -70,21 +70,25 @@ module.exports = (sequelize, DataType) => {
     });
   
     Formateur.associate = models => {
-        Formateur.hasMany(models.Participation, {
-        onDelete: "cascade",
-        onUpdate: 'cascade'
-      })
-    }
-    // Dans le modèle Formateur
-Formateur.associate = models => {
-  Formateur.hasMany(models.ChatMessage, {
-      foreignKey: 'sender_id',
-      onDelete: 'cascade',
-      onUpdate: 'cascade'
-  });
-};
+      Formateur.hasMany(models.Participation, {
+          as: 'SentRequests',
+          foreignKey: 'FormateurId',
+          onDelete: "cascade",
+          onUpdate: 'cascade'
+      });
+      Formateur.hasMany(models.Participation, {
+          as: 'ReceivedRequests',
+          foreignKey: 'ReceiverId',
+          onDelete: "cascade",
+          onUpdate: 'cascade'
+      });
+      Formateur.hasMany(models.ChatMessage, {
+          foreignKey: 'sender_id',
+          onDelete: 'cascade',
+          onUpdate: 'cascade'
+      });
+  };
 
-  
-    return Formateur
-  }
+  return Formateur;
+};
   
