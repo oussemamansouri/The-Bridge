@@ -38,14 +38,7 @@ module.exports=(sequelize,DataType)=>{
         collate: 'utf8mb4_general_ci'
       })
 
-    // Admin.associate=models=>{
-  
-    //   Admin.hasOne(models.Role,{
-    //     onDelete:"cascade",
-    //     onUpdate: 'cascade'
-    // })
-
-    // }  
+ 
 
 return Moderateur
 
