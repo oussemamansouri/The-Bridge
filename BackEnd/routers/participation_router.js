@@ -2,12 +2,8 @@ const express=require('express')
 const route=express.Router()
 const db=require('../models')
 const participation_controller=require('../controllers/participation_controller')
+const { Where } = require('sequelize/lib/utils')
 
-
-
-
-
-//////////////////////////////
 
 
 route.post('/accepte/:FormateurId/:FormationId/:ReceiverId',(req,res)=>{
@@ -16,72 +12,44 @@ route.post('/accepte/:FormateurId/:FormationId/:ReceiverId',(req,res)=>{
 .catch(err=>res.status(400).json(err))
 })
 
-route.delete('/deleteparticipation/:FormateurId/:formationid/:ReceiverId',participation_controller.Deleteparticipation)
+route.delete('/deleteparticipation/:FormateurId/:FormationId/:ReceiverId',participation_controller.Deleteparticipation)
 
 
-
-// route.get('/participant/:FormationId',(req,res)=>{ 
-
-//     db.Participation.findAndCountAll({where:{FormationId:req.params.FormationId},include:[db.Client]})
-//     .then((response)=>res.status(200).json(response))
-//     .catch((err)=>res.status(400).json(err))
-    
-//     }) //findAndCountAll 
- 
-
-
-    route.get('/myParticipation/:FormateurId',(req,res)=>{ 
-
-        db.Participation.findAll({where:{FormateurId:req.params.FormateurId},include:[db.Formation]})
-        .then((response)=>res.status(200).json(response))
-        .catch((err)=>res.status(400).json(err))
-        
-        }) 
-
-        // route.get('/participation/:ClientId', (req, res) => {
-        //   db.Participation.findAll({
-        //     where: { ClientId: req.params.ClientId },
-        //     include: [
-        //       {
-        //         model: db.Formation,
-        //         include: [db.Centre]
-        //       }
-        //     ]
-        //   })
-        //     .then((participations) => {
-        //       res.status(200).json(participations);
-        //     })
-        //     .catch((err) => {
-        //       res.status(400).json(err);
-        //     });
-        // });    
-////////// avec centre information !!!
+route.get('/myParticipation/:FormateurId', async (req, res) => {
+    try {
+        const participations = await db.Participation.findAll({
+            where: { FormateurId: req.params.FormateurId },
+            include: [
+                {
+                    model: db.Formation,
+                    include: [
+                        {
+                            model: db.Formateur,
+                            as: 'Formateur'
+                        }
+                    ]
+                },
+                // {
+                //     model: db.Formateur ,
+                
+                // }
+            ]
+        });
+        res.status(200).json(participations);
+    } catch (err) {
+        res.status(400).json(err);
+    }
+});
 
 
-// get only formations that belong to one client and one centre
-        // route.get('/participation/:ClientId/:CentreId', async (req, res) => {
-        //     const { ClientId, CentreId } = req.params;
-        //     try {
-        //       const formations = await db.Formation.findAll({
-        //         where: {
-        //           CentreId: CentreId
-        //         },
-        //         include: [{
-        //           model: db.Participation,
-        //           where: {
-        //             ClientId: ClientId
-        //           }
-        //         }]
-        //       });
-          
-        //       res.status(200).json(formations);
-        //     } catch (err) {
-        //       res.status(400).json(err);
-        //     }
-        //   });
-          
-
-   
+route.get('/acceptedFriends/:FormateurId', async (req, res) => {
+    try {
+        const friends = await participation_controller.getAcceptedFriends(req.params.FormateurId);
+        res.status(200).json(friends);
+    } catch (err) {
+        res.status(400).json({ error: err.message });
+    }
+});
 
 
 
