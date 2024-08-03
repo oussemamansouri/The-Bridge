@@ -1,63 +1,97 @@
-
-<header id="header" class="fixed-top" >
-  <div class="container d-flex align-items-center">
+<header id="header" class="fixed-top">
+  <div class="container d-flex align-items-center justify-content-between">
 
     <div class="logo mr-auto">
-      <h1 class="text-light"><a href="index.html"><span style="font-family: 'Arial Black', sans-serif; font-size: 40px; color: #0888f0; text-shadow: 2px 2px 4px rgba(0,0,0,0.3);"><i class="fas fa-users"></i>C<span style="font-size: 32px; color:#0888f0 ;">onnected</span></span></a></h1>
+
+      <h1 class="text-light">
+        <a routerLink="/" class="logo-link">
+          <span class="logo-icon"><i class="fas fa-users"></i></span>
+          <span class="logo-text">
+            <span class="logo-main">C</span><span class="logo-secondary">onnected</span>
+          </span>
+        </a>
+      </h1>
+
     </div>
+
+
+
     <nav class="nav-menu d-none d-lg-block">
       <ul class="navbar">
-          <li class="active"><a href="index.html">Accueil</a></li>
-          <li class="dropdown">
-              <a routerLink="formation" id="nos-formations">Nos Formations</a>
-          </li>
-          <li><a routerLink="tarifs">Tarifs</a></li>
-          <li><a routerLink="contact">Contact</a></li>
-          <!-- Ajout de l'élément de solde de points -->
-          <li><a href="lien_vers_page_solde_points"><i class="fas fa-coins" style="color: yellow;"></i> Solde de points</a></li>
-
+        <li class="active"><a routerLink="/" routerLinkActive="router-link-active" >Accueil</a></li>
+        <li class="dropdown">
+          <a routerLink="formation" id="nos-formations">Nos Formations</a>
+        </li>
+        <li><a routerLink="tarifs">Tarifs</a></li>
+        <li><a routerLink="contact1">Contact</a></li>
+        <li *ngIf="asf.logedin() && data.role === 'formateur'" class="nav-item points-section">
+          <span class="nav-link points-display">
+            <i class="fas fa-coins" style="color: yellow; margin-right: 2px;"></i>
+            POINTS: {{profile.points}}
+          </span>
+          <button class="btn btn-sm btn-primary circular-button" (click)="redirectToPacksPage()" style="margin-left: 8px;">
+            <i class="fas fa-plus"></i>
+          </button>
+        </li>
       </ul>
-  </nav>
+    </nav>
 
-
-
-<div *ngIf="asf.logedin()" class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top space">
-  <!-- Topbar Navbar -->
-  <ul class="navbar-nav ml-auto">
-
-      <div class="topbar-divider d-none d-sm-block"></div>
-
-      <!-- Nav Item - User Information -->
-      <li class="nav-item dropdown no-arrow">
-          <a  class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
-              data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-              <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ data.username | titlecase}}</span>
-              <img class="img-profile rounded-circle"
-              src="{{imagepath}}{{data.img}}">
-
+    <div *ngIf="asf.logedin()" class="navbar navbar-expand navbar-light topbar static-top">
+      <ul class="navbar-nav ml-auto">
+        <div class="topbar-divider d-none d-sm-block"></div>
+        <li class="nav-item dropdown no-arrow">
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ data.username | titlecase }} {{data.name | titlecase}}</span>
+            <img class="img-profile rounded-circle" src="{{imagepath}}{{data.img}}">
           </a>
-          <!-- Dropdown - User Information -->
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-              <a style="cursor: pointer;" class="dropdown-item" *ngIf="data" (click)="navigateprofile()"  >
-                  <i  class="fas fa-user fa-sm fa-fw mr-2 text-gray-400" ></i>
-                  Profile
-              </a>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item"  data-toggle="modal" data-target="#logoutModal" style="cursor: pointer;" (click)="logout()">
-                  <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Déconnexion
-              </a>
+            <a style="cursor: pointer;" class="dropdown-item" *ngIf="data" (click)="navigateprofile()">
+              <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+              Profile
+            </a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer;" (click)="logout()">
+              <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+              Déconnexion
+            </a>
           </div>
-      </li>
-  </ul>
-</div>
+        </li>
+      </ul>
+    </div>
+
+    <a routerLink="/loginuser" class="btn btn-outline-primary" *ngIf="!asf.logedin()">
+      <i class="icofont-user icofont-1x"></i> Connexion
+    </a>
+  <!-- Dropdowns de ville et de langue déplacés ici -->
+  <div class="d-flex align-items-center ">
+    <div class="city-dropdown">
+      <button class="btn btn-sm btn-custom dropdown-toggle" type="button" id="cityDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ selectedCity }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="cityDropdown">
+        <a class="dropdown-item" *ngFor="let city of cities" href="#" [ngClass]="{'active': city.abbr === selectedCity}" (click)="selectCity(city.abbr)">
+          {{ city.name }} ({{ city.abbr }})
+        </a>
+      </div>
+    </div>
 
 
-  <a routerLink="/loginuser" class="btn btn-outline-primary" *ngIf="!asf.logedin()">
-    <i class="icofont-user icofont-1x" ></i> Connexion
-</a>
+    <div id="google_translate_element" class="language-dropdown">
+      <button class="btn btn-sm btn-custom dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        {{ selectedLanguage }}
+      </button>
+      <div class="dropdown-menu" aria-labelledby="languageDropdown">
+        <a class="dropdown-item" *ngFor="let lang of languages" href="#" (click)="selectLanguage(lang.abbr)">
+          {{ lang.name }} ({{ lang.abbr }})
+        </a>
+      </div>
+    </div>
 
 
-</div>
-</header><!-- End Header -->
+  </div>
+  </div>
+</header>
+
+
+
 <router-outlet></router-outlet>
