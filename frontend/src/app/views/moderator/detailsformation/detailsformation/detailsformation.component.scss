@@ -1,0 +1,67 @@
+/* Style global du body */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    background-color: #f2f2f2; /* Couleur de fond de la page */
+}
+
+/* Conteneur principal pour les formations */
+.formation-container {
+    max-width: 800px;
+    margin: 20px auto; /* Centrer horizontalement */
+    padding: 20px;
+    background-color: #fff; /* Couleur de fond du conteneur */
+    border-radius: 10px; /* Coins arrondis */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Style de chaque formation individuelle */
+.formation {
+    margin-bottom: 30px;
+    border: 1px solid #ccc; /* Cadre autour de la formation */
+    border-radius: 8px; /* Coins arrondis */
+    padding: 20px;
+    background-color: #f9f9f9; /* Couleur de fond */
+    text-align: center; /* Centrer le contenu */
+}
+
+/* Style pour l'image de formation */
+.formationImage {
+    width: 70%; /* Largeur de l'image */
+    max-width: 400px; /* Taille maximale de l'image */
+    height: auto; /* Hauteur automatique pour maintenir le ratio */
+    display: block;
+    margin: 0 auto; /* Centrer l'image */
+    border-radius: 5px; /* Coins arrondis pour l'image */
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.1); /* Ombre légère */
+}
+
+/* Style pour le titre de la formation */
+.formationTitle {
+    font-size: 24px; /* Taille de la police */
+    font-weight: bold;
+    margin-top: 10px;
+    color: #333; /* Couleur du titre */
+}
+
+/* Style pour la description de la formation */
+.formationDescription {
+    margin-top: 10px;
+    color: #666; /* Couleur de la description */
+}
+
+/* Style pour les points, le mode, les besoins et le domaine de la formation */
+.formationPoints,
+.formationMode,
+.formationNeeds,
+.formationDomain {
+    margin-top: 10px;
+    text-align: center; /* Centrer le texte */
+    color: #999; /* Couleur du texte */
+}
+.bold-black {
+    font-weight: bold;
+    color: #000; /* Couleur noire */
+}
