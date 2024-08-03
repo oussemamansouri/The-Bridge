@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { AddpackRoutingModule } from './addpack-routing.module';
 import { AddpackComponent } from './addpack/addpack.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { AddpackComponent } from './addpack/addpack.component';
   ],
   imports: [
     CommonModule,
-    AddpackRoutingModule
+    AddpackRoutingModule,
+    FormsModule
   ]
 })
 export class AddpackModule { }
