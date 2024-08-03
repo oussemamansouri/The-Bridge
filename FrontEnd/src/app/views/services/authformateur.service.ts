@@ -9,8 +9,8 @@ export class AuthformateurService {
   constructor(private http:HttpClient) {
     
   }
-register(body:any){
-  return this.http.post('http://localhost:3000/formateur/register',body)
+register(formData:any){
+  return this.http.post('http://localhost:3000/formateur/register',formData)
 }
 
 loginF(body:any){
