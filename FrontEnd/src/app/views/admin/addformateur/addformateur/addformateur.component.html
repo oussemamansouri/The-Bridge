@@ -1,73 +1,178 @@
 <form #f="ngForm" (ngSubmit)="addformateur(f)">
     <div class="form-group">
         <label for="firstname">Prénom :</label>
-        <input type="text" required name="firstname" #firstname="ngModel" ngModel >
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="firstname" placeholder="Entrez le prénom du formateur" name="firstname" #firstname="ngModel" ngModel required [ngClass]="{'border-error': firstname.invalid && (firstname.dirty || firstname.touched), 'border-success': firstname.valid && (firstname.dirty || firstname.touched)}">
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="firstname.valid && (firstname.dirty || firstname.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
+            <div *ngIf="firstname.errors?.['required']" class="text-danger">Le prénom est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
     <div class="form-group">
         <label for="lastname">Nom :</label>
-        <input type="text" required name="lastname" #lastname="ngModel" ngModel  >
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="lastname" placeholder="Entrez le nom du formateur" name="lastname" #lastname="ngModel" ngModel required [ngClass]="{'border-error': lastname.invalid && (lastname.dirty || lastname.touched), 'border-success': lastname.valid && (lastname.dirty || lastname.touched)}">
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="lastname.valid && (lastname.dirty || lastname.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
+            <div *ngIf="lastname.errors?.['required']" class="text-danger">Le nom est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
-    
+
     <div class="form-group">
         <label for="email">Email :</label>
-        <input type="email" required name="email" #email="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="email" class="form-control border-input" id="email" placeholder="Entrez l'email du formateur" name="email" #email="ngModel" ngModel required email [ngClass]="{'border-error': email.invalid && (email.dirty || email.touched), 'border-success': email.valid && (email.dirty || email.touched)}">
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="email.invalid && (email.dirty || email.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="email.valid && (email.dirty || email.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="email.errors && (email.dirty || email.touched)">
+            <div *ngIf="email.errors?.['required']" class="text-danger">L'email est requis.</div>
+            <div *ngIf="email.errors?.['email']" class="text-danger">L'email est invalide.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
     <div class="form-group">
         <label for="password">Mot de passe :</label>
-        <input type="password" required name="password" #password="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="password" class="form-control border-input" id="password" placeholder="Entrez le mot de passe du formateur" name="password" #password="ngModel" ngModel required [ngClass]="{'border-error': password.invalid && (password.dirty || password.touched), 'border-success': password.valid && (password.dirty || password.touched)}">
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="password.invalid && (password.dirty || password.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="password.valid && (password.dirty || password.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="password.errors && (password.dirty || password.touched)">
+            <div *ngIf="password.errors?.['required']" class="text-danger">Le mot de passe est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
-    
-    <div class="form-group">
-        <label for="img">Image de profil :</label>
-        <input type="file" name="img" #img="ngModel" ngModel><!-- Utilisez "text" au lieu de "file" si img est une URL -->
-    </div>
-    
+
     <div class="form-group">
         <label for="tel">Téléphone :</label>
-        <input type="tel" required name="tel" #tel="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="tel" class="form-control border-input" id="tel" placeholder="Entrez le téléphone du formateur" name="tel" #tel="ngModel" ngModel required [ngClass]="{'border-error': tel.invalid && (tel.dirty || tel.touched), 'border-success': tel.valid && (tel.dirty || tel.touched)}">
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="tel.invalid && (tel.dirty || tel.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="tel.valid && (tel.dirty || tel.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="tel.errors && (tel.dirty || tel.touched)">
+            <div *ngIf="tel.errors?.['required']" class="text-danger">Le téléphone est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
     <div class="form-group">
         <label for="dob">Date de naissance :</label>
-        <input type="date"  required name="dob" #dob="ngModel" ngModel>
+        <input type="date" class="form-control border-input" id="dob" placeholder="Entrez la date de naissance du formateur" name="dob" #dob="ngModel" ngModel required [ngClass]="{'border-error': dob.invalid && (dob.dirty || dob.touched), 'border-success': dob.valid && (dob.dirty || dob.touched)}">
+        <div *ngIf="dob.errors && (dob.dirty || dob.touched)">
+            <div *ngIf="dob.errors?.['required']" class="text-danger">La date de naissance est requise.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
+
     <div class="form-group">
         <label for="address">Adresse :</label>
-        <input type="text"  required name="address" #address="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="address" placeholder="Entrez l'adresse du formateur" name="address" #address="ngModel" ngModel required [ngClass]="{'border-error': address.invalid && (address.dirty || address.touched), 'border-success': address.valid && (address.dirty || address.touched)}">
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="address.invalid && (address.dirty || address.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="address.valid && (address.dirty || address.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="address.errors && (address.dirty || address.touched)">
+            <div *ngIf="address.errors?.['required']" class="text-danger">L'adresse est requise.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
-    <div class="form-group">
-        <label for="cv">CV :</label>
-        <input type="file" name="cv" #cv="ngModel" ngModel><!-- Utilisez "text" au lieu de "file" si cv est une URL -->
-    </div>
+
+
     
     <div class="form-group">
         <label for="portfolio">Portfolio :</label>
-        <input type="text" name="portfolio" #portfolio="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="portfolio" placeholder="Entrez le portfolio du formateur" name="portfolio" #portfolio="ngModel" ngModel>
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="portfolio.invalid && (portfolio.dirty || portfolio.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="portfolio.valid && (portfolio.dirty || portfolio.touched)"></i>
+            </span>
+        </div>
+        <!-- Ajustez les messages d'erreur et les classes CSS des icônes selon vos besoins -->
     </div>
     
     <div class="form-group">
         <label for="statu">Statut :</label>
-        <input type="text" required name="statu" #statu="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="statu" placeholder="Entrez le statut du formateur" name="statu" #statu="ngModel" ngModel required>
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="statu.invalid && (statu.dirty || statu.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="statu.valid && (statu.dirty || statu.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="statu.errors && (statu.dirty || statu.touched)">
+            <div *ngIf="statu.errors?.['required']" class="text-danger">Le statut est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
     <div class="form-group">
         <label for="linkedin">Profil LinkedIn :</label>
-        <input type="text" name="linkedin" #linkedin="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="linkedin" placeholder="Entrez le profil LinkedIn du formateur" name="linkedin" #linkedin="ngModel" ngModel>
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="linkedin.invalid && (linkedin.dirty || linkedin.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="linkedin.valid && (linkedin.dirty || linkedin.touched)"></i>
+            </span>
+        </div>
+        <!-- Ajustez les messages d'erreur et les classes CSS des icônes selon vos besoins -->
     </div>
+    
     
     <div class="form-group">
         <label for="niveau">Niveau :</label>
-        <input type="text" required name="niveau" #niveau="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="niveau" placeholder="Entrez le niveau du formateur" name="niveau" #niveau="ngModel" ngModel required>
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="niveau.invalid && (niveau.dirty || niveau.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="niveau.valid && (niveau.dirty || niveau.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="niveau.errors && (niveau.dirty || niveau.touched)">
+            <div *ngIf="niveau.errors?.['required']" class="text-danger">Le niveau est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
     <div class="form-group">
         <label for="experience">Expérience :</label>
-        <input type="text" required name="experience" #experience="ngModel" ngModel>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input" id="experience" placeholder="Entrez l'expérience du formateur" name="experience" #experience="ngModel" ngModel required>
+            <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="experience.invalid && (experience.dirty || experience.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success" *ngIf="experience.valid && (experience.dirty || experience.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="experience.errors && (experience.dirty || experience.touched)">
+            <div *ngIf="experience.errors?.['required']" class="text-danger">L'expérience est requise.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
+    
     
     <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter Formateur</button>
 
