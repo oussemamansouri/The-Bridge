@@ -1,17 +1,117 @@
 <!doctype html>
 <html lang="en">
 <head>
- 
 
+  <!-- <style>
+    body {
+      font-family: 'Times New Roman', Times, serif !important;
+    }
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Roboto', sans-serif !important;
+    }
+  </style> -->
 
+<style>/* Définir les couleurs principales */
+  :root {
+      --primary-color: #ff6f61; /* Couleur principale similaire à celle de GoMyCode */
+      --secondary-color: #333;  /* Couleur secondaire pour les textes */
+      --background-color: #f5f5f5; /* Couleur de fond */
+      --button-color: #ff6f61;
+      --button-hover-color: #ff5733;
+      --text-color: #333;
+  }
 
-   
+  /* Style général du corps de la page */
+  body {
+      font-family: 'Roboto', sans-serif; /* Police similaire */
+      color: var(--text-color);
+      background-color: var(--background-color);
+      margin: 0;
+      padding: 0;
+  }
+
+  /* En-tête */
+  header {
+      background-color: var(--primary-color);
+      color: #fff;
+      padding: 1rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+  }
+
+  header .logo {
+      font-size: 1.5rem;
+      font-weight: bold;
+  }
+
+  header nav a {
+      color: #fff;
+      margin-left: 1rem;
+      text-decoration: none;
+      font-size: 1rem;
+  }
+
+  /* Style des boutons */
+  button, .btn {
+      background-color: var(--button-color);
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1rem;
+      cursor: pointer;
+      border-radius: 5px;
+      transition: background-color 0.3s ease;
+  }
+
+  button:hover, .btn:hover {
+      background-color: var(--button-hover-color);
+  }
+
+  /* Cartes */
+  .card {
+      background-color: #fff;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      border-radius: 8px;
+      overflow: hidden;
+      margin: 1rem;
+  }
+
+  .card img {
+      width: 100%;
+      height: auto;
+  }
+
+  .card-content {
+      padding: 1rem;
+  }
+
+  .card-title {
+      font-size: 1.25rem;
+      margin-bottom: 0.5rem;
+  }
+
+  .card-description {
+      font-size: 1rem;
+      color: var(--text-color);
+  }
+
+  /* Pied de page */
+  footer {
+      background-color: var(--secondary-color);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      margin-top: 2rem;
+  }
+  </style>
+
   <link href="https://cdn.jsdelivr.net/npm/remixicon@3.2.0/fonts/remixicon.css" rel="stylesheet">
 
   <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet" />
     <link href="css/main.css" rel="stylesheet" />
   <meta charset="utf-8">
-  <title>Connected</title>
+  <title>The Bridge - Renforcer Votre Expérience Digitale</title>
   <base href="/">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" integrity="sha512-iecdLmaskl7CVkqkXNQ/ZH/XLlvWZOJyj7Yy7tcenmpD1ypASozpmT/E0iPtmFIB46ZmdtAc9eNBvH0H/ZpiBw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
 
@@ -25,13 +125,13 @@
    <!--Bootstrap 5 icons CDN-->
    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css">
 
-  
+   <link href="vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
 
    <link rel="stylesheet" href="assets/moderateur/style1.css">
   <!-- <link rel="icon" type="image/x-icon" href="favicon.ico"> -->
 
   <!-- Favicons -->
-  <link href="assets/img/favicon1.jpg" rel="icon">
+  <link href="assets/img/favicon12.png" rel="icon">
   <link href="assets/img/apple-touch-icon.png" rel="apple-touch-icon">
 
   <!-- le style shett de partie profile html -->
@@ -76,11 +176,17 @@
    <link href="assets/administrateur/css/sb-admin-2.min.css" rel="stylesheet">
 
 
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+  <script type="text/javascript" src="https://translate.google.com/translate_a/element.js?cb=googleTranslateElementInit"></script>
+
 </head>
-<body>
+<body class="mat-typography">
   <app-root></app-root>
   <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script> -->
-  
+
 
   <!-- Vendor JS Files -->
   <script src="assets/vendor/jquery/jquery.min.js"></script>
@@ -126,26 +232,26 @@
   <script src="assets/profileA/js/custom-font.js"></script>
   <script src="assets/profileA/js/pcoded.js"></script>
   <script src="assets/profileA/js/feather.min.js"></script>
-  
-  
-  
-  
-  
+
+
+
+
+
   <script>layout_change('light');</script>
-  
-  
-  
-  
+
+
+
+
   <script>change_box_container('false');</script>
-  
-  
-  
+
+
+
   <script>layout_rtl_change('false');</script>
-  
-  
+
+
   <script>preset_change("preset-1");</script>
-  
-  
+
+
   <script>font_change("Public-Sans");</script>
 
 
@@ -163,7 +269,7 @@
     <script src="assets/moderateur/app.js"></script>
 
 
-    <!-- recherche barre 
+    <!-- recherche barre
 
     <script src="js/extention/choices.js"></script>
   <script>
@@ -176,9 +282,22 @@
   </script>
 
 
+  <script src="vendor/jquery/jquery.min.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+
+  <!-- Core plugin JavaScript-->
+  <script src="vendor/jquery-easing/jquery.easing.min.js"></script>
+
+  <!-- Custom scripts for all pages-->
+  <script src="js/sb-admin-2.min.js"></script>
+
+  <!-- Page level plugins -->
+  <script src="vendor/datatables/jquery.dataTables.min.js"></script>
+  <script src="vendor/datatables/dataTables.bootstrap4.min.js"></script>
+
+  <!-- Page level custom scripts -->
+  <script src="js/demo/datatables-demo.js"></script>
 
 
-
- 
 </body>
 </html>
