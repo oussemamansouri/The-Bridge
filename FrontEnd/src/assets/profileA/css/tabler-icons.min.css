@@ -508,7 +508,7 @@
 .ti-bluetooth:before {
   content: '\ea37';
 }
-.ti-bluetooth-connected:before {
+.ti-bluetooth-Connected:before {
   content: '\ecea';
 }
 .ti-bluetooth-off:before {
