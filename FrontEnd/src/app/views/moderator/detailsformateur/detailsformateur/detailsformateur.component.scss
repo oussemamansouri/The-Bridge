@@ -1,0 +1,21 @@
+.cv-actions {
+    display: flex;
+    justify-content: center; /* Centre les boutons horizontalement */
+    align-items: center; /* Centre les boutons verticalement */
+    margin: 20px 0; /* Ajoute une marge verticale pour espacer le conteneur des autres éléments */
+  }
+  
+  .cv-action {
+    display: flex;
+    align-items: center; /* Centre le contenu verticalement */
+    margin-right: 20px; /* Ajoute un espacement entre les boutons */
+  }
+  
+  .cv-action:last-child {
+    margin-right: 0; /* Supprime la marge droite pour le dernier bouton */
+  }
+  
+  .cv-action i {
+    margin-left: 8px; /* Ajoute un espacement entre le texte et l'icône */
+  }
+  
