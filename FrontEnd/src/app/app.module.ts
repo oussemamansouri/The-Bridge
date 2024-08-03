@@ -6,10 +6,15 @@ import { LayoutsModule } from './layouts/layouts.module';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { HttpClientModule } from '@angular/common/http';
 import { AuthadminService } from './views/services/authadmin.service';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { GoogleTranslateComponent } from './google-translate/google-translate.component';
+
 
 @NgModule({
   declarations: [
     AppComponent,
+    GoogleTranslateComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -18,6 +23,9 @@ import { AuthadminService } from './views/services/authadmin.service';
     FormsModule,
     HttpClientModule,
     ReactiveFormsModule,
+    BrowserAnimationsModule,
+
+
     
   ],
   providers: [AuthadminService],
