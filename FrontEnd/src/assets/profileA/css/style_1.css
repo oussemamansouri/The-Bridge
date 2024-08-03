@@ -1519,11 +1519,11 @@
   content: "\ea75";
   margin-left: -1em;
 }
-.ph-duotone.ph-bluetooth-connected:before {
+.ph-duotone.ph-bluetooth-Connected:before {
   content: "\ea76";
   opacity: 0.2;
 }
-.ph-duotone.ph-bluetooth-connected:after {
+.ph-duotone.ph-bluetooth-Connected:after {
   content: "\ea77";
   margin-left: -1em;
 }
@@ -7218,11 +7218,11 @@
   content: "\f006";
   margin-left: -1em;
 }
-.ph-duotone.ph-plugs-connected:before {
+.ph-duotone.ph-plugs-Connected:before {
   content: "\f007";
   opacity: 0.2;
 }
-.ph-duotone.ph-plugs-connected:after {
+.ph-duotone.ph-plugs-Connected:after {
   content: "\f008";
   margin-left: -1em;
 }
