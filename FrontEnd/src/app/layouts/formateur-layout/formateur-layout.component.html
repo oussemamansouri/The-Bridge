@@ -10,7 +10,7 @@
     <div class="sidebar-brand-icon rotate-n-15">
         <i class="fas fa-users"></i>
     </div>
-    <div class="sidebar-brand-text mx-3">CONNECTED</div>
+    <div class="sidebar-brand-text mx-3">{{ data.role | titlecase}}</div>
 </a>
 
 
@@ -20,7 +20,7 @@
 
 <!-- Accueil -->
 <li class="nav-item active">
-    <a class="nav-link" href="index.html">
+    <a class="nav-link" routerLink="/">
         <i class="fas fa-fw fa-home"></i>
         <span>Accueil</span>
     </a>
@@ -31,7 +31,7 @@
 
 <!-- Profile -->
 <li class="nav-item active">
-    <a class="nav-link" routerLink="profile">
+    <a class="nav-link" routerLink="/formateur/profile">
         <i class="fas fa-fw fa-user"></i>
         <span>Profile</span>
     </a>
@@ -53,23 +53,17 @@
     </div>
 </li>
 
-
-
-
 <li class="nav-item active">
     <a class="nav-link" routerLink="participation">
-        <i class="fas fa-fw fa-user"></i>
+        <i class="fas fa-user-friends fa-fw"></i>
         <span>Ma participation</span>
     </a>
 </li>
 
-
-
-
 <!-- demande -->
 <li class="nav-item active">
     <a class="nav-link" routerLink="demandeenvoyer">
-        <i class="fas fa-fw fa-user"></i>
+        <i class="fas fa-paper-plane fa-fw"></i>
         <span>Demande Envoyer</span>
     </a>
 </li>
@@ -82,32 +76,23 @@
     </a>
 </li>
 
-<!-- message -->
+<!-- chat -->
 <li class="nav-item active">
-    <a class="nav-link" routerLink="message">
-        <i class="fas fa-fw fa-user"></i>
-        <span>Message</span>
+    <a class="nav-link" routerLink="/formateur/chat">
+        <i class="fab fa-facebook-messenger fa-fw"></i>
+        <span>Messenger</span>
     </a>
 </li>
-
-
-
-
 
         <!-- Divider -->
         <hr class="sidebar-divider d-none d-md-block">
 
-        
     </ul>
-
-
-
-
 
     <!-- End of Sidebar -->
 
     <!-- Content Wrapper -->
-    <div id="content-wrapper" class="d-flex flex-column">
+    <div id="content-wrapper"  class="d-flex flex-column">
 
         <!-- Main Content -->
         <div id="content">
@@ -116,28 +101,55 @@
             <nav class="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
 
                 <!-- Sidebar Toggle (Topbar) -->
-                <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
+                <button id="sidebarToggleTop"  class="btn btn-link d-md-none rounded-circle mr-3">
                     <i class="fa fa-bars"></i>
                 </button>
 
-                
-
                 <!-- Topbar Navbar -->
-                <ul class="navbar-nav ml-auto">
+                <ul class="navbar-nav ml-auto" style="display: flex;justify-content: flex-end;align-items: center;">
+                    <a class="nav-link" style="text-transform: uppercase; color: #333; display: flex; align-items: center;">
+                        <i class="fas fa-coins" style="color: yellow;"></i>
+                        <span style="font-size: 14px; margin-right: 5px;">VOS POINTS :</span> <!-- Réglage de la taille du texte -->
+                        <span>{{profile.points}}</span> <!-- Utilisation de {{profile.points}} pour afficher les points -->
+                        <button class="btn btn-sm btn-primary ml-2" style="font-size: 14px;" (click)="redirectToPacksPage()">+</button> <!-- Réglage de la taille du bouton -->
+                    </a>
+
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link" routerLink="/formateur/demandeenvoyer">
+                            <i class="fas fa-paper-plane fa-fw"></i>
+                        </a>
+                    </li>
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link dropdown-toggle" routerLink="/formateur/participation" id="requestsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            <i class="fas fa-user-friends fa-fw"></i>
+                            <span class="badge badge-danger badge-counter">3+</span>
+                        </a>
+                    </li>
+
+
+                    <li class="nav-item dropdown no-arrow mx-1">
+                        <a class="nav-link" routerLink="/formateur/chat">
+                            <i class="fab fa-facebook-messenger fa-fw"></i>
+                        </a>
+                    </li>
+
 
                     <div class="topbar-divider d-none d-sm-block"></div>
 
                     <!-- Nav Item - User Information -->
                     <li class="nav-item dropdown no-arrow">
+
                         <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button"
                             data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">Firas</span>
+                            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{data.name | titlecase}}</span>
                             <img class="img-profile rounded-circle"
-                                src="assets/administrateur/img/undraw_profile.svg">
+                            src="{{imagepath}}{{data.img}}">
+
                         </a>
+
                         <!-- Dropdown - User Information -->
                         <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                            <a class="dropdown-item" href="#">
+                            <a class="dropdown-item" routerLink="/formateur/profile">
                                 <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                 Profile
                             </a>
@@ -147,7 +159,7 @@
                                 Déconnexion
                             </a>
                         </div>
-                        
+
                     </li>
 
                 </ul>
@@ -155,28 +167,18 @@
             </nav>
             <!-- End of Topbar -->
 
-
-
-
-            
-
             <!-- Begin Page Content -->
           <router-outlet></router-outlet>
             <!-- /.container-fluid -->
 
         </div>
-
-
-
-
-
         <!-- End of Main Content -->
 
         <!-- Footer -->
         <footer class="sticky-footer bg-white">
             <div class="container my-auto">
                 <div class="copyright text-center my-auto">
-                    <span>Droits d'auteur © Votre Plateforme Connected</span>
+                    <span>Droits d'auteur ©  The Bridge Platforme</span>
                 </div>
             </div>
         </footer>
