@@ -7,15 +7,20 @@ import { FrontLayoutComponent } from './layouts/front-layout/front-layout.compon
 import { FormationLayoutComponent } from './layouts/formation-layout/formation-layout.component';
 import { GuardadminGuard } from './views/guards/guardadmin.guard';
 import { GuardmoderatorGuard } from './views/guards/guardmoderator.guard';
+import { Page404Module } from './views/front/page404/page404.module';
+import { Page404Component } from './views/front/page404/page404/page404.component';
 
 const routes: Routes = [
 {path:'',component:FrontLayoutComponent,children:[
   {path:'',loadChildren:()=>import('./views/front/home/home.module').then(m=>m.HomeModule)},
   {path:'loginuser',loadChildren:()=>import('./views/front/loginuser/loginuser.module').then(m=>m.LoginuserModule)},
-  {path:'formation',loadChildren:()=>import('./views/front/formation/formation.module').then(m=>m.FormationModule)},
+  {path:'formation',loadChildren:()=>import('./views/front/formation1/formation1.module').then(m=>m.Formation1Module)},
   {path:'actualite',loadChildren:()=>import('./views/front/actualite/actualite.module').then(m=>m.ActualiteModule)},
   {path:'tarifs',loadChildren:()=>import('./views/front/tarifs/tarifs.module').then(m=>m.TarifsModule)},
   {path:'contact',loadChildren:()=>import('./views/front/contact/contact.module').then(m=>m.ContactModule)},
+  {path:'paiement',loadChildren:()=>import('./views/front/paiement/paiement.module').then(m=>m.PaiementModule)},
+  {path:'contact1',loadChildren:()=>import('./views/front/contact1/contact1.module').then(m=>m.Contact1Module)},
+
 ]},
 {path:'admin',component:AdminLayoutComponent,canActivate:[GuardadminGuard],children:[
   {path:'',loadChildren:()=>import('./views/admin/dashboard/dashboard.module').then(m=>m.DashboardModule)},
@@ -28,6 +33,7 @@ const routes: Routes = [
   {path:'detailsformateur/:id',loadChildren:()=>import('./views/admin/detailsformateur/detailsformateur.module').then(m=>m.DetailsformateurModule)},
   {path:'addformation',loadChildren:()=>import('./views/admin/addformation/addformation.module').then(m=>m.AddformationModule)},
   {path:'consultformation',loadChildren:()=>import('./views/admin/consultformation/consultformation.module').then(m=>m.ConsultformationModule)},
+  {path:'detailsformation/:id',loadChildren:()=>import('./views/admin/detailsformation/detailsformation.module').then(m=>m.DetailsformationModule)},
   {path:'addpaiement',loadChildren:()=>import('./views/admin/addpaiement/addpaiement.module').then(m=>m.AddpaiementModule)},
   {path:'addpack',loadChildren:()=>import('./views/admin/addpack/addpack.module').then(m=>m.AddpackModule)},
   {path:'consultpack',loadChildren:()=>import('./views/admin/consultpack/consultpack.module').then(m=>m.ConsultpackModule)},
@@ -42,21 +48,25 @@ const routes: Routes = [
   {path:'detailsformateur/:id',loadChildren:()=>import('./views/moderator/detailsformateur/detailsformateur.module').then(m=>m.DetailsformateurModule)},
   {path:'addformation',loadChildren:()=>import('./views/moderator/addformation/addformation.module').then(m=>m.AddformationModule)},
   {path:'consultformation',loadChildren:()=>import('./views/moderator/consultformation/consultformation.module').then(m=>m.ConsultformationModule)},
+  {path:'detailsformation/:id',loadChildren:()=>import('./views/moderator/detailsformation/detailsformation.module').then(m=>m.DetailsformationModule)},
   {path:'addpack',loadChildren:()=>import('./views/moderator/addpack/addpack.module').then(m=>m.AddpackModule)},
   {path:'consultpack',loadChildren:()=>import('./views/moderator/consultpack/consultpack.module').then(m=>m.ConsultpackModule)},
 ]},
 {path:'formateur',component:FormateurLayoutComponent,children:[
   {path:'',loadChildren:()=>import('./views/formateur/dashboard-f/dashboard-f.module').then(m=>m.DashboardFModule)},
   {path:'profile',loadChildren:()=>import('./views/formateur/dashboard-f/dashboard-f.module').then(m=>m.DashboardFModule)},
+  {path:'profiledetailles/:id',loadChildren:()=>import('./views/formateur/profiledetailles/profiledetailles.module').then(m=>m.ProfiledetaillesModule)},
   {path:'formation',loadChildren:()=>import('./views/formateur/formation/formation.module').then(m=>m.FormationModule)},
   {path:'addformation',loadChildren:()=>import('./views/formateur/addformation/addformation.module').then(m=>m.AddformationModule)},
+  {path:'detailsformation/:id',loadChildren:()=>import('./views/formateur/detailsformation/detailsformation.module').then(m=>m.DetailsformationModule)},
   {path:'participation',loadChildren:()=>import('./views/formateur/participation/participation.module').then(m=>m.ParticipationModule)},
   {path:'demandeenvoyer',loadChildren:()=>import('./views/formateur/demande-e/demande-e.module').then(m=>m.DemandeEModule)},
   {path:'demanderecue',loadChildren:()=>import('./views/formateur/demande-r/demande-r.module').then(m=>m.DemandeRModule)},
   {path:'message',loadChildren:()=>import('./views/formateur/message/message.module').then(m=>m.MessageModule)},
+  {path:'chat',loadChildren:()=>import('./views/formateur/chat/chat.module').then(m=>m.ChatModule)},
 ]},
 
-
+{path:'**',component:Page404Component},
 
 
 
