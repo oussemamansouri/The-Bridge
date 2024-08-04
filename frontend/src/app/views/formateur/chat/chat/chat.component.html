@@ -1,0 +1,57 @@
+<div class="toolbar">
+  <button class="toolbar-icon">
+    <i class="fas fa-video"></i>
+  </button>
+  <button class="toolbar-icon">
+    <i class="fas fa-phone"></i>
+  </button>
+</div>
+
+<div *ngIf="acceptedFriends.length" class="chat-wrapper">
+  <div class="participants-list">
+    <h2 class="title">Liste d'amis</h2>
+    <ul>
+      <li *ngFor="let friend of acceptedFriends" (click)="selectParticipant(friend.id)">
+        <div class="participant-avatar">
+          <img [src]="imagepath + friend.img" alt="Avatar">
+        </div>
+        <div class="participant-info">
+          <p style="color:rgb(56, 56, 56)">{{ friend.firstname }} {{ friend.lastname }}</p>
+        </div>
+      </li>
+    </ul>
+    <div *ngIf="!acceptedFriends.length">
+      Aucun ami accepté trouvé.
+    </div>
+  </div>
+
+  <div class="chat-container">
+    <h1 class="title">Messenger</h1>
+
+    <div class="message-list">
+      <div class="message-box" *ngFor="let message of messages" [ngClass]="{'message-sent': message.sent, 'message-received': !message.sent}">
+        <div class="user-avatar">
+          <img [src]="imagepath + profile.img" alt="Avatar">
+        </div>
+        <div class="message-content">
+          <ul>
+            <li class="message">{{ message.message }}</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="send-message">
+      <input type="text" [(ngModel)]="newMessage" placeholder="Entrez votre message ici...">
+      <button for="file-input" class="file-icon" type="button">
+        <i class="fas fa-file-upload"></i>
+      </button>
+      <input id="file-input" type="file" accept="image/*, .pdf, .doc, .docx" style="display: none;">
+      <button class="emoji-icon">😀</button>
+      <button (click)="sendMessage()">
+        <i class="fas fa-paper-plane"></i> Envoyer
+      </button>
+    </div>
+  </div>
+</div>
+
