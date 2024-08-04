@@ -10,7 +10,7 @@ import { DataService } from 'src/app/views/services/data.service';
   styleUrls: ['./consultformateur.component.scss']
 })
 export class ConsultformateurComponent implements OnInit {
-
+  imagepath:any='http://localhost:3000/'
   dataArray:any=[]
   dataformateur={
     firstname:'',
@@ -25,6 +25,9 @@ export class ConsultformateurComponent implements OnInit {
     experience:'',
     id:''
   }
+  successMessage: string = '';
+errorMessage: string = '';
+
 
   messagesuccess=''
   constructor(private ds:DataService,private route:Router) {
@@ -40,13 +43,20 @@ export class ConsultformateurComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(id:any,i:number){
-    this.ds.deleteformateur(id).subscribe(response=>{
-      console.log(response)
-      this.dataArray.splice(i,1)
-    })
+  delete(id: any, i: number) {
+    this.ds.deleteformateur(id).subscribe(
+      () => {
+        this.successMessage = "Le formateur a été supprimé avec succès.";
+        this.errorMessage = ''; // Réinitialiser le message d'erreur
+        this.dataArray.splice(i, 1);
+      },
+      (error: any) => {
+        this.errorMessage = "Une erreur s'est produite lors de la suppression du formateur : " + error;
+        this.successMessage = ''; // Réinitialiser le message de succès
+      }
+    );
   }
-
+  
 
   getdata(firstname:string,lastname:string,dob:number,address:string,tel:number,portfolio:string,statu:string,linkedin:string,niveau:string,experience:string,id:any){
     this.messagesuccess=''
