@@ -1,0 +1,315 @@
+.title {
+    text-align: center;
+    padding: 10px; /* Réduit la marge */
+  }
+  
+  .title h1 {
+    font-size: 24px; /* Réduit la taille de la police */
+    font-weight: bold;
+  }
+  
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: Arial, sans-serif;
+  }
+  
+  .main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px; /* Réduit l'espace entre les cartes */
+    padding: 10px; /* Réduit la marge */
+  }
+  
+  .card {
+    width: 200px; /* Réduit la largeur de la carte */
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+  }
+  
+  .image img {
+    width: 100%;
+    height: 150px; /* Réduit la hauteur de l'image */
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+  }
+  
+  .title {
+    padding: 10px; /* Réduit la marge */
+    text-align: center;
+  }
+  
+  .title h1 {
+    font-size: 18px; /* Réduit la taille de la police */
+    color: #333;
+  }
+  
+  .des {
+    padding: 10px; /* Réduit la marge */
+    text-align: center;
+  }
+  
+  .des p {
+    font-size: 14px; /* Réduit la taille de la police */
+    color: #666;
+  }
+  
+  button {
+    display: block;
+    width: 50%; /* Réduit encore la largeur du bouton */
+    margin: 5px auto; /* Réduit la marge */
+    padding: 4px 8px; /* Réduit le padding */
+    font-size: 12px; /* Réduit la taille de la police du bouton */
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    white-space: nowrap; /* Empêche le texte de se dérouler sur plusieurs lignes */
+    overflow: hidden; /* Masque tout texte débordant */
+    text-overflow: ellipsis; /* Ajoute des points de suspension si le texte est trop long */
+    transition: background-color 0.3s ease;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  .card:hover .image img {
+    transform: scale(1.05); /* Effet de zoom */
+    transition: transform 0.3s ease; /* Transition douce */
+  }
+  
+
+
+
+
+
+
+
+  .modal {
+    display: none; /* Par défaut, cachez les modals */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -50%);
+    z-index: 1050;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.modal.show {
+    display: block; /* Afficher le modal lorsque la classe show est appliquée */
+}
+
+
+
+
+
+
+
+.btn-sm {
+    font-size: 14px; /* Taille du texte */
+    padding: 5px 10px; /* Espacement autour du texte */
+    margin-left: 30px; /* Espacement entre les boutons */
+}
+
+.btn-close {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.btn-close::before, .btn-close::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: #333;
+    transform: rotate(45deg);
+    top: 5px;
+    left: 14px;
+}
+
+.btn-close::after {
+    transform: rotate(-45deg);
+}
+
+.btn-close:hover::before, .btn-close:hover::after {
+    background-color: #000;
+}
+
+
+
+.modal-title {
+    flex-grow: 1; /* Pour que le titre occupe tout l'espace restant */
+    text-align: center; /* Centrer le texte */
+}
+
+.btn-close {
+    margin-left: auto; /* Place le bouton de fermeture à droite */
+}
+
+
+
+
+
+
+
+.formateur-img-container {
+    position: relative;
+    display: inline-block;
+}
+
+.profile-text {
+    visibility: hidden;
+    width: 100px;
+    background-color: black;
+    color: white;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -50px;
+    opacity: 0;
+    transition: opacity 0.3s;
+}
+
+.formateur-img-container:hover .profile-text {
+    visibility: visible;
+    opacity: 1;
+}
+
+
+// .btn-custom-danger {
+//   background-color: red;
+//   color: white;
+//   border: none; /* Si vous voulez enlever la bordure */
+// }
+
+// .btn-custom-danger:hover {
+//   background-color: darkred;
+//   color: white; /* Vous pouvez changer la couleur de texte si nécessaire */
+// }
+
+
+
+
+
+.confirmation-dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.confirmation-dialog {
+  background: white;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  text-align: center;
+}
+
+.dialog-actions {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+}
+
+button {
+  padding: 7px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+button:first-of-type {
+  background: #002fff;
+  color: white;
+}
+
+button:first-of-type:hover {
+  background: #001bb5; /* Change to a darker blue on hover */
+}
+
+button:last-of-type {
+  background: #ff1100;
+  color: white;
+}
+
+button:last-of-type:hover {
+  background: #cc0e00; /* Change to a darker red on hover */
+}
+
+
+
+
+
+
+
+/* Styles pour le bouton .btn-close */
+.btn-close {
+  /* Ajoutez vos styles personnalisés ici */
+  padding: 7px 15px !important;
+  border: none !important;
+  border-radius: 4px !important;
+  cursor: pointer !important;
+  background: #777 !important; /* Exemple de couleur de fond */
+  color: white !important; /* Exemple de couleur de texte */
+}
+
+.btn-close:hover {
+  /* Styles pour le survol du bouton .btn-close */
+  background: #555 !important; /* Exemple de couleur de fond plus foncée au survol */
+}
+.confirmation-dialog-overlay {
+  position: fixed !important;
+  top: 20px !important; /* Ajustez cette valeur selon votre besoin */
+  right: 20px !important; /* Ajustez cette valeur selon votre besoin */
+  /* Autres styles */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
