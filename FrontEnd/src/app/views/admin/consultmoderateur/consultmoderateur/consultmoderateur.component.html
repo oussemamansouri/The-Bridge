@@ -2,7 +2,7 @@
     <div class="row">
         <div class="col-12">
             <div class="text-right mb-3">
-                <button routerLink="/admin/addformateur" class="btn btn-primary" id="ajouterFormateurBtn">Ajouter Moderateur</button>
+                <button routerLink="/admin/addmoderateur" class="btn btn-primary" id="ajouterFormateurBtn">Ajouter Moderateur</button>
             </div>
             <div class="table-responsive">
                 <table class="table table-striped table-hover mt-3 text-center table-bordered custom-table">
@@ -17,6 +17,17 @@
                             <th>Actions</th>
                         </tr>
                     </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Image</th>
+                            <th>Username</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Téléphone</th>
+                            <th>Email</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
                     <tbody>
                         <tr *ngFor="let item of dataArray;index as i">
                             <td> <img class="ModeratorImage" src="{{imagepath}}{{item.img}}"> </td>
@@ -48,6 +59,13 @@
         </div>
     </div>
 </section>
+<div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+  
 
 
 <!-- modal -->
