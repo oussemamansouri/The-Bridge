@@ -62,21 +62,37 @@ export class DashboardComponent implements OnInit {
       this.errmessage=err.error
     })
       }
-
-      updatepassword(f:any){
-        let body=f.value
-         this.api.updatepassword(body,this.getId()).subscribe(info=>{
-          this.route.navigate(['/admin/dashbord'])
-          this.secmessagepass=" mot de passe mettre à jour avec succès "
-
-
-        },(err:HttpErrorResponse)=>{
-          this.errmessagepass=err.error
-          // this.old=""
-
-        })
-
+      updatepassword(f: any) {
+        let body = f.value;
+        this.api.updatepassword(body, this.getId()).subscribe(
+          info => {
+            // Rediriger vers le profil
+            // this.route.navigate(['/formateur/profile']);
+            // Afficher le message de succès
+            this.secmessagepass = "Mot de passe mis à jour avec succès.";
+          },
+          (err: HttpErrorResponse) => {
+            // En cas d'erreur, afficher le message d'erreur
+            this.errmessagepass = "Le champ 'ancien mot de passe' est obligatoire et ne peut pas être vide.";
+            // this.old="";
+          }
+        );
       }
+      
+      // updatepassword(f:any){
+      //   let body=f.value
+      //    this.api.updatepassword(body,this.getId()).subscribe(info=>{
+      //     this.route.navigate(['/admin/profile'])
+      //     this.secmessagepass=" mot de passe mettre à jour avec succès "
+
+
+      //   },(err:HttpErrorResponse)=>{
+      //     this.errmessagepass=err.error
+      //     // this.old=""
+
+      //   })
+
+      // }
 
 
 }
