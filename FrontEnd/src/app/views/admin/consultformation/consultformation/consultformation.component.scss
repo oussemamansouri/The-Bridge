@@ -1,11 +1,25 @@
-table tr td{
+.custom-table th,
+.custom-table td {
     vertical-align: middle;
 }
 
-td button{
-    margin: 5px;
+.custom-table th {
+    font-weight: bold;
 }
 
-td button i{
-    font-size: 20px;
+.custom-table thead th {
+    background-color: #f8f9fa;
+}
+
+.custom-table tbody tr:nth-child(even) {
+    background-color: #f8f9fa;
+}
+
+.custom-table tbody tr:hover {
+    background-color: #e9ecef;
+}
+
+.formationImage{
+  width: 100px;
+  height: auto;
 }
