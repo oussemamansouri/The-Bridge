@@ -1,0 +1,663 @@
+.modal-open-custom {
+    overflow: hidden !important;
+}
+
+.btn-group {
+    display: flex;
+    /* flex-direction: ; Mettre les boutons dans une ligne */
+    margin-left: auto; /* Place le groupe de boutons à droite */
+}
+
+.btn-group button:first-child {
+    margin-right: 20px; /* Ajoute un espace entre les deux boutons */
+}
+
+.btn-sm {
+    font-size: 14px; /* Taille du texte */
+    padding: 5px 10px; /* Espacement autour du texte */
+    margin-left: 30px; /* Espacement entre les boutons */
+}
+
+.btn-close {
+    background-color: transparent;
+    border: none;
+    padding: 0;
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    cursor: pointer;
+}
+
+.btn-close::before, .btn-close::after {
+    content: '';
+    position: absolute;
+    width: 2px;
+    height: 20px;
+    background-color: #333;
+    transform: rotate(45deg);
+    top: 5px;
+    left: 14px;
+}
+
+.btn-close::after {
+    transform: rotate(-45deg);
+}
+
+.btn-close:hover::before, .btn-close:hover::after {
+    background-color: #000;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-title {
+    flex-grow: 1; /* Pour que le titre occupe tout l'espace restant */
+    text-align: center; /* Centrer le texte */
+}
+
+.btn-close {
+    margin-left: auto; /* Place le bouton de fermeture à droite */
+}
+.btn-custom {
+    background-color: #ccc; /* Couleur gris personnalisée */
+    color: #000; /* Couleur du texte */
+    transition: background-color 0.3s; /* Ajout d'une transition pour une animation fluide */
+  }
+
+  .btn-custom:hover {
+    background-color: #a1a1a1; /* Changement de couleur au survol en rouge */
+    color: #fff; /* Changement de couleur du texte en blanc */
+  }
+
+
+
+
+
+
+
+
+  .formation-image {
+    width: 500px; /* Pour agrandir l'image à 100% de la largeur du conteneur */
+    height: 300px; /* Pour maintenir le ratio de l'image */
+    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas la largeur du conteneur */
+    display: block; /* Pour assurer un affichage en bloc de l'image */
+    margin: 0 auto; /* Pour centrer l'image horizontalement */
+    padding-bottom:20px ;
+  }
+
+
+
+
+
+  .description {
+    margin-left: 20px; /* Ajoute une marge à gauche */
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+     
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    border: none;
+    outline: none;
+  }
+  
+  body {
+    margin: 0;
+    padding: 0;
+    min-height: 100vh;
+    background-color: #ffffff; /* Blanc */
+    font-family: "Roboto", sans-serif;
+  }
+  
+  header {
+    width: 100%;
+    padding: 15px;
+    background-color: #212121; /* Noir */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  }
+  .search-bar::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: calc(20% + 10px); /* Déplacer le diviseur de 10px plus à droite */
+    width: 2px;
+    height: 20px;
+    background-color: #0000ff;
+    transform: translate(-50%, -50%);
+  }
+  
+  .search-bar {
+    display: flex;
+    position: relative;
+    width: 90%;
+    max-width: 870px;
+    height: 48px;
+    margin: 40px auto;
+    border-radius: 24px;
+    border: 3px solid #0000ff;
+  }
+  
+  .search-category {
+    padding: 0 20px;
+    flex: 0.3; 
+  }
+  
+  .search-category a {
+    width: 100%;
+    height: 100%;
+    color: #0000ff;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    text-transform: capitalize;
+  }
+  
+  .search-category a i {
+    display: inline-block;
+    margin-left: 20px;
+    font-size: 14px;
+    transition: all 0.2s;
+  }
+  
+  .input-search {
+    flex: 10; /* Adjusted the value */
+  }
+  
+  
+  .search-category:hover a i {
+    transform: rotate(180deg);
+  }
+  
+  .category-menu {
+    width: 240px;
+    padding: 20px;
+    background-color: #ffffff; /* Blanc */
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 8px 14px rgba(0, 0, 0, 0.7);
+    display: flex;
+    flex-direction: column;
+    position: absolute;
+    top: 0;
+    left: 0;
+    opacity: 0;
+    pointer-events: none;
+    transition: all 0.38s;
+    z-index: 11;
+  }
+  
+  .category-menu .subject {
+    margin: 4px 0;
+    color: #0000ff; /* Bleu */
+    text-transform: capitalize;
+  }
+  
+  .category-menu .menu-item {
+    position: relative;
+    padding: 6px 0 6px 36px;
+    color: #0000ff; /* Bleu */
+    font-size: 14px;
+    line-height: 22px;
+    text-transform: capitalize;
+    transition: all 0.13s;
+  }
+  .category-menu .menu-item:hover {
+    color: #fbbc05; /* Jaune */
+  }
+  
+  .search-category:hover .category-menu {
+    top: calc(100% + 4px);
+    opacity: 1;
+    pointer-events: all;
+  }
+  
+  .input-search {
+    width: 100%;
+    flex: 1;
+    
+  }
+  .input-search input {
+    display: block;
+    width: 100%;
+    height: 100%;
+    padding-left: 20px;
+    color: #0000ff; /* Bleu */
+    background-color: #ffffff;
+    font-size: 14px;
+    border: none; /* Suppression de la bordure */
+    border-radius: 0 4px 4px 0;
+  }
+  .search-btn {
+    width: 58px;
+    height: 100%;
+    color: #0000ff;
+    background-color: #ffffff;
+    font-size: 16px;
+    border-radius: 0 24px 24px 0;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    top: 0;
+    right: 0;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Ajout de transitions */
+  }
+  
+  .search-btn:hover {
+    background-color: #f0f0f0; /* Changement de couleur au survol */
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre portée au survol */
+  }
+  
+  .search-btn i {
+    font-size: 24px;
+  }
+  
+  .search-menu {
+    display: none;
+    width: 80%;
+    padding: 20px 30px;
+    color: #0000ff; /* Blanc */
+    background-color: #ffffff; /* Bleu */
+    border-radius: 4px;
+    font-size: 14px;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Réduction de l'ombre portée */
+    position: absolute;
+    top: calc(100% + 4px);
+    left: 150px; /* Déplacement vers la droite de 10px */
+    z-index: 10;
+  }
+  
+  
+  .search-related a {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    color: #0000ff; /* Blanc */
+    font-size: 14px;
+    text-decoration: none;
+    line-height: 32px;
+    transition: all 0.13s;
+  }
+  
+  .search-related a:hover {
+    color: #fbbc05;
+  }
+  
+  .input-search input:focus + .search-menu {
+    display: block;
+  }
+  .input-search input::placeholder {
+    color: #0000ff; /* Couleur bleue pour le placeholder */
+  }
+
+
+
+
+
+  .formationImage{
+    width: 100px;
+    height: auto;
+  }
+
+
+  .modal {
+    display: none; /* Par défaut, cachez les modals */
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-20%, -50%);
+    z-index: 1050;
+    padding: 15px;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+}
+
+.modal.show {
+    display: block; /* Afficher le modal lorsque la classe show est appliquée */
+}
+
+
+
+
+
+
+.container1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start; /* ou une autre valeur pour l'espacement */
+}
+
+.card {
+    /* styles de votre carte */
+    /* assurez-vous qu'elle ne dépasse pas la largeur du conteneur pour qu'elles s'alignent correctement */
+    width: calc(50% - 10px); /* si vous voulez deux cartes par ligne avec un peu d'espacement entre elles */
+    
+   margin:18px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: Arial, sans-serif;
+}
+
+.main {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    padding: 20px;
+}
+
+.card {
+    width: 300px;
+    background-color: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+}
+
+.image img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+}
+
+.title {
+    padding: 20px;
+    text-align: center;
+}
+
+.title h1 {
+    font-size: 24px;
+    color: #333;
+}
+
+.des {
+    padding: 20px;
+    text-align: center;
+}
+
+.des p {
+    font-size: 16px;
+    color: #666;
+}
+
+button {
+    display: block;
+    width: 80%;
+    margin: 20px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+
+
+.card:hover .image img {
+    transform: scale(1.05); /* Zoom effect */
+    transition: transform 0.3s ease; /* Smooth transition */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .card-small {
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   padding: 10px;
+//   width: 100%;
+// }
+
+// .card-small .image img {
+//   width: 100%;
+//   height: auto;
+// }                                   mettre les cards sur 5 cards par ligne
+
+// .card-small .title h1 {
+//   font-size: 14px;
+//   margin: 5px 0;
+// }
+
+// .card-small .des button {
+//   font-size: 12px;
+// }
+
+
+
+
+
+// .container1 {
+//   max-width: 100%;
+//   margin-right: auto;
+//   margin-left: auto;
+//   padding-right: 15px;
+//   padding-left: 15px;
+// }
+
+// .card {
+//   border: 1px solid #ccc;
+//   border-radius: 5px;
+//   padding: 15px;
+// }
+
+
+
+
+
+
+
+
+
+
+
+.formateur-img-container {
+  position: relative;
+  display: inline-block;
+}
+
+.profile-text {
+  visibility: hidden;
+  width: 100px;
+  background-color: black;
+  color: white;
+  text-align: center;
+  border-radius: 6px;
+  padding: 5px 0;
+  position: absolute;
+  z-index: 1;
+  top: 100%;
+  left: 50%;
+  margin-left: -50px;
+  opacity: 0;
+  transition: opacity 0.3s;
+}
+
+.formateur-img-container:hover .profile-text {
+  visibility: visible;
+  opacity: 1;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+.search-bar {
+  display: flex;
+  align-items: center;
+}
+
+.search-category {
+  position: relative;
+}
+
+.category-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  background: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.search-category:hover .category-menu {
+  display: block;
+}
+
+.input-search {
+  flex-grow: 1;
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.input-search input {
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.search-menu {
+  display: none;
+  position: absolute;
+  top: 100%;
+  left: 0;
+  width: 100%;
+  background: white;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.input-search input:focus + .search-menu {
+  display: block;
+}
+
+.search-related a {
+  display: flex;
+  justify-content: space-between;
+  padding: 10px;
+  text-decoration: none;
+  color: black;
+}
+
+.search-btn {
+  background: none;
+  border: none;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.search-btn i {
+  font-size: 20px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+// .category-menu {
+//   column-count: 2; /* Divisez la liste en deux colonnes */
+//   column-gap: 20px; /* Ajoutez un espace entre les colonnes */
+// }
+
+// .menu-item {
+//   display: block;
+//   margin-bottom: 5px;
+// }
