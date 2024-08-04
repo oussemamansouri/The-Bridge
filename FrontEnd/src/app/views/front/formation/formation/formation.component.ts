@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DataService } from 'src/app/views/services/data.service';
 declare var $: any;
 
 
@@ -8,20 +10,32 @@ declare var $: any;
   styleUrls: ['./formation.component.scss']
 })
 export class FormationComponent implements OnInit {
-  openmodal() {
-    const modalDiv = document.getElementById('mymodal');
-    if (modalDiv != null) {
-      modalDiv.style.display = 'block';
-      document.body.classList.add('modal-open'); // Ajouter la classe au corps de la page
-    }
+  dataArray:any=[]
+  dataformation={
+    titre:'',
+    description:'',
+    pointsf:0,
+    modeformation:'',
+    besoin:'',
+    domaine:'',
+    id:'',
+    FormateurId:''
   }
 
-  closemodal() {
-    const modalDiv = document.getElementById('mymodal');
-    if (modalDiv != null) {
-      modalDiv.style.display = 'none';
-      document.body.classList.remove('modal-open'); // Retirer la classe du corps de la page
-    }
+  messagesuccess=''
+  imagepath:any='http://localhost:3000/'
+  constructor(private ds:DataService,private route:Router) {
+
+    this.ds.getAllformation().subscribe(data=>{
+      this.dataArray=data
+    })
+
+  }
+
+  ngOnInit(): void {
+  }
+
+
   }
 
 
@@ -56,9 +70,5 @@ export class FormationComponent implements OnInit {
   //     return null;
   //   }
   // }
-  constructor() { }
 
-  ngOnInit(): void {
-  }
 
-}
