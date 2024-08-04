@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { DashboardFRoutingModule } from './dashboard-f-routing.module';
 import { DashboardfComponent } from './dashboardf/dashboardf.component';
+import { FormsModule } from '@angular/forms';
+
 
 
 @NgModule({
@@ -11,7 +13,8 @@ import { DashboardfComponent } from './dashboardf/dashboardf.component';
   ],
   imports: [
     CommonModule,
-    DashboardFRoutingModule
+    DashboardFRoutingModule,
+    FormsModule,
   ]
 })
 export class DashboardFModule { }
