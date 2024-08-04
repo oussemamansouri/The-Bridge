@@ -11,6 +11,7 @@ export class DetailsmoderateurComponent implements OnInit {
   id: string = '';
   dataobject:any
   messageerr=''
+  imagepath:any='http://localhost:3000/'
   constructor(private route:ActivatedRoute,private ds:DataService) {
     this.route.params.subscribe((params: Params) => this.id = params['id']);
 
