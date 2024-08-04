@@ -1,295 +1,49 @@
-<style>
-    
-    * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  border: none;
-  outline: none;
-}
-
-body {
-  margin: 0;
-  padding: 0;
-  min-height: 100vh;
-  background-color: #ffffff; /* Blanc */
-  font-family: "Roboto", sans-serif;
-}
-
-header {
-  width: 100%;
-  padding: 15px;
-  background-color: #212121; /* Noir */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
-}
-.search-bar::before { content: ''; position: absolute; top: 50%; left: 17%; width: 2px; height: 20px; background-color: #0000ff; transform: translate(-50%, -50%); }
-
-
-.search-bar {
-  display: flex;
-  position: relative;
-  width: 90%; /* Utiliser une largeur de 100% pour s'adapter à la largeur du conteneur parent */
-  max-width: 870px; /* Limiter la largeur maximale pour éviter le débordement */
-  height: 48px;
-  margin: 40px auto;
-  border-radius: 24px; /* Utilisation d'un grand rayon pour créer une forme circulaire */
-  border: 2px solid #0000ff; /* Ajout d'une bordure solide */
-  
-}
-
-
-.search-category {
-  padding: 0 20px;
-  /* flex: 0.2; /* Utilisation de flex pour diviser l'espace avec input-search 
-  
-  background-color: #ffffff; /* Blanc 
-  border-right: 2px solid #0000ff; Ajout d'une bordure pour séparer visuellement les éléments */
-}
-
-.search-category a {
-  width: 100%;
-  height: 100%;
-  color: #0000ff; /* Bleu */
-  font-size: 14px;
-  display: flex;
-  align-items: center;
-  text-decoration: none;
-  text-transform: capitalize;
-  
-  
-}
-
-.search-category a i {
-  display: inline-block;
-  margin-left: 20px;
-  font-size: 14px;
-  transition: all 0.2s;
-}
-
-/* .input-search {
-  flex: 2; /* Utilisation de flex pour diviser l'espace avec search-category */
-
-
-.search-category:hover a i {
-  transform: rotate(180deg);
-}
-
-.category-menu {
-  width: 240px;
-  padding: 20px;
-  background-color: #ffffff; /* Blanc */
-  border-radius: 4px;
-  font-size: 14px;
-  box-shadow: 0 8px 14px rgba(0, 0, 0, 0.7);
-  display: flex;
-  flex-direction: column;
-  position: absolute;
-  top: 0;
-  left: 0;
-  opacity: 0;
-  pointer-events: none;
-  transition: all 0.38s;
-  z-index: 11;
-}
-
-.category-menu .subject {
-  margin: 4px 0;
-  color: #0000ff; /* Bleu */
-  text-transform: capitalize;
-}
-
-.category-menu .menu-item {
-  position: relative;
-  padding: 6px 0 6px 36px;
-  color: #0000ff; /* Bleu */
-  font-size: 14px;
-  line-height: 22px;
-  text-transform: capitalize;
-  transition: all 0.13s;
-}
-.category-menu .menu-item:hover {
-  color: #fbbc05; /* Jaune */
-}
-
-.search-category:hover .category-menu {
-  top: calc(100% + 4px);
-  opacity: 1;
-  pointer-events: all;
-}
-
-.input-search {
-  width: 100%;
-  flex: 1;
-  
-}
-.input-search input {
-  display: block;
-  width: 100%;
-  height: 100%;
-  padding-left: 20px;
-  color: #0000ff; /* Bleu */
-  background-color: #ffffff;
-  font-size: 14px;
-  border: none; /* Suppression de la bordure */
-  border-radius: 0 4px 4px 0;
-}
-.search-btn {
-  width: 58px;
-  height: 100%;
-  color: #0000ff;
-  background-color: #ffffff;
-  font-size: 16px;
-  border-radius: 0 24px 24px 0;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  position: relative;
-  top: 0;
-  right: 0;
-  transition: background-color 0.3s ease, box-shadow 0.3s ease; /* Ajout de transitions */
-}
-
-.search-btn:hover {
-  background-color: #f0f0f0; /* Changement de couleur au survol */
-  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Ajout d'une ombre portée au survol */
-}
-
-.search-btn i {
-  font-size: 24px;
-}
-
-.search-menu {
-  display: none;
-  width: 80%;
-  padding: 20px 30px;
-  color: #0000ff; /* Blanc */
-  background-color: #ffffff; /* Bleu */
-  border-radius: 4px;
-  font-size: 14px;
-  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* Réduction de l'ombre portée */
-  position: absolute;
-  top: calc(100% + 4px);
-  left: 150px; /* Déplacement vers la droite de 10px */
-  z-index: 10;
-}
-
-
-.search-related a {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  color: #0000ff; /* Blanc */
-  font-size: 14px;
-  text-decoration: none;
-  line-height: 32px;
-  transition: all 0.13s;
-}
-
-.search-related a:hover {
-  color: #fbbc05;
-}
-
-.input-search input:focus + .search-menu {
-  display: block;
-}
-.input-search input::placeholder {
-  color: #0000ff; /* Couleur bleue pour le placeholder */
-}
-
-</style>
-
 <div class="container">
-    <div class="col" style="color: white;">
-        ‎ 
-    </div>
-    <div class="col" style="color: white;">
-        ‎ 
-    </div>
-    <div class="col" style="color: white;">
-        ‎ 
-    </div>
+  <div class="col" style="color: white;">
+      ‎ 
+  </div>
+  <div class="col" style="color: white;">
+      ‎ 
+  </div>
+  <div class="col" style="color: white;">
+      ‎ 
+  </div>
 </div>
 
 
 
-      <div class="search-bar">
-        <div class="search-category">
-          <a href="#">
-            <span>Toute Formations</span>
-            <i class="las la-angle-down"></i>
-          </a>
-          <div class="category-menu">
-            <span class="subject">Rechercher des Formations</span>
-                <a href="#" class="menu-item">Développement Web</a>
-                <a href="#" class="menu-item">Gestion des Données</a>
-                <a href="#" class="menu-item">Design</a>
-                <a href="#" class="menu-item">Informatique</a>
-                <a href="#" class="menu-item">Langages de Programmation</a>
-                <a href="#" class="menu-item">Développement d'Applications</a>
-                <a href="#" class="menu-item">Cybersécurité</a>
-                <a href="#" class="menu-item">Intelligence Artificielle</a>
-                <a href="#" class="menu-item">Analyse de Données</a>
-                <a href="#" class="menu-item">Réseaux Informatiques</a>
-                <a href="#" class="menu-item">Développement Mobile</a>
-                <a href="#" class="menu-item">Cloud Computing</a>
-        </div>
-        
-        </div>
-        <label class="input-search">
-          <input type="text" placeholder="Recherchez votre Formation" />
-          <div class="search-menu">
-            <div class="search-related">
-              <a href="#">
-                <span>Développement Web </span>
-                <span>12277 résultats</span>
-              </a>
-              <a href="#">
-                <span>Développement</span>
-                <span>15614 résultats</span>
-              </a>
-              <a href="#">
-                <span>Développement Mobile</span>
-                <span>1846 résultats</span>
-              </a>
-              <a href="#">
-                <span>Disigne</span>
-                <span>46395 résultats</span>
-              </a>
-              <a href="#">
-                <span>Big Data</span>
-                <span>329355 résultats</span>
-              </a>
-              <a href="#">
-                <span>Cloud</span>
-                <span>141401 résultats</span>
-              </a>
-              <a href="#">
-                <span>Informatique</span>
-                <span>16033 résultats</span>
-              </a>
-              <a href="#">
-                <span>Data</span>
-                <span>6815 résultats</span>
-              </a>
-              <a href="#">
-                <span>Multimidia</span>
-                <span>23786 résultats</span>
-              </a>
+      
+     
+    <!-- Modal
+    <div class="modal custom-modal" id="mymodal">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title"></h5>
+                    <button type="button" class="btn btn-close" (click)="closemodal()" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body" *ngFor="let item of dataArray; index as i">
+                    <img src="{{imagepath}}{{item.img}}" alt="" class="formation-image">
+                    <p><strong>Description:</strong><span class="description">{{item.description}}</span></p>
+                    <p><strong>Mode de la formation:</strong><span class="description">{{item.modeformation}}</span></p>
+                    <p><strong>Domaine:</strong><span class="description">{{item.domaine}}</span></p>
+                    <p><strong>Besoin:</strong><span class="description">{{item.besoin}}</span></p>
+                    <p><strong>Points:</strong><span class="description">{{item.pointsf}}</span></p>
+                </div>
+                <div class="modal-footer">
+                    <div class="btn-group" role="group" aria-label="Button group">
+                        <button type="button" class="btn btn-custom btn-sm" (click)="closemodal()" data-bs-dismiss="modal">Annuler</button>
+                        <button type="button" class="btn btn-success btn-sm">Envoyer un Demande</button>
+                    </div>
+                </div>
             </div>
-          </div>
-
-        </label>
-        <a href="#" class="search-btn">
-          <i class="fas fa-search"></i>
-        </a>
-      </div>
-  
+        </div>
+    </div> -->
+    
 
 
-
-      <div class="main" >
-        <!-- Card 1 -->
+      <!-- <div class="main" >
+         Card 1 
         <div class="card">
             <div class="image">
                 <img src="assets/formation/dev.jpg" alt="Développement Web">
@@ -304,61 +58,10 @@ header {
     
 
      
-    <div class="card">
-      <div class="image">
-          <img src="assets/formation/cyber securite.jpeg" alt="Formation en Cyber Sécurité">
-      </div>
-      <div class="title">
-          <h1>Formation en Cyber Sécurité</h1>
-      </div>
-      <div class="des">
-          <button (click)="openmodal()">En savoir plus...</button>
-      </div>
-  </div>
-  
-
-
-<div class="card">
-  <div class="image">
-      <img src="assets/formation/data science.jpg" alt="Formation en Data Science">
-  </div>
-  <div class="title">
-      <h1>Formation en Data Science</h1>
-  </div>
-  <div class="des">
-      <button (click)="openmodal()">En savoir plus...</button>
-  </div>
-</div>
-
-<div class="card">
-  <div class="image">
-      <img src="assets/formation/dev2.jpeg" alt="Formation en Développement Web">
-  </div>
-  <div class="title">
-      <h1>Formation en Développement Web</h1>
-  </div>
-  <div class="des">
-      <button (click)="openmodal()">En savoir plus...</button>
-  </div>
-</div>
-
-
-<div class="card">
-  <div class="image">
-      <img src="assets/formation/dev3.jpg" alt="Formation en Développement Mobile">
-  </div>
-  <div class="title">
-      <h1>Formation en Développement Mobile</h1>
-  </div>
-  <div class="des">
-     
-      <button (click)="openmodal()">En savoir plus...</button>
-  </div>
-</div> 
-</div>
+ 
 
     
-    <!-- Modal -->
+   - Modal 
     <div class="modal custom-modal" id="mymodal">
       <div class="modal-dialog">
           <div class="modal-content">
@@ -369,14 +72,8 @@ header {
               <div  class="modal-body">
                 <img src="assets/formation/dev.jpg" alt="Image de la formation XYZ" class="formation-image">
                 <p><strong>Description:</strong><span class="description"> Formation complète couvrant HTML, CSS, JavaScript et frameworks (React, Angular, Vue.js).</span></p>
-                <p><strong>Formateur Proposée:</strong><span class="description"> Firas Zouaghi</span></p>
                 <p><strong>Mode de la formation:</strong><span class="description"> En Ligne</span></p>
-                <p><strong>Pack reservé:</strong><span class="description"> Standard</span></p>
-                <p><strong>Niveau:</strong><span class="description"> Débutant à intermédiaire</span></p>
-                <p><strong>Heures:</strong><span class="description"> 50 h</span></p>
                 <p><strong>Domaine:</strong><span class="description"> Développement web</span></p>
-                <p><strong>Langue:</strong><span class="description"> Français</span></p>
-                <p><strong>Objectif:</strong><span class="description"> Maîtriser le développement web tout en intégrant les concepts de sécurité informatique.</span></p>
                 <p><strong>Besoin:</strong><span class="description"> Formation en Cyber Security </span></p>
                 <p><strong>Points:</strong><span class="description">40 Points</span></p>
             </div>
@@ -392,7 +89,7 @@ header {
       </div>
   </div>
   
-    
+     -->
     
     
         
@@ -440,91 +137,7 @@ header {
 
 
 
-<style>
- * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
 
-body {
-    font-family: Arial, sans-serif;
-}
-
-.main {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 20px;
-    padding: 20px;
-}
-
-.card {
-    width: 300px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-}
-
-.image img {
-    width: 100%;
-    height: 200px;
-    object-fit: cover;
-    border-top-left-radius: 10px;
-    border-top-right-radius: 10px;
-}
-
-.title {
-    padding: 20px;
-    text-align: center;
-}
-
-.title h1 {
-    font-size: 24px;
-    color: #333;
-}
-
-.des {
-    padding: 20px;
-    text-align: center;
-}
-
-.des p {
-    font-size: 16px;
-    color: #666;
-}
-
-button {
-    display: block;
-    width: 80%;
-    margin: 20px auto;
-    padding: 10px 20px;
-    background-color: #007bff;
-    color: #fff;
-    border: none;
-    border-radius: 5px;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-button:hover {
-    background-color: #0056b3;
-}
-
-
-
-.card:hover .image img {
-    transform: scale(1.05); /* Zoom effect */
-    transition: transform 0.3s ease; /* Smooth transition */
-}
-
-
-
-
-
-
-</style>
 
 <!-- 
 .card {
