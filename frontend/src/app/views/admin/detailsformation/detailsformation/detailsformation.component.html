@@ -1,0 +1,13 @@
+
+<div class="formation-container">
+    <div class="formation">
+        <div class="formationTitle">{{dataobject.titre}}</div>
+        <img class="formationImage" src="{{imagepath}}{{dataobject.img}}" alt="Formation Image">
+        <div class="formationDescription"><span class="bold-black">Description:</span> {{dataobject.description}}</div>
+        <div class="formationPoints"><span class="bold-black">Points de formation:</span> {{dataobject.pointsf}} Points</div>
+        <div class="formationMode"><span class="bold-black">Mode de formation:</span> {{dataobject.modeformation}}</div>
+        <div class="formationNeeds"><span class="bold-black">Besoin:</span> {{dataobject.besoin}}</div>
+        <div class="formationDomain"><span class="bold-black">Domaine:</span> {{dataobject.domaine}}</div>
+        <div class="formationDomain"><span class="bold-black">Formateur proposé pour cette formation (ID):</span> {{dataobject.Formateur.firstname | titlecase}} {{dataobject.Formateur.lastname | titlecase}}</div>
+    </div>
+</div>
