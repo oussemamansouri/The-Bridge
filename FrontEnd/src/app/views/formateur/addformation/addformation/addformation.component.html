@@ -1,36 +1,275 @@
-<form #f="ngForm" (ngSubmit)="addformation(f)">
+<form #f="ngForm" (ngSubmit)="addformation(f)" enctype="multipart/form-data">
     <div class="form-group">
-        <label for="firstname">Prénom :</label>
-        <input type="text" required name="firstname" #firstname="ngModel" ngModel >
+        <label for="titre">Titre de formation :</label>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input"
+                   id="titre" placeholder="Entrez le titre de formation"
+                   name="titre" #titre="ngModel" ngModel required
+                   [ngClass]="{
+                     'border-danger': titre.invalid && (titre.dirty || titre.touched),
+                     'border-success': titre.valid && (titre.dirty || titre.touched)
+                   }">
+            <span class="validation-icon" [ngClass]="{
+                'text-danger': titre.invalid && (titre.dirty || titre.touched),
+                'text-success': titre.valid && (titre.dirty || titre.touched)
+            }">
+                <i class="fas fa-times-circle fa-lg" *ngIf="titre.invalid && (titre.dirty || titre.touched)"></i>
+                <i class="fas fa-check-circle fa-lg" *ngIf="titre.valid && (titre.dirty || titre.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="titre.errors && (titre.dirty || titre.touched)">
+            <div *ngIf="titre.errors?.['required']" class="text-danger" role="alert">Le titre de formation est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
-    <div class="form-group">
-        <label for="lastname">Nom :</label>
-        <input type="text" required name="lastname" #lastname="ngModel" ngModel  >
-    </div>
-    <div class="form-group">
-        <label for="username">Nom d'utilisateur :</label>
-        <input type="text" required name="username" #username="ngModel" ngModel  >
-    </div>
-    <div class="form-group">
-        <label for="email">Email :</label>
-        <input type="email" required name="email" #email="ngModel" ngModel>
-    </div>
+    
     
     <div class="form-group">
-        <label for="password">Mot de passe :</label>
-        <input type="password" required name="password" #password="ngModel" ngModel>
+        <label for="description">Description :</label>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input"
+                   id="description" placeholder="Entrez la description"
+                   name="description" #description="ngModel" ngModel required
+                   [ngClass]="{
+                     'border-danger': description.invalid && (description.dirty || description.touched),
+                     'border-success': description.valid && (description.dirty || description.touched)
+                   }">
+            <span class="validation-icon" [ngClass]="{
+                'text-danger': description.invalid && (description.dirty || description.touched),
+                'text-success': description.valid && (description.dirty || description.touched)
+            }">
+                <i class="fas fa-times-circle fa-lg" *ngIf="description.invalid && (description.dirty || description.touched)"></i>
+                <i class="fas fa-check-circle fa-lg" *ngIf="description.valid && (description.dirty || description.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="description.errors && (description.dirty || description.touched)">
+            <div *ngIf="description.errors?.['required']" class="text-danger" role="alert">La description est requise.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
     
+    
+    
+
     <div class="form-group">
-        <label for="img">Image de profil :</label>
-        <input type="file" name="img" #img="ngModel" ngModel>
-    </div>
+      <label for="modeformation">Mode de formation :</label>
+      <div class="position-relative">
+          <select class="form-control border-input"
+                  id="modeformation"
+                  name="modeformation" #modeformation="ngModel" ngModel required
+                  [ngClass]="{
+                    'border-danger': modeformation.invalid && (modeformation.dirty || modeformation.touched),
+                    'border-success': modeformation.valid && (modeformation.dirty || modeformation.touched)
+                  }">
+              <option value="" disabled selected>Sélectionnez le mode de formation</option>
+              <option value="hybrid">Hybride</option>
+              <option value="enligne">En ligne</option>
+              <option value="presenteille">Présentielle</option>
+          </select>
+          <span class="validation-icon" [ngClass]="{
+              'text-danger': modeformation.invalid && (modeformation.dirty || modeformation.touched),
+              'text-success': modeformation.valid && (modeformation.dirty || modeformation.touched)
+          }">
+              <i class="fas fa-times-circle fa-lg" *ngIf="modeformation.invalid && (modeformation.dirty || modeformation.touched)"></i>
+              <i class="fas fa-check-circle fa-lg" *ngIf="modeformation.valid && (modeformation.dirty || modeformation.touched)"></i>
+          </span>
+      </div>
+      <div *ngIf="modeformation.errors && (modeformation.dirty || modeformation.touched)">
+          <div *ngIf="modeformation.errors?.['required']" class="text-danger" role="alert">Le mode de formation est requis.</div>
+          <!-- Autres validations personnalisées ici -->
+      </div>
+  </div>
+  
+    
+    
+    
     
     <div class="form-group">
-        <label for="tel">Téléphone :</label>
-        <input type="tel" required name="tel" #tel="ngModel" ngModel>
+        <label for="besoin">Besoin :</label>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input"
+                   id="besoin" placeholder="Entrez le besoin"
+                   name="besoin" #besoin="ngModel" ngModel required
+                   [ngClass]="{
+                     'border-danger': besoin.invalid && (besoin.dirty || besoin.touched),
+                     'border-success': besoin.valid && (besoin.dirty || besoin.touched)
+                   }">
+            <span class="validation-icon" [ngClass]="{
+                'text-danger': besoin.invalid && (besoin.dirty || besoin.touched),
+                'text-success': besoin.valid && (besoin.dirty || besoin.touched)
+            }">
+                <i class="fas fa-times-circle fa-lg" *ngIf="besoin.invalid && (besoin.dirty || besoin.touched)"></i>
+                <i class="fas fa-check-circle fa-lg" *ngIf="besoin.valid && (besoin.dirty || besoin.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="besoin.errors && (besoin.dirty || besoin.touched)">
+            <div *ngIf="besoin.errors?.['required']" class="text-danger" role="alert">Le besoin est requis.</div>
+            <!-- Autres validations personnalisées ici -->
+        </div>
     </div>
-    <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter Formation</button>
+    
+    
+    
+    
+    <div class="form-group ">
+        <label for="inputImage">Image :</label>
+        <div class="custom-file position-relative">
+            <input type="file" class="custom-file-input" id="inputImage" (change)="onFileSelected($event)" name="img" ngModel #img="ngModel" accept="image/*" required
+                   [ngClass]="{
+                     'border-danger': img.invalid && (img.dirty || img.touched),
+                     'border-success': img.valid && (img.dirty || img.touched)
+                   }">
+            <label class="custom-file-label" for="inputImage" data-browse="Parcourir">{{img.value ? img.value.split('\\').pop() : 'Choisir un fichier'}}</label>
+            <span class="alert alert-danger" role="alert" *ngIf="img.errors?.['required'] && img.touched">Veuillez sélectionner une image.</span>
+            <span class="alert alert-danger" role="alert" *ngIf="img.errors?.['pattern'] && img.touched">Le fichier sélectionné n'est pas une image.</span>
+        </div>
+    </div>
+    
+    
+    
+    
+    <!-- <div class="form-group">
+        <label for="domaine">Domaine de formation :</label>
+        <div class="position-relative">
+            <input type="text" class="form-control border-input"
+                   id="domaine" placeholder="Entrez le domaine de formation"
+                   name="domaine" #domaine="ngModel" ngModel required
+                   [ngClass]="{
+                     'border-danger': domaine.invalid && (domaine.dirty || domaine.touched),
+                     'border-success': domaine.valid && (domaine.dirty || domaine.touched)
+                   }">
+            <span class="validation-icon" [ngClass]="{
+                'text-danger': domaine.invalid && (domaine.dirty || domaine.touched),
+                'text-success': domaine.valid && (domaine.dirty || domaine.touched)
+            }">
+                <i class="fas fa-times-circle fa-lg" *ngIf="domaine.invalid && (domaine.dirty || domaine.touched)"></i>
+                <i class="fas fa-check-circle fa-lg" *ngIf="domaine.valid && (domaine.dirty || domaine.touched)"></i>
+            </span>
+        </div>
+        <div *ngIf="domaine.errors && (domaine.dirty || domaine.touched)">
+            <div *ngIf="domaine.errors?.['required']" class="text-danger" role="alert">Le domaine de formation est requis.</div>
+             Autres validations personnalisées ici 
+        </div>
+    </div> -->
+
+
+
+
+    <div class="form-group">
+        <label for="domaine" class="form-label">Choisir une domaine</label>
+        <select class="form-select" name="domaine" #domaine="ngModel" ngModel required 
+                [ngClass]="{'is-invalid': domaine.invalid && domaine.touched, 'is-valid': domaine.valid && domaine.touched}">
+          <option value="" disabled selected hidden>Categories</option>
+          <optgroup label="Programmes académiques">
+            <option value="programmes de premier cycle">Programmes de premier cycle</option>
+            <option value="programmes de cycle superieur">Programmes de cycle supérieur</option>
+            <option value="programmes de diplome professionnel">Programmes de diplôme professionnel</option>
+            <option value="certificats">Certificats</option>
+            <option value="diplomes">Diplômes</option>
+            <option value="autres programmes academiques">Autre Programmes académiques</option>
+          </optgroup>
+          <optgroup label="Développement professionnel">
+            <option value="gestion et leadership">Gestion et leadership</option>
+            <option value="vente et marketing">Vente et marketing</option>
+            <option value="ressources humaines">Ressources humaines</option>
+            <option value="finance et comptabilite">Finance et comptabilité</option>
+            <option value="gestion de projet">Gestion de projet</option>
+            <option value="technologie de l'information">Technologie de l'information</option>
+            <option value="sante et securite">Santé et sécurité</option>
+            <option value="legal et conformite">Légal et conformité</option>
+            <option value="autre developpement professionnel">Autre Développement professionnel</option>
+          </optgroup>
+          <optgroup label="Développement personnel">
+            <option value="gestion du temps">Gestion du temps</option>
+            <option value="productivite">Productivité</option>
+            <option value="amelioration de soi">Amélioration de soi</option>
+            <option value="pleine conscience et meditation">Pleine conscience et méditation</option>
+            <option value="reduction du stress">Réduction du stress</option>
+            <option value="sante et bien etre">Santé et bien être</option>
+            <option value="arts et artisanat creatifs">Arts et artisanat créatifs</option>
+            <option value="cuisine et arts culinaires">Cuisine et arts culinaires</option>
+            <option value="autre developpement personnel">Autre Développement personnel</option>
+          </optgroup>
+          <optgroup label="Formation professionnelle">
+            <option value="apprentissages">Apprentissages</option>
+            <option value="certificats professionnels">Certificats professionnels</option>
+            <option value="programmes d'ecole de metier">Programmes d'école de métier</option>
+            <option value="metiers specialises">Métiers spécialisés</option>
+            <option value="automobile">Automobile</option>
+            <option value="construction">Construction</option>
+            <option value="electricite">Électricité</option>
+            <option value="plomberie">Plomberie</option>
+            <option value="Soudage">Soudage</option>
+            <option value="Autre Formation professionnelle">Autre Formation professionnelle</option>
+          </optgroup>
+          <optgroup label="Apprentissage des langues">
+            <option value="Cours de langue">Cours de langue</option>
+            <option value="Programmes d'immersion">Programmes d'immersion</option>
+            <option value="Programmes d'échange linguistique">Programmes d'échange linguistique</option>
+            <option value="Programmes de certification de langues">Programmes de certification de langue</option>
+            <option value="Préparation aux examens">Préparation aux examens</option>
+            <option value="Préparation aux examens standardisés">Préparation aux examens standardisés</option>
+            <option value="Examens de certification professionnelle">Examens de certification professionnelle</option>
+            <option value="Autre pprentissage des langues">Autre pprentissage des langues</option>
+          </optgroup>
+          <optgroup label="Éducation continue">
+            <option value="Ateliers et séminaires">Ateliers et séminaires</option>
+            <option value="Conférences">Conférences</option>
+            <option value="Cours courts">Cours courts</option>
+            <option value="Apprentissage en ligne">Apprentissage en ligne</option>
+            <option value="Autre Éducation continue">Autre Éducation continue</option>
+          </optgroup>
+          <optgroup label="Formation spécifique à l'industrie">
+            <option value="Soins de santé">Soins de santé</option>
+            <option value="Hôtellerie et tourisme">Hôtellerie et tourisme</option>
+            <option value="Vente au détail et vente">Vente au détail et vente</option>
+            <option value="Fabrication">Fabrication</option>
+            <option value="Transport et logistique">Transport et logistique</option>
+            <option value="Énergie et services publics">Énergie et services publics</option>
+            <option value="Agriculture et agriculture">Agriculture et agriculture</option>
+            <option value="Autre spécifique à l'industrie">Autre spécifique à l'industrie</option>
+          </optgroup>
+          <optgroup label="Formation technologique">
+            <option value="Codage et programmation">Codage et programmation</option>
+            <option value="Cybersécurité">Cybersécurité</option>
+            <option value="Cloud computing">Cloud computing</option>
+            <option value="Science des données">Science des données</option>
+            <option value="Intelligence artificielle et apprentissage automatique">Intelligence artificielle et apprentissage automatique</option>
+            <option value="Développement web">Développement web</option>
+            <option value="Autre Formation technologique">Autre Formation technologique</option>
+          </optgroup>
+          <optgroup label="Arts et humanités">
+            <option value="Musique">Musique</option>
+            <option value="Théâtre et performance">Théâtre et performance</option>
+            <option value="Film et vidéo">Film et vidéo</option>
+            <option value="Écriture et littérature">Écriture et littérature</option>
+            <option value="Philosophie">Philosophie</option>
+            <option value="Histoire">Histoire</option>
+            <option value="Religion">Religion</option>
+            <option value="Autre Arts et humanités">Autre Arts et humanités</option>
+          </optgroup>
+          <option value="Autre">Autre</option>
+        </select>
+        <div class="invalid-feedback" *ngIf="domaine.touched && domaine.errors">
+          <div *ngIf="domaine.errors?.['required']">Le domaine est requise!</div>
+        </div>
+      </div>
+
+
+
+
+
+
+
+
+
+
+    <button type="submit"  class="btn btn-primary" [disabled]="f.invalid">Ajouter Formation</button>
 
 </form>
+<div *ngIf="messageSucces" class="alert alert-success">{{ messageSucces }}</div>
+
+
+
+
