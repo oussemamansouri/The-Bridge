@@ -50,43 +50,110 @@
         </div>
   
         <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
-          <form action="" method="post" role="form" class="php-email-form">
+
+          <!-- <form class="php-email-form">
             <div class="form-row">
-              <div class="form-group col-md-6">
-                <label for="name">Votre nom</label>
-                <input type="text" name="name" class="form-control" id="name" data-rule="minlen:4" data-msg="Veuillez saisir au moins 4 caractères" />
-                <div class="validate"></div>
-              </div>
-              <div class="form-group col-md-6">
-                <label for="name">Votre email</label>
-                <input type="email" class="form-control" name="email" id="email" data-rule="email" data-msg="Veuillez saisir une adresse email valide" />
-                <div class="validate"></div>
+                <div class="form-group col-md-6">
+                    <label for="name">Votre nom</label>
+                    <div class="position-relative">
+                    <input type="text" name="name" class="form-control" id="name" required [(ngModel)]="nameValue" />
+                    <span class="validation-icon" *ngIf="nameValue !== ''">
+                      <i class="fas fa-check-circle fa-lg text-success"></i>
+                  </span>
+                </div>
+                </div>
+                <div class="form-group col-md-6">
+                    <label for="email">Votre email</label>
+                    <div class="position-relative">
+                    <input type="email" class="form-control" name="email" id="email" required [(ngModel)]="emailValue"/>
+                    <span class="validation-icon" *ngIf="emailValue !== ''">
+                      <i class="fas fa-check-circle fa-lg text-success"></i>
+                  </span>
+                </div>
+
+                </div>
+            </div>
+            <div class="form-group">
+                <label for="subject">Sujet</label>
+                <div class="position-relative">
+                <input type="text" class="form-control" name="subject" id="subject" required [(ngModel)]="subjectValue"/>
+                <span class="validation-icon" *ngIf="subjectValue !== ''">
+                  <i class="fas fa-check-circle fa-lg text-success"></i>
+              </span>
               </div>
             </div>
             <div class="form-group">
-              <label for="name">Sujet</label>
-              <input type="text" class="form-control" name="subject" id="subject" data-rule="minlen:4" data-msg="Veuillez saisir au moins 8 caractères de sujet" />
-              <div class="validate"></div>
+                <label for="message">Message</label>
+                <div class="position-relative">
+                <textarea class="form-control" name="message" rows="10" id="message" required [(ngModel)]="messageValue"></textarea>
+                <span class="validation-icon" *ngIf="messageValue !== ''">
+                  <i class="fas fa-check-circle fa-lg text-success"></i>
+              </span>
             </div>
-            <div class="form-group">
-              <label for="name">Message</label>
-              <textarea class="form-control" name="message" rows="10" data-rule="required" data-msg="Veuillez écrire quelque chose pour nous"></textarea>
-              <div class="validate"></div>
             </div>
+
+
             <div class="mb-3">
-              <div class="loading">Chargement</div>
-              <div class="error-message"></div>
-              <div class="sent-message">Votre message a été envoyé. Merci !</div>
+                <div *ngIf="isLoading" class="loading">Chargement</div>
+                <div *ngIf="errorMessage" class="error-message">{{ errorMessage }}</div>
+                <div *ngIf="isSuccess" class="sent-message">Votre message a été envoyé. Merci !</div>
             </div>
-            <div class="text-center"><button type="submit">Envoyer le message</button></div>
-          </form>
-        </div>
+            <div class="text-center"><button type="submit">Envoyer le message</button></div> -->
+            
+            <!-- <div class="form-group">
+              <label for="inputEmail">Adresse e-mail :</label>
+              <div class="position-relative">
+                  <input type="email" class="form-control border-input" id="inputEmail" placeholder="Entrez votre adresse e-mail" name="email" [(ngModel)]="emailValue">
+                  <span class="validation-icon" *ngIf="emailValue !== ''">
+                      <i class="fas fa-check-circle fa-lg text-success"></i>
+                  </span>
+              </div>
+           </div> -->
+          
+        <!-- </form>
+        
+
+
+      </div>
+      
   
       </div>
   
     </div>
-  </section><!-- Fin de la section Contact -->
+  </section> -->
 
 
 
 
+  <!-- <div class="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch" data-aos="fade-left">
+    <form role="form" (ngSubmit)="onSubmit()">
+      <div class="form-row">
+
+        <div class="form-group col-md-6">
+          <label for="name">Votre nom</label>
+          <input type="text" name="name" class="form-control" [(ngModel)]="name" id="name" required />
+        </div>
+
+
+        <div class="form-group col-md-6">
+          <label for="email">Votre email</label>
+          <input type="email" class="form-control" name="email" [(ngModel)]="email" id="email" required />
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="subject">Sujet</label>
+        <input type="text" class="form-control" name="subject" [(ngModel)]="subject" id="subject" required />
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea class="form-control" name="message" [(ngModel)]="message" rows="10" required></textarea>
+      </div>
+      <div class="mb-3">
+        <div *ngIf="isLoading" class="loading">Chargement en cours...</div>
+        <div *ngIf="isError" class="error-message">{{ errorMessage }}</div>
+        <div *ngIf="isSuccess" class="sent-message">Votre message a été envoyé. Merci !</div>
+      </div>
+      <div class="text-center"><button type="submit">Envoyer le message</button></div>
+    </form>
+  </div>
+   -->
