@@ -34,169 +34,17 @@
 
 
 
-  .modal-content {
-    background-color:  #f2f2f2; /* Couleur de fond grise */
-    color: #000000;
-  }
 
-  .custom-modal {
-    padding: 30px; /* Réglez la valeur de padding selon vos besoins */
-}
 
   
 
-.modal {
-    display: none;
-    position: fixed;
-    top: 60%; /* Vous pouvez ajuster cette valeur pour centrer verticalement */
-    left: 50%; /* Vous pouvez ajuster cette valeur pour centrer horizontalement */
-    transform: translate(-30%, -70%); /* Ajuster la position pour centrer le modal */
-    z-index: 1000;
-    width: 1000px; /* Changer la largeur du modal selon vos besoins */
-    height: 1000px; /* Changer la hauteur du modal selon vos besoins */
-    overflow-y: auto;
-    max-height: calc(110vh - 150px); /* Ajustez la hauteur maximale selon vos besoins */
-    direction: ltr; /* Déplace la barre de défilement vers la gauche */
-    padding-right: 20px;
-}
 
 
-/* Ensure modal backdrop covers the entire page */
-.modal-backdrop {
-    position: fixed;
-    top: 0%;
-    left: 0%;
-    width: 100%;
-    height: 100%; /* Utiliser 100% pour couvrir toute la page */
-    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
-    z-index: 900;
-    
-}
-
-
-.modal-footer {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
 
 // .modal-body {
 //     overflow-y: auto;
 //     max-height: calc(100vh - 200px); /* Ajustez la hauteur maximale selon vos besoins */
 // }
 
-.btn-group {
-    display: flex;
-    /* flex-direction: ; Mettre les boutons dans une ligne */
-    margin-left: auto; /* Place le groupe de boutons à droite */
-}
 
-.btn-group button:first-child {
-    margin-right: 20px; /* Ajoute un espace entre les deux boutons */
-}
-
-.btn-sm {
-    font-size: 14px; /* Taille du texte */
-    padding: 5px 10px; /* Espacement autour du texte */
-    margin-left: 30px; /* Espacement entre les boutons */
-}
-
-.btn-close {
-    background-color: transparent;
-    border: none;
-    padding: 0;
-    width: 30px;
-    height: 30px;
-    position: absolute;
-    top: 10px;
-    right: 10px;
-    cursor: pointer;
-}
-
-.btn-close::before, .btn-close::after {
-    content: '';
-    position: absolute;
-    width: 2px;
-    height: 20px;
-    background-color: #333;
-    transform: rotate(45deg);
-    top: 5px;
-    left: 14px;
-}
-
-.btn-close::after {
-    transform: rotate(-45deg);
-}
-
-.btn-close:hover::before, .btn-close:hover::after {
-    background-color: #000;
-}
-
-.modal-header {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-
-.modal-title {
-    flex-grow: 1; /* Pour que le titre occupe tout l'espace restant */
-    text-align: center; /* Centrer le texte */
-}
-
-.btn-close {
-    margin-left: auto; /* Place le bouton de fermeture à droite */
-}
-.btn-custom {
-    background-color: #ccc; /* Couleur gris personnalisée */
-    color: #000; /* Couleur du texte */
-    transition: background-color 0.3s; /* Ajout d'une transition pour une animation fluide */
-  }
-
-  .btn-custom:hover {
-    background-color: #a1a1a1; /* Changement de couleur au survol en rouge */
-    color: #fff; /* Changement de couleur du texte en blanc */
-  }
-
-
-
-
-
-
-.modal-body {
-    // text-align: center; /* Pour centrer le contenu */
-    padding: 20px; /* Ajout de padding autour du contenu */
-  }
-
-  .formation-image {
-    width: 500px; /* Pour agrandir l'image à 100% de la largeur du conteneur */
-    height: 300px; /* Pour maintenir le ratio de l'image */
-    max-width: 100%; /* Pour s'assurer que l'image ne dépasse pas la largeur du conteneur */
-    display: block; /* Pour assurer un affichage en bloc de l'image */
-    margin: 0 auto; /* Pour centrer l'image horizontalement */
-    padding-bottom:20px ;
-  }
-
-
-
-
-
-  .description {
-    margin-left: 20px; /* Ajoute une marge à gauche */
-  }
-
-
-
-  .modal {
-    animation: zoomIn 0.5s ease-in-out;
-  }
-
-  @keyframes zoomIn {
-    from {
-      opacity: 0;
-    
-    }
-    to {
-      opacity: 1;
-
-    }
-  }
+  
