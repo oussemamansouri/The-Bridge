@@ -23,8 +23,10 @@ export class ConsultformateurComponent implements OnInit {
     experience:'',
     id:''
   }
-
+  imagepath:any='http://localhost:3000/'
   messagesuccess=''
+  successMessage: string = '';
+  errorMessage: string = '';
   constructor(private ds:DataService,private route:Router) {
 
     this.ds.getAllformateur().subscribe(data=>{
@@ -38,11 +40,18 @@ export class ConsultformateurComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  delete(id:any,i:number){
-    this.ds.deleteformateur(id).subscribe(response=>{
-      console.log(response)
-      this.dataArray.splice(i,1)
-    })
+  delete(id: any, i: number) {
+    this.ds.deleteformateur(id).subscribe(
+      () => {
+        this.successMessage = "Le formateur a été supprimé avec succès.";
+        this.errorMessage = ''; // Réinitialiser le message d'erreur
+        this.dataArray.splice(i, 1);
+      },
+      (error: any) => {
+        this.errorMessage = "Une erreur s'est produite lors de la suppression du formateur : " + error;
+        this.successMessage = ''; // Réinitialiser le message de succès
+      }
+    );
   }
 
 
