@@ -1,0 +1,78 @@
+
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form label {
+    font-weight: bold;
+}
+
+form input[type="text"],
+form input[type="email"],
+form input[type="number"],
+form input[type="submit"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+form input[type="submit"] {
+    background-color: #3498db; /* Couleur bleue */
+    color: #fff;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+form input[type="submit"]:hover {
+    background-color: #2980b9; /* Couleur bleu foncé au survol */
+}
+
+
+
+
+/* Couleur de la bordure en cas d'erreur */
+.border-error {
+    border-color: #dc3545 !important; /* Rouge */
+  }
+  
+  /* Couleur de la bordure en cas de succès */
+  .border-success {
+    border-color: #28a745 !important; /* Vert */
+  }
+  
+  
+  /* Ajoutez cette classe CSS à votre feuille de style */
+  /* Positionnement de l'icône */
+  .input-container {
+    position: relative;
+  }
+  
+  .validation-icon {
+    position: absolute;
+    top: 50%;
+    right: 10px; /* Ajustez cette valeur pour changer la distance entre l'icône et le bord droit */
+    transform: translateY(-50%);
+  }
+  
+  /* Ajustement de l'input pour accueillir l'icône */
+  .input-with-icon {
+    padding-right: 30px; /* Ajustez cette valeur pour réserver de l'espace pour l'icône */
+  }
+  
