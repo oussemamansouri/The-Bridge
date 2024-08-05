@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 
 import { ConsultpackRoutingModule } from './consultpack-routing.module';
 import { ConsultpackComponent } from './consultpack/consultpack.component';
+import { FormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -11,7 +12,8 @@ import { ConsultpackComponent } from './consultpack/consultpack.component';
   ],
   imports: [
     CommonModule,
-    ConsultpackRoutingModule
+    ConsultpackRoutingModule,
+    FormsModule
   ]
 })
 export class ConsultpackModule { }
