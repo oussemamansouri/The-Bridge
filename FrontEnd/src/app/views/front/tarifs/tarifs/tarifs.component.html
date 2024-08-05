@@ -1,15 +1,15 @@
 <div class="container">
     <div class="col" style="color: white;">
-        ‎ 
+        ‎
     </div>
     <div class="col" style="color: white;">
-        ‎ 
+        ‎
     </div>
     <div class="col" style="color: white;">
-        ‎ 
+        ‎
     </div>
 </div>
-<img src="assets/offres1.jpg" alt="Offres" style="width: 100vw; height: auto; max-width: none; height: 50vh; margin-top: 20px;">
+<!-- <img src="assets/offres1.jpg" alt="Offres" style="width: 100vw; height: auto; max-width: none; height: 50vh; margin-top: 20px;"> -->
 
 
 
@@ -20,32 +20,54 @@
  <!-- ======= Section Tarification ======= -->
  <section id="pricing" class="pricing section-bg">
     <div class="container">
-  
-      <div class="section-title" data-aos="fade-up">
+
+      <div class="section-title" data-aos="fade-up" style="width: 100%;" >
         <!-- <h2 style="color: black; font-weight: bold;">Nos offres</h2> -->
-        <p>Explorez les options tarifaires variées que propose Connected. Trouvez le plan parfaitement adapté à vos besoins.</p>
+        <p>Explorez les options tarifaires variées que propose The Bridge. Trouvez le plan parfaitement adapté à vos besoins.</p>
 
       </div>
-  
-      <div class="row">
+
+      <div class="row equal-height">
+        <div *ngFor="let item of dataArray; index as i" class="col-lg-3 col-md-6">
+          <div class="box" data-aos="zoom-in">
+            <span class="advanced">The Bridge</span>
+            <h3>{{ item.titre }}</h3>
+            <h4><sup>DT</sup>{{ item.prix }}<span> / {{ item.points }} points</span></h4>
+            <ul>
+              <li>{{ item.description }}</li>
+              <li>{{ item.description1 }}</li>
+              <li>{{ item.description2 }}</li>
+              <li>{{ item.description3 }}</li>
+            </ul>
+            <div class="btn-wrap">
+              <a [routerLink]="['/paiement']" [queryParams]="{ id: item.id }" class="btn-buy">Acheter maintenant</a>
+            </div>
+          </div>
+        </div>
+
+
+
+
+
+      <!-- <div *ngFor="let item of dataArray;index as i" class="row">
 
         <div class="col-lg-3 col-md-6">
           <div class="box" data-aos="zoom-in">
-            <h3>Starter</h3>
-            <h4><sup>DT</sup>50<span> / 30 points</span></h4>
+            <h3>{{item.titre}}</h3>
+            <h4><sup>DT</sup>{{item.prix}}<span> / {{item.points}} points</span></h4>
             <ul>
-              <li>Espace de stockage limité</li>
+              <li>{{item.description}}/li>
               <li>Support par e-mail</li>
               <li>Fonctionnalités de base</li>
               <li class="na">Personnalisation avancée</li>
               <li class="na">Assistance téléphonique</li>
             </ul>
             <div class="btn-wrap">
-              <a href="#" class="btn-buy">Acheter maintenant</a>
+              <a routerLink="" class="btn-buy">Acheter maintenant</a>
             </div>
           </div>
         </div>
-      
+
         <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
           <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
             <h3>Standard</h3>
@@ -62,7 +84,7 @@
             </div>
           </div>
         </div>
-      
+
         <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
           <div class="box" data-aos="zoom-in" data-aos-delay="200">
             <h3>Premium</h3>
@@ -79,7 +101,7 @@
             </div>
           </div>
         </div>
-      
+
         <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
           <div class="box" data-aos="zoom-in" data-aos-delay="300">
             <span class="advanced">Avancé</span>
@@ -97,10 +119,10 @@
             </div>
           </div>
         </div>
-      
-      </div>
-      
-  
+
+      </div> -->
+
+  </div>
     </div>
   </section><!-- Fin de la section Tarification -->
-  
+
