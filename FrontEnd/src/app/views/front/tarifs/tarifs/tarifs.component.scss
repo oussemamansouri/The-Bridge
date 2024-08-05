@@ -1,0 +1,23 @@
+.equal-height {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .equal-height > .col-lg-3 {
+    display: flex;
+    flex-direction: column;
+  }
+  
+//   .box {
+//     flex-grow: 1;
+//   }
+  .box {
+    display: flex;
+    flex-direction: column;
+    height: 100%; /* Assure que la boîte s'étend pour remplir la hauteur de la colonne */
+  }
+  
+  .btn-wrap {
+    margin-top: auto; /* Place le bouton en bas de la boîte */
+  }
+    
