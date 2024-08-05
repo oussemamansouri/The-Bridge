@@ -1,0 +1,110 @@
+/* Container for the slider */
+.services-slider {
+    overflow: hidden;
+    padding: 20px 0;
+    transition: transform 0.01s; /* Ajoutez une transition très rapide */
+  }
+  
+  /* Track for the slides */
+  .slide-track {
+    display: flex;
+    animation: scroll 300s linear infinite; /* Adjusted duration for smoother animation */
+  }
+  
+  /* Each individual slide */
+  .slide {
+    display: inline-block;
+    padding: 10px;
+    box-sizing: border-box; /* Ensure padding and border are included in the width/height */
+    transition: transform 0.3s ease; /* Smooth hover effect */
+    width: 250px; /* Set a fixed width for the slides */
+  }
+  
+  /* Hover effect to scale the slide */
+  .slide:hover {
+    transform: scale(1.05);
+  }
+  
+  /* Icon box styling */
+  .icon-box {
+    background: #fff;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 20px;
+    text-align: center;
+    transition: background 0.3s ease, transform 0.3s ease; /* Smooth background change and scale effect */
+    height: 300px; /* Fixed height for the icon box */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  /* Hover effect for icon box */
+  .icon-box:hover {
+    background: #f0f0f0;
+    transform: translateY(-5px); /* Slight lift effect on hover */
+  }
+  
+  /* Icon styling */
+  .icon-box .icon {
+    font-size: 50px;
+    margin-bottom: 10px;
+    color: #007bff; /* Primary color for icons */
+  }
+  
+  /* Title styling */
+  .icon-box .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: #333;
+    white-space: nowrap; /* Ensure the title is on one line */
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+  
+  /* Description styling */
+/* Description styling */
+.icon-box .description1 {
+    font-size: 14px;
+    color: #666;
+    line-height: 1.6;
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-line-clamp: 6; /* Limit to 2 lines */
+    -webkit-box-orient: vertical;
+    height: auto; /* Assurez-vous que la hauteur est auto pour s'adapter à plusieurs lignes */
+    word-wrap: break-word; /* Pour que le texte revienne à la ligne si nécessaire */
+    overflow-wrap: break-word; /* Assurez-vous que le texte se coupe correctement */
+  }
+  .section-title p {
+    color: #555;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+  
+  /* Adjust the width and height of the slides */
+  .slide {
+    width: 250px; /* Fixed width for each slide */
+    height: auto; /* Adjust height based on content */
+  }
+  
+  @keyframes scroll {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+  
+  /* Responsive adjustments */
+  @media (max-width: 768px) {
+    .slide {
+      width: 200px; /* Narrower slides on smaller screens */
+    }
+  }
+  
+
+  
