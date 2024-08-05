@@ -1,28 +1,132 @@
 <section class="p-3">
     <div class="row">
         <div class="col-12">
-            <table class="table table-striped table-hover mt-3 text-center table-bordered">
+            <div class="table-responsive">
+                <table class="table table-striped table-hover mt-3 text-center table-bordered custom-table">
+                    <thead>
+                        <tr>
+                            <th>Image</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Points de Formation</th>
+                            <th>Mode de Formation</th>
+                            <th>Besoin</th>
+                            <th>Domaine</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tfoot>
+                        <tr>
+                            <th>Image</th>
+                            <th>Titre</th>
+                            <th>Description</th>
+                            <th>Points de Formation</th>
+                            <th>Mode de Formation</th>
+                            <th>Besoin</th>
+                            <th>Domaine</th>
+                            <th>Actions</th>
+                        </tr>
+                    </tfoot>
+                    <tbody>
+                        <tr *ngFor="let item of dataArray;index as i">
+                            <td> <img class="formationImage" src="{{imagepath}}{{item.img}}"> </td>
+                            <td>{{item.titre}} </td>
+                            <td>{{item.description}}</td>
+                            <td>{{item.pointsf}}</td>
+                            <td>{{item.modeformation}}</td>
+                            <td>{{item.besoin}}</td>
+                            <td>{{item.domaine}}</td>
+                            <td>
+                                <div class="btn-group" role="group" aria-label="Actions">
+                                    <button class="btn btn-sm btn-primary" (click)="details(item.id)">
+                                        <i class="fas fa-info-circle"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-secondary" (click)="getdata(item.titre,item.description,item.pointsf,item.modeformation,item.besoin,item.domaine,item.id,item.FormateurId)" data-toggle="modal" data-target="#exampleModal">
+                                        <i class="fas fa-pencil-alt"></i>
+                                    </button>
+                                    <button class="btn btn-sm btn-danger" (click)="delete(item.id,i)">
+                                        <i class="fas fa-trash-alt"></i>
+                                    </button>
+                                </div>
 
-                <thead>
-                    <tr>
-                        <th>Image</th>
-                        <th>Nom de formation</th>
-            
-                        <th>formateur</th>
-                        <th>description</th>
-                        
-                       
-                        <th>PDF</th>
-                        <th>Date de début</th>
-                        <th>Action</th>
-                    </tr>
-                </thead>
-                
-
-                <tbody id="data"></tbody>
-
-            </table>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
-
 </section>
+<div *ngIf="successMessage" class="alert alert-success" role="alert">
+    {{ successMessage }}
+  </div>
+  <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+    {{ errorMessage }}
+  </div>
+  
+
+<!-- modal -->
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog modal-md" role="document" style="max-width: 50%;">
+        <div class="modal-content" style="background-color: white; color: black;">
+            <div class="modal-header" style="background-color: white; color: black;">
+                <h5 class="modal-title" id="exampleModalLabel"></h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body" style="background-color: white; color: black;">
+                <form #f="ngForm" (ngSubmit)="updatenewformation(f)">
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="firstname">Titre :</label>
+                                <input type="text" required name="titre" [(ngModel)]="dataformation.titre" #titre="ngModel" ngModel class="form-control" placeholder="titre">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="firstname">Description :</label>
+                                <input type="text" required name="description" [(ngModel)]="dataformation.description"  #description="ngModel" ngModel class="form-control" placeholder="description">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <div class="form-group">
+                                <label for="lastname">Points :</label>
+                                <input type="number" required name="pointsf" [(ngModel)]="dataformation.pointsf" #pointsf="ngModel" ngModel class="form-control" placeholder="points">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <label for="mode">Mode de Formation :</label>
+                            <input type="text" required name="modeformation" [(ngModel)]="dataformation.modeformation" #modeformation="ngModel" ngModel class="form-control" placeholder="mode de formation">
+                        </div>
+
+                        <div class="col-md-12">
+                            <label for="besoin">Besoin :</label>
+                            <input type="text" required name="besoin" [(ngModel)]="dataformation.besoin" #besoin="ngModel" ngModel class="form-control" placeholder="Besoin">
+                        </div>
+                        <div class="col-md-12">
+                            <label for="domaine">Domaine :</label>
+                            <input type="text" required name="domaine" [(ngModel)]="dataformation.domaine" #domaine="ngModel" ngModel class="form-control" placeholder="Domaine de Formation">
+                        </div>
+                    </div>
+                    <div class="modal-footer" style="background-color: white; color: black;">
+                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                        <button  class="btn btn-primary" >Mettre à jour</button>
+                    </div>
+                </form>
+            </div>
+
+            <div class="modal-footer" style="background-color: white; color: black;">
+                <div class="alert alert-success text-center" *ngIf="messagesuccess">
+                    {{messagesuccess}}
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
