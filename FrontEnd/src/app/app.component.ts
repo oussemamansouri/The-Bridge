@@ -28,7 +28,7 @@ export class AppComponent  {
   //   },
   //   {
   //     id:2,
-  //     name:'firas',
+  //     name:'firas&oussama',
   //     phone:'3030303030',
   //     image:'assets/chat/user/images (2).jpeg',
   //     roomId: {
@@ -47,11 +47,11 @@ export class AppComponent  {
   //     }
   //   },
   // ]
-  
+
   // constructor (private chatService:ChatService){
-    
+
   // }
-  
+
   // ngOnInit(): void {
   //   throw new Error('Method not implemented.');
   // }
