@@ -1,12 +1,12 @@
 {
-  "name": "firas",
+  "name": "firas&oussama",
   "version": "1.0.0",
   "description": "connected backend",
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "author": "firas",
+  "author": "firas&oussama",
   "license": "ISC",
   "dependencies": {
     "bcrypt": "^5.1.1",
