@@ -7,18 +7,14 @@
         <a routerLink="/" class="logo-link">
           <span class="logo-icon"><i class="fas fa-users"></i></span>
           <span class="logo-text">
-            <span class="logo-main">C</span><span class="logo-secondary">onnected</span>
+            <span class="logo-main">The</span><span class="logo-secondary">Bridge</span>
           </span>
         </a>
       </h1>
-
     </div>
-
-
-
     <nav class="nav-menu d-none d-lg-block">
       <ul class="navbar">
-        <li class="active"><a routerLink="/" routerLinkActive="router-link-active" >Accueil</a></li>
+        <li class="active"><a routerLink="/" routerLinkActive="router-link-active">Accueil</a></li>
         <li class="dropdown">
           <a routerLink="formation" id="nos-formations">Nos Formations</a>
         </li>
@@ -29,7 +25,8 @@
             <i class="fas fa-coins" style="color: yellow; margin-right: 2px;"></i>
             POINTS: {{profile.points}}
           </span>
-          <button class="btn btn-sm btn-primary circular-button" (click)="redirectToPacksPage()" style="margin-left: 8px;">
+          <button class="btn btn-sm btn-primary circular-button" (click)="redirectToPacksPage()"
+            style="margin-left: 8px;">
             <i class="fas fa-plus"></i>
           </button>
         </li>
@@ -40,8 +37,10 @@
       <ul class="navbar-nav ml-auto">
         <div class="topbar-divider d-none d-sm-block"></div>
         <li class="nav-item dropdown no-arrow">
-          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ data.username | titlecase }} {{data.name | titlecase}}</span>
+          <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+            <span class="mr-2 d-none d-lg-inline text-gray-600 small">{{ data.username | titlecase }} {{data.name |
+              titlecase}}</span>
             <img class="img-profile rounded-circle" src="{{imagepath}}{{data.img}}">
           </a>
           <div class="dropdown-menu dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
@@ -50,7 +49,8 @@
               Profile
             </a>
             <div class="dropdown-divider"></div>
-            <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer;" (click)="logout()">
+            <a class="dropdown-item" data-toggle="modal" data-target="#logoutModal" style="cursor: pointer;"
+              (click)="logout()">
               <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
               Déconnexion
             </a>
@@ -62,36 +62,35 @@
     <a routerLink="/loginuser" class="btn btn-outline-primary" *ngIf="!asf.logedin()">
       <i class="icofont-user icofont-1x"></i> Connexion
     </a>
-  <!-- Dropdowns de ville et de langue déplacés ici -->
-  <div class="d-flex align-items-center ">
-    <div class="city-dropdown">
-      <button class="btn btn-sm btn-custom dropdown-toggle" type="button" id="cityDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ selectedCity }}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="cityDropdown">
-        <a class="dropdown-item" *ngFor="let city of cities" href="#" [ngClass]="{'active': city.abbr === selectedCity}" (click)="selectCity(city.abbr)">
-          {{ city.name }} ({{ city.abbr }})
-        </a>
+    <!-- Dropdowns de ville et de langue déplacés ici -->
+    <div class="d-flex align-items-center ">
+      <div class="city-dropdown">
+        <button class="btn btn-sm btn-custom dropdown-toggle" type="button" id="cityDropdown" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{ selectedCity }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="cityDropdown">
+          <a class="dropdown-item" *ngFor="let city of cities" href="#"
+            [ngClass]="{'active': city.abbr === selectedCity}" (click)="selectCity(city.abbr)">
+            {{ city.name }} ({{ city.abbr }})
+          </a>
+        </div>
       </div>
-    </div>
 
-
-    <div id="google_translate_element" class="language-dropdown">
-      <button class="btn btn-sm btn-custom dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-        {{ selectedLanguage }}
-      </button>
-      <div class="dropdown-menu" aria-labelledby="languageDropdown">
-        <a class="dropdown-item" *ngFor="let lang of languages" href="#" (click)="selectLanguage(lang.abbr)">
-          {{ lang.name }} ({{ lang.abbr }})
-        </a>
+      <div id="google_translate_element" class="language-dropdown">
+        <button class="btn btn-sm btn-custom dropdown-toggle" type="button" id="languageDropdown" data-toggle="dropdown"
+          aria-haspopup="true" aria-expanded="false">
+          {{ selectedLanguage }}
+        </button>
+        <div class="dropdown-menu" aria-labelledby="languageDropdown">
+          <a class="dropdown-item" *ngFor="let lang of languages" href="#" (click)="selectLanguage(lang.abbr)">
+            {{ lang.name }} ({{ lang.abbr }})
+          </a>
+        </div>
       </div>
+
     </div>
-
-
-  </div>
   </div>
 </header>
-
-
 
 <router-outlet></router-outlet>
