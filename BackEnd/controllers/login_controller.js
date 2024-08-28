@@ -1,96 +1,67 @@
-const db=require('../models')
-const bcrypt=require('bcrypt')
-const jwt=require('jsonwebtoken')
+const db = require('../models');
+const bcrypt = require('bcrypt');
+const jwt = require('jsonwebtoken');
 
+const PrivatKey = "this is private key fdgsfdgsdfgsdfgdsfgdsgfdfgsgdfgdfgdfgdfbds";
 
-
-/////////// login end point /////////
-
-const PrivatKey = "this is private key fdgsfdgsdfgsdfgdsfgdsgfdfgsgdfgdgdfgdsfgsfdgsdfgsdfgdfgdfbds";
+// Login endpoint
 exports.login = (email, password) => {
-    return new Promise((resolve, reject) => {
-      if (!email) {
-        reject("email est obligatoire");
-      } else if (!password) {
-        reject("mot de passe est obligatoire");
-      } else {
-        let formateur = db.Formateur.findOne({ where: { email: email } });
-        let moderateur = db.Moderateur.findOne({ where: { email: email } });
-        let admin = db.Admin.findOne({ where: { email: email } });
-  
-        Promise.all([formateur, moderateur, admin])
-          .then(([formateur, moderateur, admin]) => {
-            if (!formateur && !moderateur && !admin) {
-              reject("e-mail ou mot de passe non valide !");
-            } else {
-              if (formateur != null) {
-                bcrypt.compare(password, formateur.password).then((same) => {
-                  if (same) {
-                    let token = jwt.sign(
-                      {
-                        id: formateur.id,
-                        name: formateur.firstname,
-                        img:formateur.img,
-                        role:formateur.role
-                      },
-                      PrivatKey,
-                      { expiresIn: "8h" }
-                    );
-                    resolve({token:token});
-                  } else {
-                    reject("e-mail ou mot de passe non valide !");
-                  }
-                });
+  return new Promise((resolve, reject) => {
+    // Check if email and password are provided
+    if (!email) {
+      return reject("Email est obligatoire");
+    } 
+    if (!password) {
+      return reject("Mot de passe est obligatoire");
+    }
+
+    // Find user in all possible tables (Formateur, Moderateur, Admin)
+    const formateurPromise = db.Formateur.findOne({ where: { email: email } });
+    const moderateurPromise = db.Moderateur.findOne({ where: { email: email } });
+    const adminPromise = db.Admin.findOne({ where: { email: email } });
+
+    Promise.all([formateurPromise, moderateurPromise, adminPromise])
+      .then(([formateur, moderateur, admin]) => {
+        // Check if any user was found
+        if (!formateur && !moderateur && !admin) {
+          return reject("Email ou mot de passe non valide !");
+        }
+
+        // Helper function to handle password comparison and token generation
+        const authenticateUser = (user, role) => {
+          bcrypt.compare(password, user.password)
+            .then(same => {
+              if (same) {
+                const token = jwt.sign(
+                  {
+                    id: user.id,
+                    username: user.username || user.firstname, // Default to firstname if username is not available
+                    img: user.img,
+                    role: role,
+                    email: user.email // Include email if available
+                  },
+                  PrivatKey,
+                  { expiresIn: "8h" }
+                );
+                resolve({ token, role, username: user.username || user.firstname });
               } else {
-                if (moderateur != null) {
-                  bcrypt.compare(password, moderateur.password).then((same) => {
-                    if (same) {
-                      let token = jwt.sign(
-                        {
-                          id: moderateur.id,
-                          username: moderateur.username,
-                          name: moderateur.name,
-                          img:moderateur.img,
-                          role:moderateur.role
-                        },
-                        PrivatKey,
-                        { expiresIn: "8h" }
-                      );
-                      resolve({token});
-                    } else {
-                      reject("e-mail ou mot de passe non valide !");
-                    }
-                  });
-                } else {
-                  if (admin != null) {
-                    bcrypt.compare(password, admin.password).then((same) => {
-                      if (same) {
-                        let token = jwt.sign(
-                          {
-                            id: admin.id,
-                            username: admin.username,
-                            img:admin.img,
-                            role:'Admin',
-                            email:admin.email,
-                          },
-                          PrivatKey,
-                          { expiresIn: "8h" }
-                        );
-                        resolve({token:token,role:'Admin',username:admin.username});
-                      } else {
-                        reject("e-mail ou mot de passe non valide !");
-                      }
-                    });
-                  }
-                }
+                reject("Email ou mot de passe non valide !");
               }
-            }
-          })
-          .catch((err) => reject(err));
-      }
-    });
-  };
-  
+            })
+            .catch(err => reject(err));
+        };
 
-
-
+        // Authenticate the found user based on their type
+        if (formateur) {
+          return authenticateUser(formateur, formateur.role);
+        }
+        if (moderateur) {
+          return authenticateUser(moderateur, moderateur.role);
+        }
+        if (admin) {
+          return authenticateUser(admin, 'Admin');
+        }
+      })
+      .catch(err => reject(err));
+  });
+};
