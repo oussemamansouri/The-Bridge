@@ -10,109 +10,102 @@ import { HttpErrorResponse } from '@angular/common/http';
   styleUrls: ['./dashboardf.component.scss']
 })
 export class DashboardfComponent implements OnInit {
-  profile : any
-  img:any
-  cv:any
-  imagepath:any='http://localhost:3000/'
-  cvpathe:any='http://localhost:3000/'
-  old=""
-  new=""
-  repe=""
-  errmessage:any
-  secmessage:any
-  errmessagepass:any
-  secmessagepass:any
-  id:any
-  cvImportedMessage: string = '';
+  profile: any; // Variable to store formateur profile data
+  img: any; // Variable to store the selected image for update
+  cv: any; // Variable to store CV data
+  imagepath: any = 'http://localhost:3000/'; // Base URL for image paths
+  cvpathe: any = 'http://localhost:3000/'; // Base URL for CV paths
+  old: string = ''; // Variable for old password (not used in current code)
+  new: string = ''; // Variable for new password (not used in current code)
+  repe: string = ''; // Variable for password repetition (not used in current code)
+  errmessage: any; // Variable to store error messages for profile update
+  secmessage: any; // Variable to store success messages for profile update
+  errmessagepass: any; // Variable to store error messages for password update
+  secmessagepass: any; // Variable to store success messages for password update
+  id: any; // Variable to store the formateur ID
+  cvImportedMessage: string = ''; // Variable to store CV import success message
 
-  helper= new JwtHelperService
+  helper = new JwtHelperService(); // JWT helper instance for decoding tokens
 
-  constructor(private api:DataService,private route:Router) { }
+  constructor(private api: DataService, private route: Router) { }
 
   ngOnInit(): void {
-    const id = this.getId(); 
+    const id = this.getId(); // Get the formateur ID from the JWT token
     this.api.getoneformateur(id).subscribe(data => {
-      this.profile = data;
-      console.log(this.profile);
+      this.profile = data; // Assign the profile data to the component variable
+      console.log(this.profile); // Log profile data for debugging
     });
   }
 
-  updateimage(event:any){
+  // Method to update the profile image
+  updateimage(event: any) {
     if (event.target.files.length > 0) {
-      const path = event.target.files[0];
+      const path = event.target.files[0]; // Get the selected file
       const formData = new FormData();
-      formData.append('img', path)
-      this.api.updateaformateurimage(formData,this.getId()).subscribe(info=>this.ngOnInit())
+      formData.append('img', path); // Append the file to the FormData object
+      this.api.updateaformateurimage(formData, this.getId()).subscribe(info => {
+        this.ngOnInit(); // Reload the profile after updating the image
+      });
     }
   }
+
+  // Method to update the CV
   updatecv(event: any) {
     if (event.target.files.length > 0) {
-        const path = event.target.files[0];
-        const formData = new FormData();
-        formData.append('cv', path);
-        this.api.updateaformateurcv(formData, this.getId()).subscribe(info => {
-            this.cvImportedMessage = 'CV importé avec succès.'; // Mettre à jour le message
-            this.ngOnInit();
-        });
+      const path = event.target.files[0]; // Get the selected CV file
+      const formData = new FormData();
+      formData.append('cv', path); // Append the CV file to the FormData object
+      this.api.updateaformateurcv(formData, this.getId()).subscribe(info => {
+        this.cvImportedMessage = 'CV importé avec succès.'; // Set success message
+        this.ngOnInit(); // Reload the profile after updating the CV
+      });
     }
-}
-  getId():number{
-    let token:any=localStorage.getItem('token')
-   let decodedtoken:any=this.helper.decodeToken(token)
-    return decodedtoken.id
   }
 
-  update(f:any){
-    let body=f.value
-    this.api.updateformateurf(body,this.getId()).subscribe(info=>{
-      console.log(info)
-      this.api.getoneformateur(this.id).subscribe(data=>{
-        {this.secmessage="Mise à jour terminée avec succès"
-      this.ngOnInit()}
-      })
+  // Method to get the current user's ID from the JWT token
+  getId(): number {
+    let token: any = localStorage.getItem('token');
+    let decodedtoken: any = this.helper.decodeToken(token);
+    return decodedtoken.id; // Return the user ID from the decoded token
+  }
 
-    },(err:HttpErrorResponse)=>{
-      this.errmessage=err.error
-    })
+  // Method to update the formateur profile
+  update(f: any) {
+    let body = f.value; // Get the form data
+    this.api.updateformateurf(body, this.getId()).subscribe(info => {
+      console.log(info); // Log the update response for debugging
+      this.api.getoneformateur(this.id).subscribe(data => {
+        this.secmessage = "Mise à jour terminée avec succès"; // Set success message
+        this.ngOnInit(); // Reload the profile after update
+      });
+    }, (err: HttpErrorResponse) => {
+      this.errmessage = err.error; // Set error message for profile update
+    });
+  }
+
+  // Method to update the formateur password
+  updatepassword(f: any) {
+    let body = f.value; // Get the form data
+    this.api.updatepasswordformateur(body, this.getId()).subscribe(
+      info => {
+        this.secmessagepass = "Mot de passe mis à jour avec succès."; // Set success message
+      },
+      (err: HttpErrorResponse) => {
+        this.errmessagepass = "Le champ 'ancien mot de passe' est obligatoire et ne peut pas être vide."; // Set error message
       }
+    );
+  }
 
-      updatepassword(f: any) {
-        let body = f.value;
-        this.api.updatepasswordformateur(body, this.getId()).subscribe(
-          info => {
-            // Rediriger vers le profil
-            // this.route.navigate(['/formateur/profile']);
-            // Afficher le message de succès
-            this.secmessagepass = "Mot de passe mis à jour avec succès.";
-          },
-          (err: HttpErrorResponse) => {
-            // En cas d'erreur, afficher le message d'erreur
-            this.errmessagepass = "Le champ 'ancien mot de passe' est obligatoire et ne peut pas être vide.";
-            // this.old="";
-          }
-        );
-      }
-      openCV() {
-        window.open(this.cvpathe + this.profile.cv, '_blank');
-      }
-      downloadCV() {
-        const link = document.createElement('a');
-        link.href = this.cvpathe + this.profile.cv;
-        link.download = this.profile.cv;  // Ici, nous mettons juste le nom du fichier
-        link.click();
-      }
-      // updatepassword(f:any){
-      //   let body=f.value
-      //    this.api.updatepasswordformateur(body,this.getId()).subscribe(info=>{
-      //     this.route.navigate(['/formateur/profile'])
-      //     this.secmessagepass=" mot de passe mettre à jour avec succès "
+  // Method to open the CV in a new tab
+  openCV() {
+    window.open(this.cvpathe + this.profile.cv, '_blank');
+  }
 
-
-      //   },(err:HttpErrorResponse)=>{
-      //     this.errmessagepass=err.error
-      //     // this.old=""
-
-      //   })
-
-      // }      
+  // Method to download the CV
+  downloadCV() {
+    const link = document.createElement('a');
+    link.href = this.cvpathe + this.profile.cv; // Set the CV URL
+    link.download = this.profile.cv; // Set the CV file name
+    link.click(); // Trigger the download
+  }
 }
