@@ -8,7 +8,6 @@
                 <div class="chat-avtar d-inline-flex mx-auto">
                   <img class="rounded-circle img-fluid wid-70" src="{{imagepath}}{{dataobject.img}}" >
                 </div>
-           
                 <hr class="my-3">
                 <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
                   <i class="ti ti-mail"></i>
@@ -23,7 +22,6 @@
           </div>
         </div>
         <div class="col-lg-8 col-xxl-9">
-          
           <div class="card">
             <div class="card-header">
               <h5>Informations personnelles de {{ dataobject.firstname }} {{ dataobject.lastname }}</h5>
@@ -96,30 +94,18 @@
                 </li>
                 <li class="list-group-item px-0">
                   <div class="row">
-                    <!-- <div class="col-md-6">
-                      <p class="mb-1 text-muted">CV</p>
-                      <p class="mb-0">{{cvpath}}{{ dataobject.cv }}</p>
-                    </div> -->
-                    <!-- <div style="display: flex; justify-content: center;">
-                      <div class="chat-avtar d-inline-flex" (click)="openCV()" style="color: black;">
-                          Voir votre CV
-                          <i class="fas fa-eye ml-2" style="font-size: 24px; color: blue;"></i>
-                      </div>
-                    </div> -->
                     <div class="cv-actions">
                       <!-- Bouton pour voir le CV -->
                       <div class="cv-action" (click)="openCV()">
                         Voir votre CV
                         <i class="fas fa-eye ml-2" style="font-size: 24px; color: blue;"></i>
                       </div>
-                    
                       <!-- Bouton pour télécharger le CV -->
                       <div class="cv-action" (click)="downloadCV()">
                         Télécharger votre CV
                         <i class="fas fa-download ml-2" style="font-size: 24px; color: blue;"></i>
                       </div>
                     </div>
-                    
                   </div>
                 </li>
               </ul>
@@ -129,50 +115,3 @@
       </div>
     </div>
   </div>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- <ul *ngIf="dataobject">
-                                       <li>{{dataobject.img}}</li>
-    <li>{{dataobject.firstname}}</li>
-    <li>{{dataobject.lastname}}</li>
-    <li>{{dataobject.dob}}</li>
-    <li>{{dataobject.address}}</li>
-    <li>{{dataobject.tel}}</li>
-    <li>{{dataobject.cv}}</li>
-    <li>{{dataobject.portfolio}}</li>
-    <li>{{dataobject.statu}}</li>
-    <li>{{dataobject.linkedin}}</li>
-    <li>{{dataobject.niveau}}</li>
-    <li>{{dataobject.experience}}</li>
-</ul>
-
-
-
-<div class="alert alert-danger" *ngIf="messageerr">
-{{messageerr}}
-</div> -->
