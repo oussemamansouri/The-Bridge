@@ -9,34 +9,41 @@ import { DataService } from 'src/app/views/services/data.service';
   styleUrls: ['./profiledetailles.component.scss']
 })
 export class ProfiledetaillesComponent implements OnInit {
-  id: string = '';
-  cv:any;
-  dataobject:any
-  messageerr=''
-  imagepath:any='http://localhost:3000/'
-  cvpathe:any='http://localhost:3000/'
-  constructor(private route:ActivatedRoute,private ds:DataService) { 
+  id: string = ''; // ID of the formateur to fetch
+  cv: any; // CV file information (not used directly in this component)
+  dataobject: any; // Object to store formateur details
+  messageerr: string = ''; // Error message in case of an error
+  imagepath: any = 'http://localhost:3000/'; // Base URL for images
+  cvpathe: any = 'http://localhost:3000/'; // Base URL for CV files
+
+  constructor(private route: ActivatedRoute, private ds: DataService) {
+    // Retrieve the formateur ID from the route parameters
     this.route.params.subscribe((params: Params) => this.id = params['id']);
 
-    this.ds.getoneformateur(this.id).subscribe(response=>this.dataobject=response,(err:HttpErrorResponse)=>{
-      console.log(err)
-      this.messageerr="we dont't found this student in our database"})
-    
+    // Fetch the formateur details using the ID from the route
+    this.ds.getoneformateur(this.id).subscribe(
+      response => this.dataobject = response, // Assign the response data to dataobject
+      (err: HttpErrorResponse) => {
+        console.log(err); // Log the error to the console
+        this.messageerr = "We don't find this student in our database"; // Set the error message
+      }
+    );
   }
 
   ngOnInit(): void {
+    // Initialization logic can be added here if needed
   }
 
-
+  // Method to open the CV in a new tab
   openCV() {
     window.open(this.cvpathe + this.dataobject.cv, '_blank');
   }
 
-  
+  // Method to download the CV
   downloadCV() {
-    const link = document.createElement('a');
-    link.href = this.cvpathe + this.dataobject.cv;
-    link.download = this.dataobject.cv;  // Ici, nous mettons juste le nom du fichier
-    link.click();
+    const link = document.createElement('a'); // Create an <a> element
+    link.href = this.cvpathe + this.dataobject.cv; // Set the href to the CV file path
+    link.download = this.dataobject.cv; // Set the download attribute to the CV file name
+    link.click(); // Programmatically click the <a> element to trigger the download
   }
 }
