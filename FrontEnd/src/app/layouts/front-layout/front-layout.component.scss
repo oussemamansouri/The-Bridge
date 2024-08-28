@@ -4,9 +4,6 @@
     text-decoration: none;
     color: #000000; /* Couleur du texte */
   }
-
-  
-
   .navbar li a:after {
     content: '';
     position: absolute;
@@ -35,18 +32,6 @@
     color: #000000; /* Couleur du texte */
     font-family: Arial, sans-serif; /* Police de caractères */
   }
-
-
-
-
-
-
-
-
-
-
-  
-
 
   .circular-button {
     border-radius: 50%;
@@ -219,10 +204,6 @@
     width: 40px;
   }
 
-
-
-
-
   .city-dropdown .dropdown-item.active::after {
     content: " ✓";
     color: green;
@@ -248,11 +229,11 @@
     font-weight: bold;
   }
 
- 
-
- 
 
 
 
 
-  
+
+
+
+
