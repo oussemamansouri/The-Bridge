@@ -6,11 +6,6 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./addformation.component.scss']
 })
 export class AddformationComponent implements OnInit {
-
-
-
-  
-
   constructor() { }
 
   ngOnInit(): void {
