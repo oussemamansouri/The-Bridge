@@ -2,25 +2,36 @@ import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Params } from '@angular/router';
 import { DataService } from 'src/app/views/services/data.service';
+
 @Component({
   selector: 'app-detailsmoderateur',
   templateUrl: './detailsmoderateur.component.html',
   styleUrls: ['./detailsmoderateur.component.scss']
 })
 export class DetailsmoderateurComponent implements OnInit {
-  id: string = '';
-  dataobject:any
-  messageerr=''
-  imagepath:any='http://localhost:3000/'
-  constructor(private route:ActivatedRoute,private ds:DataService) {
-    this.route.params.subscribe((params: Params) => this.id = params['id']);
+  id: string = ''; // Variable to store the moderator's ID from route parameters
+  dataobject: any; // Variable to hold the moderator's data
+  messageerr: string = ''; // Variable to hold error messages
+  imagepath: any = 'http://localhost:3000/'; // Base URL for image paths
 
-    this.ds.getonemoderateur(this.id).subscribe(response=>this.dataobject=response,(err:HttpErrorResponse)=>{
-      console.log(err)
-      this.messageerr="we dont't found this moderateur in our database"})
-    
-   }
-  ngOnInit(): void {
+  constructor(private route: ActivatedRoute, private ds: DataService) {
+    // Subscribe to route parameters to get the moderator's ID
+    this.route.params.subscribe((params: Params) => {
+      this.id = params['id']; // Extract the ID from route parameters
+      // Fetch the moderator details using the ID
+      this.ds.getonemoderateur(this.id).subscribe(
+        response => {
+          this.dataobject = response; // On success, assign response data to dataobject
+        },
+        (err: HttpErrorResponse) => {
+          console.log(err); // Log the error for debugging
+          this.messageerr = "We don't find this moderator in our database"; // Error message
+        }
+      );
+    });
   }
 
+  ngOnInit(): void {
+    // Component initialization logic if needed
+  }
 }
