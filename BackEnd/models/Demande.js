@@ -1,25 +1,34 @@
-// In your Demande model
-module.exports = (sequelize, DataType) => {
-  const Demande = sequelize.define("Demande", {
-    ReceiverId:{
-      type:DataType.BIGINT,
-      allowNull:true
-  }
-  }, {
-    charset: 'utf8mb4',
-    collate: 'utf8mb4_general_ci'
+module.exports = (sequelize, DataTypes) => {
+  // Define the ChatMessage model with its attributes.
+  const ChatMessage = sequelize.define('ChatMessage', {
+    message: {
+      type: DataTypes.STRING, // Content of the chat message.
+      allowNull: false // Message cannot be null.
+    },
+    sender_id: {
+      type: DataTypes.INTEGER, // ID of the message sender.
+      allowNull: false // Sender ID cannot be null.
+    },
+    recipient_id: {
+      type: DataTypes.INTEGER, // ID of the message recipient.
+      allowNull: false // Recipient ID cannot be null.
+    }
   });
 
-  Demande.associate = models => {
-    Demande.belongsTo(models.Formateur, {
-      onDelete: "cascade",
-      onUpdate: 'cascade'
+  // Define associations for the ChatMessage model.
+  ChatMessage.associate = models => {
+    ChatMessage.belongsTo(models.Formateur, {
+      foreignKey: 'sender_id', // Foreign key in ChatMessage table.
+      onDelete: 'CASCADE', // Delete related messages if the sender is deleted.
+      onUpdate: 'CASCADE' // Update foreign key if the sender is updated.
     });
-    Demande.belongsTo(models.Formation, {
-      onDelete: "cascade",
-      onUpdate: 'cascade'
+
+    ChatMessage.belongsTo(models.Formateur, {
+      foreignKey: 'recipient_id', // Foreign key in ChatMessage table.
+      onDelete: 'CASCADE', // Delete related messages if the recipient is deleted.
+      onUpdate: 'CASCADE' // Update foreign key if the recipient is updated.
     });
   };
 
-  return Demande;
+  return ChatMessage; // Return the defined model.
 };
