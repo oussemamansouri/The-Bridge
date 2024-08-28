@@ -27,9 +27,9 @@
 
   <div class="chat-container">
     <h1 class="title">Messenger</h1>
-
     <div class="message-list">
-      <div class="message-box" *ngFor="let message of messages" [ngClass]="{'message-sent': message.sent, 'message-received': !message.sent}">
+      <div class="message-box" *ngFor="let message of messages"
+        [ngClass]="{'message-sent': message.sent, 'message-received': !message.sent}">
         <div class="user-avatar">
           <img [src]="imagepath + profile.img" alt="Avatar">
         </div>
@@ -40,7 +40,6 @@
         </div>
       </div>
     </div>
-
     <div class="send-message">
       <input type="text" [(ngModel)]="newMessage" placeholder="Entrez votre message ici...">
       <button for="file-input" class="file-icon" type="button">
@@ -54,4 +53,3 @@
     </div>
   </div>
 </div>
-
