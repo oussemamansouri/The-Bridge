@@ -1,57 +1,58 @@
 <div id="wrapper">
   <!-- Content Wrapper -->
   <div id="content-wrapper" class="d-flex flex-column">
-      <!-- Main Content -->
-      <div id="content">
-          <!-- Begin Page Content -->
-          <div class="container-fluid">
-              <!-- DataTales Example -->
-              <div class="card shadow mb-4">
-                  <div class="card-header py-3">
-                      <h6 class="m-0 font-weight-bold text-primary">Liste des Demandes Envoyées</h6>
-                  </div>
-                  <div class="card-body">
-                      <div class="table-responsive">
-                          <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                              <thead>
-                                  <tr>
-                                      <th>Destinée</th>
-                                      <th>Titre de Formation</th>
-                                      <th>Description</th>
-                                      <th>Mode Formation</th>
-                                      <th>Domaine</th>
-                                  </tr>
-                              </thead>
-                              <tfoot>
-                                <tr>
-                                  <th>Destinée</th>
-                                  <th>Titre de Formation</th>
-                                  <th>Description</th>
-                                  <th>Mode Formation</th>
-                                  <th>Domaine</th>
-                              </tr>
-                              </tfoot>
-                              <tbody>
-                                <ng-container *ngIf="demandes && demandes.length > 0; else noData">
-                                    <tr *ngFor="let demande of demandes">
-                                        <td>{{ demande.Formation.Formateur.firstname | titlecase}} {{ demande.Formation.Formateur.lastname | titlecase}} </td>
-                                        <td>{{ demande.Formation.titre }}</td>
-                                        <td>{{ demande.Formation.description }}</td>
-                                        <td>{{ demande.Formation.modeformation }}</td>
-                                        <td>{{ demande.Formation.domaine }}</td>
-                                    </tr>
-                                </ng-container>
-                                <ng-template #noData>
-                                    <tr>
-                                        <td colspan="5">Aucune demande de participation trouvée.</td>
-                                    </tr>
-                                </ng-template>
-                            </tbody>
-                          </table>
-                      </div>
-                  </div>
-              </div>
+    <!-- Main Content -->
+    <div id="content">
+      <!-- Begin Page Content -->
+      <div class="container-fluid">
+        <!-- DataTales Example -->
+        <div class="card shadow mb-4">
+          <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-primary">Liste des Demandes Envoyées</h6>
           </div>
+          <div class="card-body">
+            <div class="table-responsive">
+              <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                <thead>
+                  <tr>
+                    <th>Destinée</th>
+                    <th>Titre de Formation</th>
+                    <th>Description</th>
+                    <th>Mode Formation</th>
+                    <th>Domaine</th>
+                  </tr>
+                </thead>
+                <tfoot>
+                  <tr>
+                    <th>Destinée</th>
+                    <th>Titre de Formation</th>
+                    <th>Description</th>
+                    <th>Mode Formation</th>
+                    <th>Domaine</th>
+                  </tr>
+                </tfoot>
+                <tbody>
+                  <ng-container *ngIf="demandes && demandes.length > 0; else noData">
+                    <tr *ngFor="let demande of demandes">
+                      <td>{{ demande.Formation.Formateur.firstname | titlecase}} {{ demande.Formation.Formateur.lastname
+                        | titlecase}} </td>
+                      <td>{{ demande.Formation.titre }}</td>
+                      <td>{{ demande.Formation.description }}</td>
+                      <td>{{ demande.Formation.modeformation }}</td>
+                      <td>{{ demande.Formation.domaine }}</td>
+                    </tr>
+                  </ng-container>
+                  <ng-template #noData>
+                    <tr>
+                      <td colspan="5">Aucune demande de participation trouvée.</td>
+                    </tr>
+                  </ng-template>
+                </tbody>
+              </table>
+            </div>
+          </div>
+        </div>
       </div>
+    </div>
   </div>
 </div>
