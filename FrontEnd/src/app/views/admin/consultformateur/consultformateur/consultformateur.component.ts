@@ -10,35 +10,35 @@ import { DataService } from 'src/app/views/services/data.service';
   styleUrls: ['./consultformateur.component.scss']
 })
 export class ConsultformateurComponent implements OnInit {
-  imagepath:any='http://localhost:3000/'
-  dataArray:any=[]
-  dataformateur={
-    firstname:'',
-    lastname:'',
-    dob:0,
-    address:'',
-    tel:0,
-    portfolio:'',
-    statu:'',
-    linkedin:'',
-    niveau:'',
-    experience:'',
-    id:''
+  imagepath: any = 'http://localhost:3000/'
+  dataArray: any = []
+  dataformateur = {
+    firstname: '',
+    lastname: '',
+    dob: 0,
+    address: '',
+    tel: 0,
+    portfolio: '',
+    statu: '',
+    linkedin: '',
+    niveau: '',
+    experience: '',
+    id: ''
   }
   successMessage: string = '';
-errorMessage: string = '';
+  errorMessage: string = '';
 
 
-  messagesuccess=''
-  constructor(private ds:DataService,private route:Router) {
+  messagesuccess = ''
+  constructor(private ds: DataService, private route: Router) {
 
-    this.ds.getAllformateur().subscribe(data=>{
+    this.ds.getAllformateur().subscribe(data => {
       console.log(data)
-      this.dataArray=data
+      this.dataArray = data
     })
-      
+
   }
-   
+
 
   ngOnInit(): void {
   }
@@ -56,22 +56,22 @@ errorMessage: string = '';
       }
     );
   }
-  
 
-  getdata(firstname:string,lastname:string,dob:number,address:string,tel:number,portfolio:string,statu:string,linkedin:string,niveau:string,experience:string,id:any){
-    this.messagesuccess=''
-    this.dataformateur.firstname=firstname
-    this.dataformateur.lastname=lastname
-    this.dataformateur.dob=dob
-    this.dataformateur.address=address
-    this.dataformateur.tel=tel
-    this.dataformateur.portfolio=portfolio
-    this.dataformateur.statu=statu
-    this.dataformateur.linkedin=linkedin
-    this.dataformateur.niveau=niveau
-    this.dataformateur.experience=experience
-    this.dataformateur.id=id
-   console.log(this.dataformateur)
+
+  getdata(firstname: string, lastname: string, dob: number, address: string, tel: number, portfolio: string, statu: string, linkedin: string, niveau: string, experience: string, id: any) {
+    this.messagesuccess = ''
+    this.dataformateur.firstname = firstname
+    this.dataformateur.lastname = lastname
+    this.dataformateur.dob = dob
+    this.dataformateur.address = address
+    this.dataformateur.tel = tel
+    this.dataformateur.portfolio = portfolio
+    this.dataformateur.statu = statu
+    this.dataformateur.linkedin = linkedin
+    this.dataformateur.niveau = niveau
+    this.dataformateur.experience = experience
+    this.dataformateur.id = id
+    console.log(this.dataformateur)
   }
 
   updatenewformateur(f: any) {
@@ -80,7 +80,7 @@ errorMessage: string = '';
       (response) => {
         console.log(response);
         let indexId = this.dataArray.findIndex((obj: any) => obj.id == this.dataformateur.id);
-  
+
         this.dataArray[indexId].firstname = data.firstname;
         this.dataArray[indexId].lastname = data.lastname;
         this.dataArray[indexId].dob = data.dob;
@@ -91,7 +91,7 @@ errorMessage: string = '';
         this.dataArray[indexId].linkedin = data.linkedin;
         this.dataArray[indexId].niveau = data.niveau;
         this.dataArray[indexId].experience = data.experience;
-  
+
         this.messagesuccess = `Les informations du formateur ${this.dataArray[indexId].firstname} ont été mises à jour avec succès.`;
       },
       (err: HttpErrorResponse) => {
@@ -99,13 +99,13 @@ errorMessage: string = '';
       }
     );
   }
-  
 
 
-  details(id:any){
-    this.route.navigate(['admin/detailsformateur/'+id])
+
+  details(id: any) {
+    this.route.navigate(['admin/detailsformateur/' + id])
   }
- 
+
 
 
 }
