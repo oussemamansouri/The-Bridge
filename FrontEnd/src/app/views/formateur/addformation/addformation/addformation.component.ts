@@ -1,91 +1,3 @@
-// import { HttpErrorResponse } from '@angular/common/http';
-// import { Component, OnInit } from '@angular/core';
-// import { Router } from '@angular/router';
-// import { JwtHelperService } from '@auth0/angular-jwt';
-// import { DataService } from 'src/app/views/services/data.service';
-
-// @Component({
-//   selector: 'app-addformation',
-//   templateUrl: './addformation.component.html',
-//   styleUrls: ['./addformation.component.scss']
-// })
-// export class AddformationComponent implements OnInit {
-//   profile : any
-//   id:any
-//   img:any
-//   imagepath:any='http://localhost:3000/'
-//   messageSucces: string = ''; // Variable pour stocker le message de succès
-
-
-
-//   helper= new JwtHelperService
-//   constructor(private ds:DataService,private route:Router) { }
-
-//   ngOnInit(): void {
-//     const id = this.getId(); // Appel de la méthode pour obtenir l'identifiant du modérateur
-//     this.ds.getoneformateur(id).subscribe(data => {
-//       this.profile = data;
-//       console.log(this.profile);
-//     });
-//   }
-
-//   getId():number{
-//     let token:any=localStorage.getItem('token')
-//    let decodedtoken:any=this.helper.decodeToken(token)
-//     return decodedtoken.id
-//   }
-//   onFileSelected(event: any) {
-//     if (event.target.files.length > 0){
-//       this.img = event.target.files[0]; // Assignez le fichier sélectionné à img
-//       console.log(this.img);
-//     }
-//   }
-  
-//   addformation(f: any): void {
-//     const formData = new FormData();
-//     formData.append('titre', f.value.titre);
-//     formData.append('description', f.value.description);
-//     // formData.append('pointsf', f.value.pointsf);
-//     formData.append('modeformation', f.value.modeformation);
-//     formData.append('besoin', f.value.besoin);
-//     formData.append('domaine', f.value.domaine);
-  
-//     // Vérifie si un fichier a été sélectionné pour le champ 'img'
-//     if (this.img) {
-//       formData.append('img', this.img); // Utilise l'image sélectionnée
-//     } else {
-//       // Si aucune image personnalisée n'a été sélectionnée, utilisez l'image par défaut
-//       // Chargez l'image par défaut correctement
-//       // Assurez-vous que 'assets/image/formation.png' est accessible depuis l'application Angular
-//       const defaultImageFile = new File(['assets/image/formation.png'], 'formation.png', { type: 'image/png' });
-//       formData.append('img', defaultImageFile); // Ajoute l'image par défaut au formulaire
-//     }
-  
-//     if (this.getId()) { // Vérification si l'identifiant est valide
-//       this.ds.addformationparid(formData, this.getId()).subscribe(
-//         (réponse) => {
-//           console.log(réponse);
-//           this.messageSucces = "La formation a été ajoutée avec succès !"; // Message de succès
-
-//           this.route.navigate(['/formateur/formation']); // Redirection après l'ajout de la formation
-//         },
-//         (erreur: HttpErrorResponse) => {
-//           console.error(erreur);
-//           // Affichage d'un message d'erreur en cas d'échec de l'ajout de la formation
-//           console.error("Erreur lors de l'ajout de la formation : " + erreur.message);
-//         }
-//       );
-//     } else {
-//       console.error("Identifiant invalide");
-//       // Affichage d'un message d'erreur si l'identifiant n'est pas valide
-//       console.error("Identifiant invalide");
-//     }
-//   }
-  
-
-
-// }
-
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
@@ -97,97 +9,92 @@ import { DataService } from 'src/app/views/services/data.service';
   templateUrl: './addformation.component.html',
   styleUrls: ['./addformation.component.scss']
 })
-export class AddformationComponent implements OnInit {
-  profile: any;
-  id: any;
-  img: any;
-  imagepath: any = 'http://localhost:3000/';
-  messageSucces: string = ''; // Variable pour stocker le message de succès
-  currentCategory: string = ''; // Ajout de cette variable pour le menu déroulant
 
-  helper = new JwtHelperService();
+export class AddformationComponent implements OnInit {
+  profile: any; // Variable to hold the profile data
+  id: any; // Variable to store the ID of the moderator
+  img: any; // Variable to store the selected image file
+  imagepath: any = 'http://localhost:3000/'; // Base URL for image paths
+  messageSucces: string = ''; // Variable to store success messages
+  currentCategory: string = ''; // Variable for handling dropdown menu state
+
+  helper = new JwtHelperService(); // Helper for decoding JWT tokens
+
   constructor(private ds: DataService, private route: Router) {}
 
   ngOnInit(): void {
-    const id = this.getId(); // Appel de la méthode pour obtenir l'identifiant du modérateur
+    const id = this.getId(); // Call method to get the moderator's ID
     this.ds.getoneformateur(id).subscribe(data => {
-      this.profile = data;
-      console.log(this.profile);
+      this.profile = data; // Assign the profile data received from the API
+      console.log(this.profile); // Log profile data for debugging
     });
   }
 
+  // Method to get the ID from the JWT token stored in local storage
   getId(): number {
     let token: any = localStorage.getItem('token');
     let decodedtoken: any = this.helper.decodeToken(token);
-    return decodedtoken.id;
+    return decodedtoken.id; // Return the ID from the decoded token
   }
 
+  // Method to handle file selection
   onFileSelected(event: any) {
     if (event.target.files.length > 0) {
-      this.img = event.target.files[0]; // Assignez le fichier sélectionné à img
-      console.log(this.img);
+      this.img = event.target.files[0]; // Assign the selected file to img
+      console.log(this.img); // Log the selected file for debugging
     }
   }
 
+  // Method to add a new formation
   addformation(f: any): void {
     const formData = new FormData();
-    formData.append('titre', f.value.titre);
-    formData.append('description', f.value.description);
-    formData.append('modeformation', f.value.modeformation);
-    formData.append('besoin', f.value.besoin);
-    formData.append('domaine', f.value.domaine);
+    formData.append('titre', f.value.titre); // Add title to FormData
+    formData.append('description', f.value.description); // Add description to FormData
+    formData.append('modeformation', f.value.modeformation); // Add training mode to FormData
+    formData.append('besoin', f.value.besoin); // Add needs to FormData
+    formData.append('domaine', f.value.domaine); // Add domain to FormData
 
     if (this.img) {
-      formData.append('img', this.img); // Utilise l'image sélectionnée
+      formData.append('img', this.img); // Append the selected image if available
     } else {
+      // Create a default image file if no image is selected
       const defaultImageFile = new File(['assets/image/formation.png'], 'formation.png', { type: 'image/png' });
-      formData.append('img', defaultImageFile); // Ajoute l'image par défaut au formulaire
+      formData.append('img', defaultImageFile); // Append default image to FormData
     }
 
     if (this.getId()) {
       this.ds.addformationparid(formData, this.getId()).subscribe(
-        (réponse) => {
-          console.log(réponse);
-          this.messageSucces = "La formation a été ajoutée avec succès !"; // Message de succès
-          this.route.navigate(['/formateur/formation']); // Redirection après l'ajout de la formation
+        (response) => {
+          console.log(response); // Log response for debugging
+          this.messageSucces = "La formation a été ajoutée avec succès !"; // Success message
+          this.route.navigate(['/formateur/formation']); // Redirect after successful addition
         },
-        (erreur: HttpErrorResponse) => {
-          console.error(erreur);
-          console.error("Erreur lors de l'ajout de la formation : " + erreur.message);
+        (error: HttpErrorResponse) => {
+          console.error(error); // Log error for debugging
+          console.error("Erreur lors de l'ajout de la formation : " + error.message); // Error message
         }
       );
     } else {
-      console.error("Identifiant invalide");
+      console.error("Identifiant invalide"); // Log error if ID is invalid
     }
   }
 
-  // Méthode pour manipuler le DOM et gérer les menus déroulants
+  // Method to toggle dropdown menu visibility
   toggleDropdown(event: Event, category: string): void {
-    event.stopPropagation();
+    event.stopPropagation(); // Prevent event propagation
 
-    // Remove show class from current category
+    // Remove 'show' class from the current category
     const currentElement = document.querySelector(`.dropdown-submenu[aria-label="${this.currentCategory}"] > ul`);
     if (currentElement) {
       currentElement.classList.remove('show');
     }
 
-    // Add show class to clicked category
+    // Add 'show' class to the clicked category
     const clickedElement = document.querySelector(`.dropdown-submenu[aria-label="${category}"] > ul`);
     if (clickedElement) {
       clickedElement.classList.add('show');
     }
 
-    this.currentCategory = category;
+    this.currentCategory = category; // Update current category
   }
 }
-
-
-
-
-
-
-
-
-
-
-
