@@ -14,5 +14,6 @@
 - **Backend**: Node.js with Express
 - **Database**: MySQL with Sequelize ORM
 
-### still working on this project
+## Note
 
+This project serves as a code notebook to educate authors in different ways. It contains various issues, and for a perfectly working version of the project, please contact me directly.
