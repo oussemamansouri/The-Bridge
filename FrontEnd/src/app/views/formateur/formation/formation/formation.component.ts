@@ -10,11 +10,12 @@ import { DataService } from 'src/app/views/services/data.service';
   styleUrls: ['./formation.component.scss']
 })
 export class FormationComponent implements OnInit {
+  // Define variables to hold various data and messages
   profile: any;
   img: any;
-  imagepath: any = 'http://localhost:3000/';
+  imagepath: string = 'http://localhost:3000/'; // Base URL for images
   detailsf: any;
-  dataArray: any;
+  dataArray: any[] = []; // Initialize as an empty array
   dataformation = {
     titre: '',
     description: '',
@@ -25,98 +26,89 @@ export class FormationComponent implements OnInit {
     id: '',
     FormateurId: ''
   };
-  
-  id: any;
 
-  messagesuccess = '';
-  deleteMessage: string = '';
-  helper = new JwtHelperService();
-  
+  id: number; // Formateur ID
+
+  messagesuccess: string = ''; // Success message for updates
+  deleteMessage: string = ''; // Message for successful deletion
+  helper = new JwtHelperService(); // JWT helper to decode tokens
+
+  // Dependency injection for DataService and Router
   constructor(private ds: DataService, private route: Router) {}
 
   ngOnInit(): void {
-    const id = this.getId(); // Récupérer l'ID du formateur à partir du token
-    this.ds.getAllFormationByFormateur(id).subscribe(data => {
-      this.dataArray = data;
-      console.log(this.dataArray);
-    });
-  }
-
-
-
-  getId(): number {
-    let token: any = localStorage.getItem('token');
-    let decodedtoken: any = this.helper.decodeToken(token);
-    return decodedtoken.id;
-  }
-
-
-
-  delete(id: any, i: number) {
-    this.ds.deleteformation(id).subscribe(response => {
-      console.log(response);
-      this.dataArray.splice(i, 1);
-      // Assigner le message de suppression réussie à la variable
-      this.deleteMessage = "La formation a été supprimée avec succès.";
-    });
-  }
-
-
-  getdata(titre:string,description:string,pointsf:number,modeformation:string,besoin:string,domaine:string,id:any,FormateurId:any){
-    this.messagesuccess=''
-    this.dataformation.titre=titre
-    this.dataformation.description=description
-    this.dataformation.pointsf=pointsf
-    this.dataformation.modeformation=modeformation
-    this.dataformation.besoin=besoin
-    this.dataformation.domaine=domaine
-    this.dataformation.id=id
-    this.dataformation.FormateurId=FormateurId
-   console.log(this.dataformation)
-  }
-
-  updatenewformation(f: any) {
-    let data = f.value;
-    this.ds.updateformation(this.dataformation.id, data).subscribe(
-      (response) => {
-        console.log(response);
-        let indexId = this.dataArray.findIndex((obj: any) => obj.id == this.dataformation.id);
-
-        this.dataArray[indexId].titre = data.titre;
-        this.dataArray[indexId].description = data.description;
-        this.dataArray[indexId].pointsf = data.pointsf;
-        this.dataArray[indexId].modeformation = data.modeformation;
-        this.dataArray[indexId].besoin = data.besoin;
-        this.dataArray[indexId].domaine = data.domaine;
-
-        this.messagesuccess = `Les informations du Formation ${this.dataArray[indexId].titre} ont été mises à jour avec succès.`;
+    // Retrieve the formateur ID from the token and fetch their formations
+    this.id = this.getId(); // Get formateur ID
+    this.ds.getAllFormationByFormateur(this.id).subscribe(
+      data => {
+        this.dataArray = data; // Assign the data to dataArray
+        console.log(this.dataArray);
       },
       (err: HttpErrorResponse) => {
-        console.log(err.message);
+        console.error('Error fetching formations:', err.message); // Log error if request fails
       }
     );
   }
 
-
-
-  details(id:any){
-    this.route.navigate(['formateur/detailsformation/'+id])
+  // Method to retrieve formateur ID from JWT token
+  getId(): number {
+    const token: any = localStorage.getItem('token');
+    const decodedtoken: any = this.helper.decodeToken(token); // Decode token
+    return decodedtoken.id; // Return the ID
   }
 
+  // Method to delete a formation by ID
+  delete(id: string, index: number): void {
+    this.ds.deleteformation(id).subscribe(
+      response => {
+        console.log(response);
+        this.dataArray.splice(index, 1); // Remove the formation from dataArray
+        this.deleteMessage = "La formation a été supprimée avec succès."; // Success message
+      },
+      (err: HttpErrorResponse) => {
+        console.error('Error deleting formation:', err.message); // Log error if request fails
+      }
+    );
+  }
 
+  // Method to set data for a specific formation
+  getdata(titre: string, description: string, pointsf: number, modeformation: string, besoin: string, domaine: string, id: string, FormateurId: string): void {
+    this.messagesuccess = ''; // Clear previous success message
+    this.dataformation = {
+      titre,
+      description,
+      pointsf,
+      modeformation,
+      besoin,
+      domaine,
+      id,
+      FormateurId
+    };
+    console.log(this.dataformation); // Log the data for debugging
+  }
 
+  // Method to update a formation with new data
+  updatenewformation(f: any): void {
+    const data = f.value; // Extract data from the form
+    this.ds.updateformation(this.dataformation.id, data).subscribe(
+      (response) => {
+        console.log(response);
+        // Find index of the updated formation in dataArray
+        const indexId = this.dataArray.findIndex(obj => obj.id === this.dataformation.id);
+        if (indexId !== -1) {
+          // Update the formation details in dataArray
+          this.dataArray[indexId] = { ...this.dataArray[indexId], ...data };
+          this.messagesuccess = `Les informations de la formation ${this.dataArray[indexId].titre} ont été mises à jour avec succès.`; // Success message
+        }
+      },
+      (err: HttpErrorResponse) => {
+        console.error('Error updating formation:', err.message); // Log error if request fails
+      }
+    );
+  }
+
+  // Method to navigate to the details page of a specific formation
+  details(id: string): void {
+    this.route.navigate(['formateur/detailsformation/' + id]); // Navigate to details page
+  }
 }
-
-
-
-
-
-
-
-// constructor(private ds:DataService,private route:Router) {
-//   // // Récupérer l'ID du formateur à partir de la session ou de tout autre endroit approprié
-//   // const FormateurId = 'id'; // Remplacez 'ID_DU_FORMATEUR' par l'ID réel du formateur
-//   // this.ds.getAllFormationByFormateur(FormateurId).subscribe(data=>{
-//   //   this.dataArray=data;
-//   // });
-// }
