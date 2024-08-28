@@ -2,364 +2,153 @@
   <div class="form-group">
     <label for="titre">Titre de Pack :</label>
     <div class="position-relative">
-        <input type="text" class="form-control border-input" id="titre" placeholder="Entrez le titre du pack" name="titre" #titre="ngModel" ngModel required maxlength="10"
-               [ngClass]="{
+      <input type="text" class="form-control border-input" id="titre" placeholder="Entrez le titre du pack" name="titre"
+        #titre="ngModel" ngModel required maxlength="10" [ngClass]="{
                  'border-danger': titre.invalid && (titre.dirty || titre.touched),
                  'border-success': titre.valid && (titre.dirty || titre.touched)
                }">
-        <span class="validation-icon">
-            <i class="fas fa-times-circle fa-lg text-danger" *ngIf="titre.invalid && (titre.dirty || titre.touched)"></i>
-            <i class="fas fa-check-circle fa-lg text-success" *ngIf="titre.valid && (titre.dirty || titre.touched)"></i>
-        </span>
+      <span class="validation-icon">
+        <i class="fas fa-times-circle fa-lg text-danger" *ngIf="titre.invalid && (titre.dirty || titre.touched)"></i>
+        <i class="fas fa-check-circle fa-lg text-success" *ngIf="titre.valid && (titre.dirty || titre.touched)"></i>
+      </span>
     </div>
     <div *ngIf="titre.errors && (titre.dirty || titre.touched)">
-        <div *ngIf="titre.errors?.['required']" class="text-danger">Le titre du pack est requis.</div>
-        <div *ngIf="titre.errors?.['maxlength']" class="text-danger">Le titre ne doit pas dépasser 10 caractères.</div>
-        <!-- Autres validations personnalisées ici -->
+      <div *ngIf="titre.errors?.['required']" class="text-danger">Le titre du pack est requis.</div>
+      <div *ngIf="titre.errors?.['maxlength']" class="text-danger">Le titre ne doit pas dépasser 10 caractères.</div>
+      <!-- Autres validations personnalisées ici -->
     </div>
-</div>
+  </div>
 
-
-
-  
-<div class="form-group">
-  <label for="description">Description :</label>
-  <div class="position-relative">
-      <input type="text" class="form-control border-input" id="description" placeholder="Entrez la description du pack" name="description" #description="ngModel" ngModel required
-             [ngClass]="{
+  <div class="form-group">
+    <label for="description">Description :</label>
+    <div class="position-relative">
+      <input type="text" class="form-control border-input" id="description" placeholder="Entrez la description du pack"
+        name="description" #description="ngModel" ngModel required [ngClass]="{
                'border-danger': description.invalid && (description.dirty || description.touched),
                'border-success': description.valid && (description.dirty || description.touched)
              }">
       <span class="validation-icon">
-          <i class="fas fa-times-circle fa-lg text-danger" *ngIf="description.invalid && (description.dirty || description.touched)"></i>
-          <i class="fas fa-check-circle fa-lg text-success" *ngIf="description.valid && (description.dirty || description.touched)"></i>
+        <i class="fas fa-times-circle fa-lg text-danger"
+          *ngIf="description.invalid && (description.dirty || description.touched)"></i>
+        <i class="fas fa-check-circle fa-lg text-success"
+          *ngIf="description.valid && (description.dirty || description.touched)"></i>
       </span>
-  </div>
-  <div *ngIf="description.errors && (description.dirty || description.touched)">
+    </div>
+    <div *ngIf="description.errors && (description.dirty || description.touched)">
       <div *ngIf="description.errors?.['required']" class="text-danger">La description du pack est requise.</div>
       <!-- Autres validations personnalisées ici -->
+    </div>
   </div>
-</div>
 
 
-<div class="form-group">
-  <label for="description1">Description 1 :</label>
-  <div class="position-relative">
-      <input type="text" class="form-control border-input" id="description1" placeholder="Entrez la première description" name="description1" #description1="ngModel" ngModel required
-             [ngClass]="{
+  <div class="form-group">
+    <label for="description1">Description 1 :</label>
+    <div class="position-relative">
+      <input type="text" class="form-control border-input" id="description1"
+        placeholder="Entrez la première description" name="description1" #description1="ngModel" ngModel required
+        [ngClass]="{
                'border-danger': description1.invalid && (description1.dirty || description1.touched),
                'border-success': description1.valid && (description1.dirty || description1.touched)
              }">
       <span class="validation-icon">
-          <i class="fas fa-times-circle fa-lg text-danger" *ngIf="description1.invalid && (description1.dirty || description1.touched)"></i>
-          <i class="fas fa-check-circle fa-lg text-success" *ngIf="description1.valid && (description1.dirty || description1.touched)"></i>
+        <i class="fas fa-times-circle fa-lg text-danger"
+          *ngIf="description1.invalid && (description1.dirty || description1.touched)"></i>
+        <i class="fas fa-check-circle fa-lg text-success"
+          *ngIf="description1.valid && (description1.dirty || description1.touched)"></i>
       </span>
-  </div>
-  <div *ngIf="description1.errors && (description1.dirty || description1.touched)">
+    </div>
+    <div *ngIf="description1.errors && (description1.dirty || description1.touched)">
       <div *ngIf="description1.errors?.['required']" class="text-danger">La première description est requise.</div>
       <!-- Autres validations personnalisées ici -->
+    </div>
   </div>
-</div>
 
 
-<div class="form-group">
-  <label for="description2">Description 2 :</label>
-  <div class="position-relative">
-      <input type="text" class="form-control border-input" id="description2" placeholder="Entrez la deuxième description" name="description2" #description2="ngModel" ngModel required
-             [ngClass]="{
+  <div class="form-group">
+    <label for="description2">Description 2 :</label>
+    <div class="position-relative">
+      <input type="text" class="form-control border-input" id="description2"
+        placeholder="Entrez la deuxième description" name="description2" #description2="ngModel" ngModel required
+        [ngClass]="{
                'border-danger': description2.invalid && (description2.dirty || description2.touched),
                'border-success': description2.valid && (description2.dirty || description2.touched)
              }">
       <span class="validation-icon">
-          <i class="fas fa-times-circle fa-lg text-danger" *ngIf="description2.invalid && (description2.dirty || description2.touched)"></i>
-          <i class="fas fa-check-circle fa-lg text-success" *ngIf="description2.valid && (description2.dirty || description2.touched)"></i>
+        <i class="fas fa-times-circle fa-lg text-danger"
+          *ngIf="description2.invalid && (description2.dirty || description2.touched)"></i>
+        <i class="fas fa-check-circle fa-lg text-success"
+          *ngIf="description2.valid && (description2.dirty || description2.touched)"></i>
       </span>
-  </div>
-  <div *ngIf="description2.errors && (description2.dirty || description2.touched)">
+    </div>
+    <div *ngIf="description2.errors && (description2.dirty || description2.touched)">
       <div *ngIf="description2.errors?.['required']" class="text-danger">La deuxième description est requise.</div>
       <!-- Autres validations personnalisées ici -->
+    </div>
   </div>
-</div>
 
 
-<div class="form-group">
-  <label for="description3">Description 3 :</label>
-  <div class="position-relative">
-      <input type="text" class="form-control border-input" id="description3" placeholder="Entrez la troisième description" name="description3" #description3="ngModel" ngModel required
-             [ngClass]="{
+  <div class="form-group">
+    <label for="description3">Description 3 :</label>
+    <div class="position-relative">
+      <input type="text" class="form-control border-input" id="description3"
+        placeholder="Entrez la troisième description" name="description3" #description3="ngModel" ngModel required
+        [ngClass]="{
                'border-danger': description3.invalid && (description3.dirty || description3.touched),
                'border-success': description3.valid && (description3.dirty || description3.touched)
              }">
       <span class="validation-icon">
-          <i class="fas fa-times-circle fa-lg text-danger" *ngIf="description3.invalid && (description3.dirty || description3.touched)"></i>
-          <i class="fas fa-check-circle fa-lg text-success" *ngIf="description3.valid && (description3.dirty || description3.touched)"></i>
+        <i class="fas fa-times-circle fa-lg text-danger"
+          *ngIf="description3.invalid && (description3.dirty || description3.touched)"></i>
+        <i class="fas fa-check-circle fa-lg text-success"
+          *ngIf="description3.valid && (description3.dirty || description3.touched)"></i>
       </span>
-  </div>
-  <div *ngIf="description3.errors && (description3.dirty || description3.touched)">
+    </div>
+    <div *ngIf="description3.errors && (description3.dirty || description3.touched)">
       <div *ngIf="description3.errors?.['required']" class="text-danger">La troisième description est requise.</div>
       <!-- Autres validations personnalisées ici -->
+    </div>
   </div>
-</div>
 
 
-<div class="form-group">
-  <label for="prix">Prix :</label>
-  <div class="position-relative">
-      <input type="number" class="form-control border-input" id="prix" placeholder="Entrez le prix" name="prix" #prix="ngModel" ngModel required
-             [ngClass]="{
+  <div class="form-group">
+    <label for="prix">Prix :</label>
+    <div class="position-relative">
+      <input type="number" class="form-control border-input" id="prix" placeholder="Entrez le prix" name="prix"
+        #prix="ngModel" ngModel required [ngClass]="{
                'border-danger': prix.invalid && (prix.dirty || prix.touched),
                'border-success': prix.valid && (prix.dirty || prix.touched)
              }">
       <span class="validation-icon">
-          <i class="fas fa-times-circle fa-lg text-danger" *ngIf="prix.invalid && (prix.dirty || prix.touched)"></i>
-          <i class="fas fa-check-circle fa-lg text-success" *ngIf="prix.valid && (prix.dirty || prix.touched)"></i>
+        <i class="fas fa-times-circle fa-lg text-danger" *ngIf="prix.invalid && (prix.dirty || prix.touched)"></i>
+        <i class="fas fa-check-circle fa-lg text-success" *ngIf="prix.valid && (prix.dirty || prix.touched)"></i>
       </span>
-  </div>
-  <div *ngIf="prix.errors && (prix.dirty || prix.touched)">
+    </div>
+    <div *ngIf="prix.errors && (prix.dirty || prix.touched)">
       <div *ngIf="prix.errors?.['required']" class="text-danger">Le prix est requis.</div>
       <!-- Autres validations personnalisées ici -->
+    </div>
   </div>
-</div>
 
 
-<div class="form-group">
-  <label for="points">Points :</label>
-  <div class="position-relative">
-      <input type="number" class="form-control border-input" id="points" placeholder="Entrez les points" name="points" #points="ngModel" ngModel required
-             [ngClass]="{
+  <div class="form-group">
+    <label for="points">Points :</label>
+    <div class="position-relative">
+      <input type="number" class="form-control border-input" id="points" placeholder="Entrez les points" name="points"
+        #points="ngModel" ngModel required [ngClass]="{
                'border-danger': points.invalid && (points.dirty || points.touched),
                'border-success': points.valid && (points.dirty || points.touched)
              }">
       <span class="validation-icon">
-          <i class="fas fa-times-circle fa-lg text-danger" *ngIf="points.invalid && (points.dirty || points.touched)"></i>
-          <i class="fas fa-check-circle fa-lg text-success" *ngIf="points.valid && (points.dirty || points.touched)"></i>
+        <i class="fas fa-times-circle fa-lg text-danger" *ngIf="points.invalid && (points.dirty || points.touched)"></i>
+        <i class="fas fa-check-circle fa-lg text-success" *ngIf="points.valid && (points.dirty || points.touched)"></i>
       </span>
-  </div>
-  <div *ngIf="points.errors && (points.dirty || points.touched)">
+    </div>
+    <div *ngIf="points.errors && (points.dirty || points.touched)">
       <div *ngIf="points.errors?.['required']" class="text-danger">Les points sont requis.</div>
       <!-- Autres validations personnalisées ici -->
+    </div>
   </div>
-</div>
-
 
   <button type="submit" class="btn btn-primary" [disabled]="f.invalid">Ajouter Pack</button>
 
 </form>
-
-<!-- <section id="pricing" class="pricing section-bg">
-  <div class="container">
-
-
-    <div class="row">
-
-      <div class="col-lg-3 col-md-6">
-        <div class="box" data-aos="zoom-in">
-          <h3>Starter</h3>
-          <h4><sup>DT</sup>50<span> / 30 points</span></h4>
-          <ul>
-            <li>Espace de stockage limité</li>
-            <li>Support par e-mail</li>
-            <li>Fonctionnalités de base</li>
-            <li class="na">Personnalisation avancée</li>
-            <li class="na">Assistance téléphonique</li>
-          </ul>
-          <div class="btn-wrap">
-            <a href="#" class="btn-buy">Acheter maintenant</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-        <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
-          <h3>Standard</h3>
-          <h4><sup>DT</sup>150<span> / 120 points</span></h4>
-          <ul>
-            <li>Espace de stockage généreux</li>
-            <li>Support par e-mail et téléphone</li>
-            <li>Fonctionnalités avancées</li>
-            <li>Personnalisation de base</li>
-            <li>Assistance dédiée</li>
-          </ul>
-          <div class="btn-wrap">
-            <a href="#" class="btn-buy">Acheter maintenant</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-        <div class="box" data-aos="zoom-in" data-aos-delay="200">
-          <h3>Premium</h3>
-          <h4><sup>DT</sup>300<span> / 270 points</span></h4>
-          <ul>
-            <li>Espace de stockage illimité</li>
-            <li>Support 24/7 par e-mail, téléphone et chat</li>
-            <li>Fonctionnalités premium</li>
-            <li>Personnalisation avancée</li>
-            <li>Assistance VIP</li>
-          </ul>
-          <div class="btn-wrap">
-            <a href="#" class="btn-buy">Acheter maintenant</a>
-          </div>
-        </div>
-      </div>
-    
-      <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-        <div class="box" data-aos="zoom-in" data-aos-delay="300">
-          <span class="advanced">Avancé</span>
-          <h3>Entreprise</h3>
-          <h4><sup>DT</sup>500<span> / 480 points</span></h4>
-          <ul>
-            <li>Personnalisation complète</li>
-            <li>Intégration avec d'autres outils</li>
-            <li>Sécurité renforcée</li>
-            <li>Assistance dédiée</li>
-            <li>Formation personnalisée</li>
-          </ul>
-          <div class="btn-wrap">
-            <a href="#" class="btn-buy">Acheter maintenant</a>
-          </div>
-        </div>
-      </div>
-    
-    </div>
-    
-
-  </div>
-</section>Fin de la section Tarification -->
-<!-- ======= Section Tarification =======
-<section id="pricing" class="pricing section-bg">
-    <div class="container">
-  
-      <div class="section-title" data-aos="fade-up">
-        <p>Gestion des Pack</p>
-      </div>
-  
-      <div class="row">
-  
-     
-        <div class="col-lg-3 col-md-6">
-          <div class="box" data-aos="zoom-in">
-            <h3>Basique</h3>
-            <h4><sup>DT</sup>0<span> / mois</span></h4>
-            <ul>
-              <li>Espace de stockage limité</li>
-              <li>Support par e-mail</li>
-              <li>Fonctionnalités de base</li>
-              <li class="na">Personnalisation avancée</li>
-              <li class="na">Assistance téléphonique</li>
-            </ul>
-            <div class="btn-wrap">
-              <a href="#" class="btn-buy">Acheter maintenant</a>
-            </div>
-          </div>
-        </div>
-        
-        
-  
-        <div class="col-lg-3 col-md-6 mt-4 mt-md-0">
-          <div class="box featured" data-aos="zoom-in" data-aos-delay="100">
-            <h3>Standard</h3>
-            <h4><sup>DT</sup>100<span> / mois</span></h4>
-            <ul>
-              <li>Espace de stockage généreux</li>
-              <li>Support par e-mail et téléphone</li>
-              <li>Fonctionnalités avancées</li>
-              <li>Personnalisation de base</li>
-              <li>Assistance dédiée</li>
-            </ul>
-            <div class="btn-wrap">
-              <a href="#" class="btn-buy">Acheter maintenant</a>
-               Ajout d'icônes pour les opérations CRUD 
-              <span class="crud-icons">
-               Image d'ajout 
-                <a href="#"><img src="assets/ajouter.png" alt="Ajouter"></a>
-              Image de lecture 
-                <a href="#"><img src="assets/voir.avif" alt="Lire"></a>
-                Image de mise à jour 
-                <a href="#"><img src="assets/modifier.png" alt="Modifier"></a>
-              Image de suppression 
-                <a href="#"><img src="assets/supprimer.avif" alt="Supprimer"></a>
-              </span>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-          <div class="box" data-aos="zoom-in" data-aos-delay="200">
-            <h3>Premium</h3>
-            <h4><sup>DT</sup>300<span> / mois</span></h4>
-            <ul>
-              <li>Espace de stockage illimité</li>
-              <li>Support 24/7 par e-mail, téléphone et chat</li>
-              <li>Fonctionnalités premium</li>
-              <li>Personnalisation avancée</li>
-              <li>Assistance VIP</li>
-            </ul>
-            <div class="btn-wrap">
-              <a href="#" class="btn-buy">Acheter maintenant</a>
-              <!-- Ajout d'icônes pour les opérations CRUD --
-              <span class="crud-icons">
-                <!-- Image d'ajout 
-                <a href="#"><img src="assets/ajouter.png" alt="Ajouter"></a>
-                <!-- Image de lecture 
-                <a href="#"><img src="assets/voir.avif" alt="Lire"></a>
-                <!-- Image de mise à jour 
-                <a href="#"><img src="assets/modifier.png" alt="Modifier"></a>
-                <!-- Image de suppression --
-                <a href="#"><img src="assets/supprimer.avif" alt="Supprimer"></a>
-              </span>
-            </div>
-          </div>
-        </div>
-  
-        <div class="col-lg-3 col-md-6 mt-4 mt-lg-0">
-          <div class="box" data-aos="zoom-in" data-aos-delay="300">
-            <span class="advanced">Avancé</span>
-            <h3>Entreprise</h3>
-            <h4><sup>DT</sup>500<span> / mois</span></h4>
-            <ul>
-              <li>Personnalisation complète</li>
-              <li>Intégration avec d'autres outils</li>
-              <li>Sécurité renforcée</li>
-              <li>Assistance dédiée</li>
-              <li>Formation personnalisée</li>
-            </ul>
-            <div class="btn-wrap">
-              <a href="#" class="btn-buy">Acheter maintenant</a>
-               Ajout d'icônes pour les opérations CRUD
-              <span class="crud-icons">
-                <!-- Image d'ajout --
-                <a href="#"><img src="assets/ajouter.png" alt="Ajouter"></a>
-                <!-- Image de lecture --
-                <a href="#"><img src="assets/voir.avif" alt="Lire"></a>
-                <!-- Image de mise à jour --
-                <a href="#"><img src="assets/modifier.png" alt="Modifier"></a>
-                <!-- Image de suppression --
-                <a href="#"><img src="assets/supprimer.avif" alt="Supprimer"></a>
-              </span>
-            </div>
-          </div>
-        </div>
-  
-      </div>
-  
-    </div>
-  </section>Fin de la section Tarification 
-
-
-     <style>
-          .crud-icons img {
-            width: 30px; /* Taille de l'image */
-            height: 30px;
-            margin-right: 10px; /* Marge entre les images */
-            border-radius: 50%; /* Bord arrondi */
-            border: 2px solid #ddd; /* Bordure */
-            transition: transform 0.3s ease; /* Animation de transformation */
-          }
-        
-          .crud-icons img:hover {
-            transform: scale(1.2); /* Zoom au survol */
-          }
-        </style>
-         -->
-  
