@@ -1,39 +1,45 @@
 const express = require('express');
-const router = express.Router(); // Créer un routeur express
+const router = express.Router();
 const nodemailer = require('nodemailer');
+require('dotenv').config(); // Load environment variables from .env file
 
 // Configuration Nodemailer
 const transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'admin@gmail.com',
-    pass: 'aaaaaaaaaaaaaaa123644',
+    user: process.env.EMAIL_USER, // Use environment variable for email
+    pass: process.env.EMAIL_PASS, // Use environment variable for password
   }
 });
 
-// Route pour envoyer l'e-mail
+// Route to send an email
 router.post('/send-email', (req, res) => {
   const { name, email, subject, message } = req.body;
 
-  console.log("Nom :", name);
-  console.log("Email :", email);
-  console.log("Sujet :", subject);
-  console.log("Message :", message);
+  // Basic validation
+  if (!name || !email || !subject || !message) {
+    return res.status(400).send('All fields are required');
+  }
+
+  console.log("Name:", name);
+  console.log("Email:", email);
+  console.log("Subject:", subject);
+  console.log("Message:", message);
 
   const mailOptions = {
     from: email,
-    to: 'admin@gmail.com',
+    to: process.env.EMAIL_USER,
     subject: subject,
-    text: `Nom: ${name}\nEmail: ${email}\n\nMessage: ${message}`
+    text: `Name: ${name}\nEmail: ${email}\n\nMessage: ${message}`
   };
 
   transporter.sendMail(mailOptions, (error, info) => {
     if (error) {
-      console.log(error);
-      res.status(500).send('Erreur lors de l\'envoi de l\'e-mail');
+      console.error('Error sending email:', error);
+      res.status(500).send('Error sending email');
     } else {
-      console.log('E-mail envoyé: ' + info.response);
-      res.status(200).send('E-mail envoyé avec succès');
+      console.log('Email sent:', info.response);
+      res.status(200).send('Email sent successfully');
     }
   });
 });
