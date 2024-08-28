@@ -1,12 +1,10 @@
-const Joi = require('joi')
-const db=require('../models')
-const bcrypt=require('bcrypt')
-// const jwt=require('jsonwebtoken')
-const multer=require('multer')
-const path=require('path')
-// require('dotenv').config()
+const Joi = require('joi');
+const db = require('../models');
+const bcrypt = require('bcrypt');
+const multer = require('multer');
+const path = require('path');
 
-
+// Validation schema for registration and profile update
 const SchemaValidation = Joi.object({
   firstname: Joi.string().alphanum().min(2).max(15).required(),
   lastname: Joi.string().alphanum().min(2).max(15).required(),
@@ -24,12 +22,10 @@ const SchemaValidation = Joi.object({
   experience: Joi.string().allow(''),
 });
 
-
-
-///////// register formateur ///////////
-
-const register = async (firstname, lastname, email, password, imgPath, tel,dob,address ,cvPath, portfolio, statu, linkedin, niveau, experience) => {
+// Register a new formateur
+const register = async (firstname, lastname, email, password, imgPath, tel, dob, address, cvPath, portfolio, statu, linkedin, niveau, experience) => {
   try {
+    // Validate input data
     const validation = SchemaValidation.validate({
       firstname,
       lastname,
@@ -49,12 +45,18 @@ const register = async (firstname, lastname, email, password, imgPath, tel,dob,a
     if (validation.error) {
       throw new Error(validation.error.details[0].message);
     }
+
+    // Check if email already exists
     const count = await db.Formateur.count({ where: { email } });
     if (count !== 0) {
       throw new Error('Ce email est déjà utilisé');
     }
+
+    // Hash the password
     const salt = await bcrypt.genSalt(10);
     const hashedPassword = await bcrypt.hash(password, salt);
+
+    // Create a new formateur
     const response = await db.Formateur.create({
       firstname,
       lastname,
@@ -79,18 +81,20 @@ const register = async (firstname, lastname, email, password, imgPath, tel,dob,a
   }
 };
 
-/////////// buy points //////////
-
+// Buy points for a formateur
 const buyPoints = async (user_id, nbPoints) => {
   try {
-    let existePoints = 0;
+    // Check if formateur exists
     const count = await db.Formateur.count({ where: { id: user_id } });
     if (count === 0) {
       throw new Error("Ce formateur n'existe pas");
-    } else {
-      const user = await db.Formateur.findOne({ where: { id: user_id } });
-      existePoints = user.points;
     }
+
+    // Get current points
+    const user = await db.Formateur.findOne({ where: { id: user_id } });
+    const existePoints = user.points;
+
+    // Update points
     const updatedUser = await db.Formateur.update(
       { points: existePoints + nbPoints },
       { where: { id: user_id } }
@@ -101,184 +105,140 @@ const buyPoints = async (user_id, nbPoints) => {
   }
 };
 
-
-
-
-
-
-// const PrivatKey=process.env.PRIVATKEY
-// const login=(email,password)=>{
-// return new Promise((resolve, reject) => {
-    
-// db.Client.findOne({where:{email:email}}).then(user=>{
-// if(!user){
-//     reject("invalid email or password !")
-// }else{
-// bcrypt.compare(password,user.password).then(same=>{
-// if(same){
-// let token=jwt.sign({id:user.id,firstname:user.firstname,lastname:user.lastname,role:"client"},PrivatKey,{expiresIn:"8h"})
-// resolve(token)
-// }else{
-
-//     reject("invalid email or password !")
-// }
-
-// })
-
-// }
-
-// })
-
-// })
-// }
-
-
-
-//////////// update profile ////////
-
-const SchemaValidation2=Joi.object({
-  firstname:Joi.string().alphanum().min(2).max(15).required(),
-  lastname:Joi.string().alphanum().min(2).max(15).required(),
+// Validation schema for updating profile
+const SchemaValidation2 = Joi.object({
+  firstname: Joi.string().alphanum().min(2).max(15).required(),
+  lastname: Joi.string().alphanum().min(2).max(15).required(),
   dob: Joi.date().less('now').required(),
   address: Joi.string().regex(/^[\u0600-\u06FFa-zA-Z\s',-]+$/).required(),
-  tel:Joi.number().integer().required(),
+  tel: Joi.number().integer().required(),
   portfolio: Joi.string().allow(''),
   statu: Joi.string().allow(''),
   linkedin: Joi.string().allow(''),
   niveau: Joi.string().allow(''),
   experience: Joi.string().allow('')
-})
+});
 
-const updateprofile = (firstname,lastname,dob,address,tel,portfolio,statu,linkedin,niveau,experience,id)=>{
-  return new Promise((resolve,reject)=>{
-      let validation=SchemaValidation2.validate({firstname,lastname,dob,address,tel,portfolio,statu,linkedin,niveau,experience})
-      if (validation.error){
-          reject(validation.error.details[0].message)
-      }else{
+// Update formateur profile
+const updateprofile = (firstname, lastname, dob, address, tel, portfolio, statu, linkedin, niveau, experience, id) => {
+  return new Promise((resolve, reject) => {
+    let validation = SchemaValidation2.validate({ firstname, lastname, dob, address, tel, portfolio, statu, linkedin, niveau, experience });
+    if (validation.error) {
+      reject(validation.error.details[0].message);
+    } else {
       db.Formateur.update({
-                          firstname:firstname,
-                          lastname:lastname,
-                          dob:dob,
-                          address:address,
-                          tel:tel,
-                          portfolio:portfolio,
-                          statu:statu,
-                          linkedin:linkedin,
-                          niveau:niveau,
-                          experience:experience,
-      },{where:{id:id}})
-      .then((response)=>resolve(response))
-      .catch((err)=>reject(err))
+        firstname,
+        lastname,
+        dob,
+        address,
+        tel,
+        portfolio,
+        statu,
+        linkedin,
+        niveau,
+        experience,
+      }, { where: { id: id } })
+        .then((response) => resolve(response))
+        .catch((err) => reject(err));
     }
-  })
-}
+  });
+};
 
-//////////// delete profile ////////
-
+// Delete a formateur profile
 const DeleteProfile = (req, res) => {
-    const id = req.params.id;
-  
-    db.Formateur.destroy({
-      where: { id: id }
+  const id = req.params.id;
+
+  db.Formateur.destroy({
+    where: { id: id }
+  })
+    .then(num => {
+      if (num == 1) {
+        res.send({ message: "Profile was deleted successfully!" });
+      } else {
+        res.send({ message: `Cannot delete profile with id=${id}. Maybe profile was not found!` });
+      }
     })
-      .then(num => {
-        if (num == 1) {
-          res.send({
-            message: "Profile was deleted successfully!"
-          });
-        } else {
-          res.send({
-            message: `Cannot delete profie with id=${id}. Maybe profile was not found!`
-          });
-        }
-      })
-      .catch(err => {
-        res.status(500).send({
-          message: "Could not delete profile with id=" + id
-        });
-      });
-  };
+    .catch(err => {
+      res.status(500).send({ message: "Could not delete profile with id=" + id });
+    });
+};
 
+// Validation schema for updating profile image
+const SchemaValidationimage = Joi.object({
+  img: Joi.string().required(),
+});
 
-//////////// update profile image ////////
-
-const SchemaValidationimage=Joi.object({
-  img:Joi.string().required(),
-})
-
-
-
+// Update profile image
 async function updateimage(img, id) {
- try {
-   const validationResult = SchemaValidationimage.validate({ img });
-   if (validationResult.error) {
-     const errorDetails = validationResult.error.details[0];
-     let errorMessage = '';
+  try {
+    const validationResult = SchemaValidationimage.validate({ img });
+    if (validationResult.error) {
+      const errorDetails = validationResult.error.details[0];
+      let errorMessage = '';
 
-     switch (errorDetails.context.key) {
-       case 'img':
-         errorMessage = 'Image URL is invalid';
-         break;
-       default:
-         errorMessage = errorDetails.message;
-     }
+      switch (errorDetails.context.key) {
+        case 'img':
+          errorMessage = 'Image URL is invalid';
+          break;
+        default:
+          errorMessage = errorDetails.message;
+      }
 
-     throw new Error(errorMessage);
-   }
-   
-   const response = await db.Formateur.update({
-     img: img
-   }, { where: { id: id } });
+      throw new Error(errorMessage);
+    }
 
-   return response;
- } catch (err) {
-   throw new Error(err);
- }
+    const response = await db.Formateur.update({
+      img: img
+    }, { where: { id: id } });
+
+    return response;
+  } catch (err) {
+    throw new Error(err);
+  }
 }
 
-/////////// update cv //////////
-const SchemaValidationcv=Joi.object({
-  cv:Joi.string().required(),
-})
+// Validation schema for updating CV
+const SchemaValidationcv = Joi.object({
+  cv: Joi.string().required(),
+});
 
-
-
+// Update CV
 async function updatecv(cv, id) {
- try {
-   const validationResult = SchemaValidationcv.validate({ cv });
-   if (validationResult.error) {
-     const errorDetails = validationResult.error.details[0];
-     let errorMessage = '';
+  try {
+    const validationResult = SchemaValidationcv.validate({ cv });
+    if (validationResult.error) {
+      const errorDetails = validationResult.error.details[0];
+      let errorMessage = '';
 
-     switch (errorDetails.context.key) {
-       case 'cv':
-         errorMessage = 'Cv URL is invalid';
-         break;
-       default:
-         errorMessage = errorDetails.message;
-     }
+      switch (errorDetails.context.key) {
+        case 'cv':
+          errorMessage = 'Cv URL is invalid';
+          break;
+        default:
+          errorMessage = errorDetails.message;
+      }
 
-     throw new Error(errorMessage);
-   }
-   
-   const response = await db.Formateur.update({
-     cv: cv
-   }, { where: { id: id } });
+      throw new Error(errorMessage);
+    }
 
-   return response;
- } catch (err) {
-   throw new Error(err);
- }
+    const response = await db.Formateur.update({
+      cv: cv
+    }, { where: { id: id } });
+
+    return response;
+  } catch (err) {
+    throw new Error(err);
+  }
 }
-//////////// update password //////////
 
+// Validation schema for updating password
 const SchemaValidationpassword = Joi.object({
   oldPassword: Joi.string().min(8).required(),
   newPassword: Joi.string().min(8).pattern(/^(?=.*[A-Za-z])(?=.*\d)(?=.*[@$!%*#?&])[A-Za-z\d@$!%*#?&]{8,30}$/).required(),
   repeatPassword: Joi.ref('newPassword'),
 });
 
-
+// Update password
 const updatepassword = (oldPassword, newPassword, repeatPassword, id) => {
   return new Promise((resolve, reject) => {
     let validation = SchemaValidationpassword.validate({ oldPassword, newPassword, repeatPassword });
@@ -322,81 +282,71 @@ const updatepassword = (oldPassword, newPassword, repeatPassword, id) => {
   });
 };
 
+// Configure multer for file uploads
+const storage = multer.diskStorage({
+  destination: (req, file, cb) => {
+    cb(null, 'assets/image'); // Set upload destination
+  },
+  filename: (req, file, cb) => {
+    cb(null, Date.now() + path.extname(file.originalname)); // Set file name
+  }
+});
 
-
-///////////////////////////////////////////////////////////
-
-
-  const storage = multer.diskStorage({
-    destination: (req, file, cb) => {
-        cb(null, 'assets/image')
-    },
-    filename: (req, file, cb) => {
-        cb(null, Date.now() + path.extname(file.originalname))
-    }
-})
-
+// Middleware for handling image and CV uploads
 const upload = multer({
-    storage: storage,
-    limits: { fileSize: '1000000' },
-    fileFilter: (req, file, cb) => {
-        const fileTypes = /jpeg|jpg|png|gif|pdf|doc|docx|ppt|pptx/
-        const mimeType = fileTypes.test(file.mimetype)  
-        const extname = fileTypes.test(path.extname(file.originalname))
+  storage: storage,
+  limits: { fileSize: 1000000 }, // Limit file size to 1MB
+  fileFilter: (req, file, cb) => {
+    const fileTypes = /jpeg|jpg|png|gif|pdf|doc|docx|ppt|pptx/;
+    const mimeType = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
 
-        if(mimeType && extname) {
-            return cb(null, true)
-        }
-        cb('Give proper files formate to upload')
+    if (mimeType && extname) {
+      return cb(null, true);
     }
-}).fields([{ name: 'img', maxCount: 1 }, { name: 'cv', maxCount: 1 }])
-// .single('img')   ||  .fields([{ name: 'img', maxCount: 1 }, { name: 'cv', maxCount: 1 }])
-
-
-
+    cb('Give proper file format to upload');
+  }
+}).fields([{ name: 'img', maxCount: 1 }, { name: 'cv', maxCount: 1 }]);
 
 const uploadimg = multer({
   storage: storage,
-  limits: { fileSize: '1000000' },
+  limits: { fileSize: 1000000 }, // Limit file size to 1MB
   fileFilter: (req, file, cb) => {
-      const fileTypes = /jpeg|jpg|png|gif/
-      const mimeType = fileTypes.test(file.mimetype)  
-      const extname = fileTypes.test(path.extname(file.originalname))
+    const fileTypes = /jpeg|jpg|png|gif/;
+    const mimeType = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
 
-      if(mimeType && extname) {
-          return cb(null, true)
-      }
-      cb('Give proper files formate to upload')
+    if (mimeType && extname) {
+      return cb(null, true);
+    }
+    cb('Give proper file format to upload');
   }
-}).single('img')
-// .single('img')   ||  .fields([{ name: 'img', maxCount: 1 }, { name: 'cv', maxCount: 1 }])
-
+}).single('img');
 
 const uploadcv = multer({
   storage: storage,
-  limits: { fileSize: '10000000' },
+  limits: { fileSize: 10000000 }, // Limit file size to 10MB
   fileFilter: (req, file, cb) => {
-      const fileTypes = /pdf|doc|docx|rtf|txt|jpeg|jpg|png/
-      const mimeType = fileTypes.test(file.mimetype)  
-      const extname = fileTypes.test(path.extname(file.originalname))
+    const fileTypes = /pdf|doc|docx|rtf|txt|jpeg|jpg|png/;
+    const mimeType = fileTypes.test(file.mimetype);
+    const extname = fileTypes.test(path.extname(file.originalname));
 
-      if(mimeType && extname) {
-          return cb(null, true)
-      }
-      cb('Give proper files formate to upload')
+    if (mimeType && extname) {
+      return cb(null, true);
+    }
+    cb('Give proper file format to upload');
   }
-}).single('cv')
+}).single('cv');
 
-
-  module.exports = {
-    DeleteProfile,
-    register,
-    buyPoints,
-    upload,
-    updateprofile,
-    updateimage,
-    uploadimg,
-    updatepassword,
-    updatecv,
-    uploadcv
-}
+module.exports = {
+  DeleteProfile,
+  register,
+  buyPoints,
+  upload,
+  updateprofile,
+  updateimage,
+  uploadimg,
+  updatepassword,
+  updatecv,
+  uploadcv
+};
