@@ -1,66 +1,61 @@
 <div class="tab-content">
-    <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
-      <div class="row">
-        <div class="col-lg-4 col-xxl-3">
-          <div class="card">
-            <div class="card-body position-relative">
-              <div class="text-center mt-3">
-                <div class="chat-avtar d-inline-flex mx-auto">
-                  <img class="rounded-circle img-fluid wid-70" src="{{imagepath}}{{dataobject.img}}" >
-                  <!-- <img  class="formationImage" src="{{imagepath}}{{dataobject.img}}"> -->
-                </div>
-           
-                <hr class="my-3">
-                <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                  <i class="ti ti-mail"></i>
-                  <p class="mb-0"><a href="mailto:{{ dataobject.email }}">{{ dataobject.email }}</a></p>
-                </div>
-                <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                  <i class="ti ti-phone"></i>
-                  <p class="mb-0">{{ dataobject.tel }}</p>
-                </div>
+  <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
+    <div class="row">
+      <div class="col-lg-4 col-xxl-3">
+        <div class="card">
+          <div class="card-body position-relative">
+            <div class="text-center mt-3">
+              <div class="chat-avtar d-inline-flex mx-auto">
+                <img class="rounded-circle img-fluid wid-70" src="{{imagepath}}{{dataobject.img}}">
+              </div>
+              <hr class="my-3">
+              <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                <i class="ti ti-mail"></i>
+                <p class="mb-0"><a href="mailto:{{ dataobject.email }}">{{ dataobject.email }}</a></p>
+              </div>
+              <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                <i class="ti ti-phone"></i>
+                <p class="mb-0">{{ dataobject.tel }}</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-xxl-9">
-          
-          <div class="card">
-            <div class="card-header">
-              <h5>Informations personnelles de {{ dataobject.firstname }} {{ dataobject.lastname }}</h5>
-            </div>
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item px-0 pt-0">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="mb-1 text-muted">Nom</p>
-                      <p class="mb-0">{{ dataobject.firstname }}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="mb-1 text-muted">Prenom</p>
-                        <p class="mb-0">{{ dataobject.lastname }}</p>
-                      </div>
+      </div>
+      <div class="col-lg-8 col-xxl-9">
+        <div class="card">
+          <div class="card-header">
+            <h5>Informations personnelles de {{ dataobject.firstname }} {{ dataobject.lastname }}</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item px-0 pt-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Nom</p>
+                    <p class="mb-0">{{ dataobject.firstname }}</p>
                   </div>
-                </li>
-                <li class="list-group-item px-0">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="mb-1 text-muted">Nom d'utilisateur</p>
-                      <p class="mb-0">{{ dataobject.username }}</p>
-                    </div>
-                   
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Prenom</p>
+                    <p class="mb-0">{{ dataobject.lastname }}</p>
                   </div>
-                </li>
-                
-              </ul>
-            </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Nom d'utilisateur</p>
+                    <p class="mb-0">{{ dataobject.username }}</p>
+                  </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
+</div>
+
 
 
 
