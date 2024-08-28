@@ -1,207 +1,80 @@
 <div class="title" style="text-align: center; background-color: #f0f0f0; padding: 20px;">
-  <h1 style="font-family: Arial, sans-serif; color: #333333; font-size: 36px; font-weight: bold;">Mon Engagement Professionnel</h1>
+  <h1 style="font-family: Arial, sans-serif; color: #333333; font-size: 36px; font-weight: bold;">Mon Engagement
+    Professionnel</h1>
 </div>
 
-  
-
-
-<!-- Modèle modal pour afficher les détails de la formation -->
-<!-- <div *ngFor="let participation of myParticipation; index as i" class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
-    <div class="modal-dialog" style="margin: 10px;">
-        <div class="modal-content" style="background-color: white; color: black; margin: 10px;">
-            <div class="modal-header" style="background-color: white; color: black; margin: 10px; position: relative;">
-                <h1 class="modal-title fs-5 text-center w-100">{{ participation.Formation.titre }}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="background-color: white; color: black; margin: 10px; position: relative;">
-                <div class="formateur-img-container" style="position: absolute; top: 10px; right: 10px;">
-                    <img 
-    src="{{imagepath}}{{participation.Formation.Formateur.img}}" 
-    alt="Formateur Icon" 
-    class="formateur-img"
-    style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;" 
-    (click)="navigateToProfile(participation.Formation.FormateurId)">
-
-                    <span class="profile-text">Voir le profil</span>
-                </div>
-                <img src="{{imagepath}}{{participation.Formation.img}}" alt="" style="margin: 2px; width: 80vh; height: 50vh; max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
-                <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{ participation.Formation.description }}</span></p>
-                <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span class="description">{{ participation.Formation.modeformation }}</span></p>
-                <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{ participation.Formation.domaine }}</span></p>
-                <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{ participation.Formation.besoin }}</span></p>
-                <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{ participation.Formation.pointsf }}</span></p>
-                <p style="margin: 10px;"><strong>Nom du formateur :</strong> <span class="description">{{ participation.Formation.Formateur.firstname }}</span></p>
-            </div>
-        </div>
-    </div>
-</div> -->
-
-
 <div *ngIf="showConfirmationDialog" class="confirmation-dialog-overlay">
-    <div class="confirmation-dialog">
-      <h1>Confirmation</h1>
-      <p>Êtes-vous sûr de vouloir annuler cette participation ?</p>
-      <div class="dialog-actions">
-        <button (click)="onCancel()">Annuler</button>
-        <button (click)="onConfirm()">Confirmer</button>
+  <div class="confirmation-dialog">
+    <h1>Confirmation</h1>
+    <p>Êtes-vous sûr de vouloir annuler cette participation ?</p>
+    <div class="dialog-actions">
+      <button (click)="onCancel()">Annuler</button>
+      <button (click)="onConfirm()">Confirmer</button>
+    </div>
+  </div>
+</div>
+
+<div class="main" *ngIf="myParticipation && myParticipation.length > 0; else noData">
+  <div *ngFor="let participation of myParticipation; index as i" class="card">
+    <div class="image">
+      <img src="{{imagepath}}{{participation.Formation.img}}" alt="">
+    </div>
+    <div class="title">
+      <h1>{{ participation.Formation.titre }}</h1>
+    </div>
+    <div class="des d-flex">
+      <button class="btn btn-primary me-2" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">En savoir
+        plus...</button>
+      <button type="button" class="btn btn-custom-danger"
+        (click)="deleteParticipation(participation.Formation.id, participation.ReceiverId, i)">Annuler</button>
+    </div>
+  </div>
+</div>
+
+<!-- Modal -->
+<div *ngFor="let participation of myParticipation; index as i" class="modal fade" [id]="'exampleModal' + i"
+  tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
+  <div class="modal-dialog" style="margin: 10px;">
+    <div class="modal-content" style="background-color: white; color: black; margin: 10px;">
+      <div class="modal-header" style="background-color: white; color: black; margin: 10px; position: relative;">
+        <h1 class="modal-title fs-5 text-center w-100">{{ participation.Formation.titre }}</h1>
+        <button class="confirmation-dialog-overlay" type="button" class="btn-close" data-bs-dismiss="modal"
+          aria-label="Close"></button>
+      </div>
+      <div class="modal-body" style="background-color: white; color: black; margin: 10px; position: relative;">
+        <div class="formateur-img-container" style="position: absolute; top: 10px; right: 10px;">
+          <img src="{{imagepath}}{{participation.Formation.Formateur.img}}" alt="Formateur Icon" class="formateur-img"
+            style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;"
+            (click)="navigateToProfile(participation.Formation.FormateurId)">
+          <span class="profile-text">Voir le profil</span>
+        </div>
+
+        <img src="{{imagepath}}{{participation.Formation.img}}" alt=""
+          style="margin: 2px; width: 80vh; height: 50vh; max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
+        <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{
+            participation.Formation.description }}</span></p>
+        <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span class="description">{{
+            participation.Formation.modeformation }}</span></p>
+        <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{ participation.Formation.domaine
+            }}</span></p>
+        <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{ participation.Formation.besoin
+            }}</span></p>
+        <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{ participation.Formation.pointsf
+            }}</span></p>
+        <p style="margin: 10px;"><strong>Proposée par le formateur:</strong> <span class="description">{{
+            participation.Formation.Formateur.firstname | titlecase }} {{ participation.Formation.Formateur.lastname |
+            titlecase }}</span></p>
+        <p style="margin: 10px;"><strong>Envoyée par:</strong> <span class="description">{{ participation.ReceiverId }}
+          </span></p>
       </div>
     </div>
   </div>
-<!-- <div *ngFor="let participation of myParticipation; index as i" class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
-    <div class="modal-dialog" style="margin: 10px;">
-        <div class="modal-content" style="background-color: white; color: black; margin: 10px;">
-            <div class="modal-header" style="background-color: white; color: black; margin: 10px; position: relative;">
-                <h1 class="modal-title fs-5 text-center w-100">{{ participation.Formation.titre }}</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body" style="background-color: white; color: black; margin: 10px; position: relative;">
-                <div class="formateur-img-container" style="position: absolute; top: 10px; right: 10px;">
-                    <img 
-                        src="{{imagepath}}{{participation.Formation.Formateur.img}}" 
-                        alt="Formateur Icon" 
-                        class="formateur-img"
-                        style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;" 
-                        (click)="navigateToProfile(participation.Formation.FormateurId)">
-                    <span class="profile-text">Voir le profil</span>
-                </div>
-                <img src="{{imagepath}}{{participation.Formation.img}}" alt="" style="margin: 2px; width: 80vh; height: 50vh; max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
-                <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{ participation.Formation.description }}</span></p>
-                <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span class="description">{{ participation.Formation.modeformation }}</span></p>
-                <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{ participation.Formation.domaine }}</span></p>
-                <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{ participation.Formation.besoin }}</span></p>
-                <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{ participation.Formation.pointsf }}</span></p>
-                <p style="margin: 10px;"><strong>Nom du formateur :</strong> <span class="description">{{ participation.Formation.Formateur.firstname }}</span></p>
-                <button type="button" class="btn btn-danger" (click)="deleteParticipation( participation.Formation.id, participation.ReceiverId)">Supprimer</button>
-            </div>
-        </div>
-    </div>
-</div> -->
+</div>
 
-<!-- <div *ngFor="let participation of myParticipation; index as i" class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
-    <div class="modal-dialog" style="margin: 10px;">
-      <div class="modal-content" style="background-color: white; color: black; margin: 10px;">
-        <div class="modal-header" style="background-color: white; color: black; margin: 10px; position: relative;">
-          <h1 class="modal-title fs-5 text-center w-100">{{ participation.Formation.titre }}</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-        <div class="modal-body" style="background-color: white; color: black; margin: 10px; position: relative;">
-          <div class="formateur-img-container" style="position: absolute; top: 10px; right: 10px;">
-            <img src="{{imagepath}}{{participation.Formation.Formateur.img}}" alt="Formateur Icon" class="formateur-img" style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;" (click)="navigateToProfile(participation.Formation.FormateurId)">
-            <span class="profile-text">Voir le profil</span>
-          </div>
-          <img src="{{imagepath}}{{participation.Formation.img}}" alt="" style="margin: 2px; width: 80vh; height: 50vh; max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
-          <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{ participation.Formation.description }}</span></p>
-          <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span class="description">{{ participation.Formation.modeformation }}</span></p>
-          <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{ participation.Formation.domaine }}</span></p>
-          <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{ participation.Formation.besoin }}</span></p>
-          <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{ participation.Formation.pointsf }}</span></p>
-          <p style="margin: 10px;"><strong>Nom du formateur :</strong> <span class="description">{{ participation.Formation.Formateur.firstname }}</span></p>
-          <button type="button" class="btn btn-danger" (click)="deleteParticipation(participation.Formation.id, participation.ReceiverId, i)">Supprimer</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-
-  <!-- 
-  <div class="main" *ngIf="myParticipation && myParticipation.length > 0; else noData">
-    <div *ngFor="let participation of myParticipation; index as i" class="card">
-        <div class="image">
-            <img src="{{imagepath}}{{participation.Formation.img}}" alt="">
-        </div>
-        <div class="title">
-            <h1>{{ participation.Formation.titre }}</h1>
-        </div>
-        <div class="des">
-             Utilisation de l'index pour l'ID du modèle modal 
-            <button data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">En savoir plus...</button>
-        </div>
-    </div>
-</div> -->
-  <div class="main" *ngIf="myParticipation && myParticipation.length > 0; else noData">
-    <div *ngFor="let participation of myParticipation; index as i" class="card">
-        <div class="image">
-          <img src="{{imagepath}}{{participation.Formation.img}}" alt="">
-        </div>
-          <div class="title">
-            <h1>{{ participation.Formation.titre }}</h1>
-          </div>
-          <div class="des d-flex">
-            <button class="btn btn-primary me-2" data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">En savoir plus...</button>
-            <button type="button" class="btn btn-custom-danger" (click)="deleteParticipation(participation.Formation.id, participation.ReceiverId, i)">Annuler</button>
-          </div>
-          
-          
-        </div>
-    </div>
-  
-      <!-- Modal -->
-      <div *ngFor="let participation of myParticipation; index as i" class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
-        <div class="modal-dialog" style="margin: 10px;">
-            <div class="modal-content" style="background-color: white; color: black; margin: 10px;">
-                <div class="modal-header"  style="background-color: white; color: black; margin: 10px; position: relative;">
-                    <h1 class="modal-title fs-5 text-center w-100">{{ participation.Formation.titre }}</h1>
-                    <button class="confirmation-dialog-overlay" type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                </div>
-                <div class="modal-body" style="background-color: white; color: black; margin: 10px; position: relative;">
-                    <div class="formateur-img-container" style="position: absolute; top: 10px; right: 10px;">
-                        <img src="{{imagepath}}{{participation.Formation.Formateur.img}}" alt="Formateur Icon" class="formateur-img" style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;" (click)="navigateToProfile(participation.Formation.FormateurId)">
-                        <span class="profile-text">Voir le profil</span>
-                     </div>
-
-          <img src="{{imagepath}}{{participation.Formation.img}}" alt="" style="margin: 2px; width: 80vh; height: 50vh; max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
-          <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{ participation.Formation.description }}</span></p>
-          <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span class="description">{{ participation.Formation.modeformation }}</span></p>
-          <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{ participation.Formation.domaine }}</span></p>
-          <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{ participation.Formation.besoin }}</span></p>
-          <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{ participation.Formation.pointsf }}</span></p>
-          <p style="margin: 10px;"><strong>Proposée par le formateur:</strong> <span class="description">{{ participation.Formation.Formateur.firstname | titlecase }} {{ participation.Formation.Formateur.lastname | titlecase }}</span></p>
-          <p style="margin: 10px;"><strong>Envoyée par:</strong> <span class="description">{{ participation.ReceiverId  }} </span></p>
-            </div>
-          </div>
-        </div>
-      </div>
-
-      <!-- Affichage du message de succès avec la classe "success" -->
-      <div *ngIf="successMessage" class="alert alert-success" role="alert">{{ successMessage }}</div>
-
-
-<!-- Votre contenu HTML existant -->
-
-
-<!-- <div *ngFor="let participation of myParticipation; index as i" class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
-    <div class="modal-dialog" style="margin: 10px;">
-      <div class="modal-content" style="background-color: white; color: black; margin: 10px;">
-        <div class="modal-header" style="background-color: white; color: black; margin: 10px; position: relative;">
-          <h1 class="modal-title fs-5 text-center w-100">{{ participation.Formation.titre }}</h1>
-          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-        </div>
-
-        <div class="modal-body" style="background-color: white; color: black; margin: 10px; position: relative;">
-          <div class="formateur-img-container" style="position: absolute; top: 10px; right: 10px;">
-            <img src="{{imagepath}}{{participation.Formation.Formateur.img}}" alt="Formateur Icon" class="formateur-img" style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;" (click)="navigateToProfile(participation.Formation.FormateurId)">
-            <span class="profile-text">Voir le profil</span>
-          </div>
-          <img src="{{imagepath}}{{participation.Formation.img}}" alt="" style="margin: 2px; width: 80vh; height: 50vh; max-width: 100%; display: block; margin-left: auto; margin-right: auto;">
-          <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{ participation.Formation.description }}</span></p>
-          <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span class="description">{{ participation.Formation.modeformation }}</span></p>
-          <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{ participation.Formation.domaine }}</span></p>
-          <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{ participation.Formation.besoin }}</span></p>
-          <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{ participation.Formation.pointsf }}</span></p>
-          <p style="margin: 10px;"><strong>Nom du formateur :</strong> <span class="description">{{ participation.Formation.Formateur.firstname }}</span></p>
-          <button type="button" class="btn btn-danger" (click)="deleteParticipation(participation.Formation.id, participation.ReceiverId, i)">Supprimer</button>
-        </div>
-      </div>
-    </div>
-  </div> -->
-  
-  
-
-
-
-
-
+<!-- Affichage du message de succès avec la classe "success" -->
+<div *ngIf="successMessage" class="alert alert-success" role="alert">{{ successMessage }}</div>
 
 <!-- Template de message en cas d'absence de données -->
 <ng-template #noData>
-    <p>Aucune participation disponible pour le moment.</p>
+  <p>Aucune participation disponible pour le moment.</p>
 </ng-template>
