@@ -4,8 +4,6 @@ import { DataService } from '../../../services/data.service';
 import { Router } from '@angular/router';
 import { HttpErrorResponse } from '@angular/common/http';
 
-
-
 @Component({
   selector: 'app-dashboard',
   templateUrl: './dashboard.component.html',
@@ -13,86 +11,73 @@ import { HttpErrorResponse } from '@angular/common/http';
 })
 export class DashboardComponent implements OnInit {
 
-  profile : any
-  img:any
-  imagepath:any='http://localhost:3000/'
-  old=""
-  new=""
-  repe=""
-  errmessage:any
-  secmessage:any
-  errmessagepass:any
-  secmessagepass:any
+  profile: any; // Variable to hold the profile information
+  img: any; // Variable to hold the image file
+  imagepath: any = 'http://localhost:3000/'; // Base URL for the image path
+  old = ""; // Variable to hold the old password
+  new = ""; // Variable to hold the new password
+  repe = ""; // Variable to hold the repeated new password
+  errmessage: any; // Variable to hold error messages
+  secmessage: any; // Variable to hold success messages
+  errmessagepass: any; // Variable to hold password error messages
+  secmessagepass: any; // Variable to hold password success messages
 
-  helper= new JwtHelperService
+  helper = new JwtHelperService(); // Service to help decode JWT tokens
 
-  constructor(private api:DataService,private route:Router) { }
+  constructor(private api: DataService, private route: Router) { }
 
   ngOnInit(): void {
-    this.api.getadmin().subscribe(data=>{this.profile=data
-      console.log(this.profile)
-    })
-   }
+    // Fetch the admin profile data on component initialization
+    this.api.getadmin().subscribe(data => {
+      this.profile = data;
+      console.log(this.profile); // Log profile data for debugging
+    });
+  }
 
-   updateimage(event:any){
+  // Method to update the admin profile image
+  updateimage(event: any) {
     if (event.target.files.length > 0) {
-      const path = event.target.files[0];
+      const path = event.target.files[0]; // Get the selected file
       const formData = new FormData();
-      formData.append('img', path)
-      this.api.updateaadminimage(formData,this.getId()).subscribe(info=>this.ngOnInit())
+      formData.append('img', path); // Append the file to FormData
+      this.api.updateaadminimage(formData, this.getId()).subscribe(info => {
+        this.ngOnInit(); // Refresh profile data after updating image
+      });
     }
   }
 
-  getId():number{
-    let token:any=localStorage.getItem('token')
-   let decodedtoken:any=this.helper.decodeToken(token)
-    return decodedtoken.id
+  // Method to get the admin ID from the JWT token
+  getId(): number {
+    let token: any = localStorage.getItem('token'); // Get the token from local storage
+    let decodedtoken: any = this.helper.decodeToken(token); // Decode the token
+    return decodedtoken.id; // Return the admin ID from the token
   }
 
-  update(f:any){
-    let body=f.value
-    this.api.updateadmin(body,this.getId()).subscribe(info=>{
-      console.log(info)
-      this.api.getadmin().subscribe(data=>{
-        {this.secmessage="Mise à jour terminée avec succès"
-      this.ngOnInit()}
-      })
+  // Method to update admin profile information
+  update(f: any) {
+    let body = f.value; // Get form data
+    this.api.updateadmin(body, this.getId()).subscribe(info => {
+      console.log(info); // Log the response for debugging
+      this.api.getadmin().subscribe(data => {
+        this.secmessage = "Mise à jour terminée avec succès"; // Success message
+        this.ngOnInit(); // Refresh profile data after update
+      });
+    }, (err: HttpErrorResponse) => {
+      this.errmessage = err.error; // Display error message if update fails
+    });
+  }
 
-    },(err:HttpErrorResponse)=>{
-      this.errmessage=err.error
-    })
+  // Method to update admin password
+  updatepassword(f: any) {
+    let body = f.value; // Get form data
+    this.api.updatepassword(body, this.getId()).subscribe(
+      info => {
+        this.secmessagepass = "Mot de passe mis à jour avec succès."; // Success message
+      },
+      (err: HttpErrorResponse) => {
+        this.errmessagepass = "Le champ 'ancien mot de passe' est obligatoire et ne peut pas être vide."; // Error message
       }
-      updatepassword(f: any) {
-        let body = f.value;
-        this.api.updatepassword(body, this.getId()).subscribe(
-          info => {
-            // Rediriger vers le profil
-            // this.route.navigate(['/formateur/profile']);
-            // Afficher le message de succès
-            this.secmessagepass = "Mot de passe mis à jour avec succès.";
-          },
-          (err: HttpErrorResponse) => {
-            // En cas d'erreur, afficher le message d'erreur
-            this.errmessagepass = "Le champ 'ancien mot de passe' est obligatoire et ne peut pas être vide.";
-            // this.old="";
-          }
-        );
-      }
-      
-      // updatepassword(f:any){
-      //   let body=f.value
-      //    this.api.updatepassword(body,this.getId()).subscribe(info=>{
-      //     this.route.navigate(['/admin/profile'])
-      //     this.secmessagepass=" mot de passe mettre à jour avec succès "
-
-
-      //   },(err:HttpErrorResponse)=>{
-      //     this.errmessagepass=err.error
-      //     // this.old=""
-
-      //   })
-
-      // }
-
+    );
+  }
 
 }
