@@ -1,114 +1,119 @@
 <section id="pricing" class="pricing section-bg">
   <div class="container">
     <div class="text-right mb-3">
-        <button routerLink="/admin/addpack" class="btn btn-primary" id="ajouterFormateurBtn">Ajouter Pack</button>
+      <button routerLink="/admin/addpack" class="btn btn-primary" id="ajouterFormateurBtn">Ajouter Pack</button>
     </div>
-
     <div class="row">
-
       <div *ngFor="let item of dataArray;index as i" class="col-lg-3 col-md-6">
         <div class="box" data-aos="zoom-in">
           <h3>{{item.titre}}</h3>
           <h4><sup>DT</sup>{{item.prix}}<span> / {{item.points}} points</span></h4>
           <ul>
             <li>{{item.description}}</li>
-                <li>{{item.description1}}</li>
-                <li>{{item.description2}}</li>
-                <li class="na">{{item.description3}}</li>
-                <!-- <li class="na">Assistance téléphonique</li> -->
+            <li>{{item.description1}}</li>
+            <li>{{item.description2}}</li>
+            <li class="na">{{item.description3}}</li>
           </ul>
         </div>
-
-        
         <div class="btn-group" role="group" aria-label="Actions">
-            <div class="center-buttons"> <!-- Div ajoutée pour centrer les boutons -->
-                <button class="btn btn-sm btn-primary" (click)="getdata(item.titre,item.description,item.description1,item.description2,item.description3,item.prix,item.points,item.id)" data-toggle="modal" data-target="#exampleModal">
-                    <i class="fas fa-pencil-alt"></i> Mettre à jour
-                </button>                
-                <button class="btn btn-sm btn-danger" (click)="delete(item.id,i)">
-                    <i class="fas fa-trash-alt"></i> Supprimer
-                </button>
-            </div>
+          <div class="center-buttons"> <!-- Div ajoutée pour centrer les boutons -->
+            <button class="btn btn-sm btn-primary"
+              (click)="getdata(item.titre,item.description,item.description1,item.description2,item.description3,item.prix,item.points,item.id)"
+              data-toggle="modal" data-target="#exampleModal">
+              <i class="fas fa-pencil-alt"></i> Mettre à jour
+            </button>
+            <button class="btn btn-sm btn-danger" (click)="delete(item.id,i)">
+              <i class="fas fa-trash-alt"></i> Supprimer
+            </button>
+          </div>
         </div>
-        
+
       </div>
     </div>
     <div *ngIf="successMessage" class="alert alert-success" role="alert">
-        {{ successMessage }}
-      </div>
-      <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
-        {{ errorMessage }}
-      </div>
+      {{ successMessage }}
+    </div>
+    <div *ngIf="errorMessage" class="alert alert-danger" role="alert">
+      {{ errorMessage }}
+    </div>
     <!-- modal -->
 
-  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-md" role="document" style="max-width: 50%;">
+    <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+      aria-hidden="true">
+      <div class="modal-dialog modal-md" role="document" style="max-width: 50%;">
         <div class="modal-content" style="background-color: white; color: black;">
-            <div class="modal-header" style="background-color: white; color: black;">
-                <h5 class="modal-title" id="exampleModalLabel"></h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body" style="background-color: white; color: black;">
-                <form #f="ngForm" (ngSubmit)="updatenewpack(f)">
-                    <div class="row">
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="titre">Titre de Pack :</label>
-                                <input type="text" required name="titre" [(ngModel)]="datapack.titre" #titre="ngModel" ngModel class="form-control" placeholder="Titre">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="description">Description de Pack :</label>
-                                <input type="text" required name="description" [(ngModel)]="datapack.description"  #description="ngModel" ngModel class="form-control" placeholder="Description de Pack">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="description">Description1 de Pack :</label>
-                                <input type="text" required name="description1" [(ngModel)]="datapack.description1"  #description1="ngModel" ngModel class="form-control" placeholder="Description de Pack">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="description">Description2 de Pack :</label>
-                                <input type="text" required name="description2" [(ngModel)]="datapack.description2"  #description2="ngModel" ngModel class="form-control" placeholder="Description de Pack">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="description">Description3 de Pack :</label>
-                                <input type="text" required name="description3" [(ngModel)]="datapack.description3"  #description3="ngModel" ngModel class="form-control" placeholder="Description de Pack">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <div class="form-group">
-                                <label for="prix">Prix de Pack :</label>
-                                <input type="number" required name="prix" [(ngModel)]="datapack.prix" #prix="ngModel" ngModel class="form-control" placeholder="Pric">
-                            </div>
-                        </div>
-                        <div class="col-md-12">
-                            <label for="Points">Points de Pack :</label>
-                            <input type="number" required name="points" [(ngModel)]="datapack.points" #points="ngModel" ngModel class="form-control" placeholder="points">
-                        </div>
-
-                
-                    </div>
-                    <div class="modal-footer" style="background-color: white; color: black;">
-                        <button class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button  class="btn btn-primary" >Mettre à jour</button>
-                    </div>
-                </form>
-            </div>
-
-            <div class="modal-footer" style="background-color: white; color: black;">
-                <div class="alert alert-success text-center" *ngIf="messagesuccess">
-                    {{messagesuccess}}
+          <div class="modal-header" style="background-color: white; color: black;">
+            <h5 class="modal-title" id="exampleModalLabel"></h5>
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+              <span aria-hidden="true">&times;</span>
+            </button>
+          </div>
+          <div class="modal-body" style="background-color: white; color: black;">
+            <form #f="ngForm" (ngSubmit)="updatenewpack(f)">
+              <div class="row">
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="titre">Titre de Pack :</label>
+                    <input type="text" required name="titre" [(ngModel)]="datapack.titre" #titre="ngModel" ngModel
+                      class="form-control" placeholder="Titre">
+                  </div>
                 </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="description">Description de Pack :</label>
+                    <input type="text" required name="description" [(ngModel)]="datapack.description"
+                      #description="ngModel" ngModel class="form-control" placeholder="Description de Pack">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="description">Description1 de Pack :</label>
+                    <input type="text" required name="description1" [(ngModel)]="datapack.description1"
+                      #description1="ngModel" ngModel class="form-control" placeholder="Description de Pack">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="description">Description2 de Pack :</label>
+                    <input type="text" required name="description2" [(ngModel)]="datapack.description2"
+                      #description2="ngModel" ngModel class="form-control" placeholder="Description de Pack">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="description">Description3 de Pack :</label>
+                    <input type="text" required name="description3" [(ngModel)]="datapack.description3"
+                      #description3="ngModel" ngModel class="form-control" placeholder="Description de Pack">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <div class="form-group">
+                    <label for="prix">Prix de Pack :</label>
+                    <input type="number" required name="prix" [(ngModel)]="datapack.prix" #prix="ngModel" ngModel
+                      class="form-control" placeholder="Pric">
+                  </div>
+                </div>
+                <div class="col-md-12">
+                  <label for="Points">Points de Pack :</label>
+                  <input type="number" required name="points" [(ngModel)]="datapack.points" #points="ngModel" ngModel
+                    class="form-control" placeholder="points">
+                </div>
+
+
+              </div>
+              <div class="modal-footer" style="background-color: white; color: black;">
+                <button class="btn btn-secondary" data-dismiss="modal">Close</button>
+                <button class="btn btn-primary">Mettre à jour</button>
+              </div>
+            </form>
+          </div>
+
+          <div class="modal-footer" style="background-color: white; color: black;">
+            <div class="alert alert-success text-center" *ngIf="messagesuccess">
+              {{messagesuccess}}
             </div>
+          </div>
 
         </div>
+      </div>
     </div>
-</div>
