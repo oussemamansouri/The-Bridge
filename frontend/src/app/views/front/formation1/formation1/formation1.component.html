@@ -1,15 +1,14 @@
- <div class="container">
-    <div class="col" style="color: white;">
-        ‎
-    </div>
-    <div class="col" style="color: white;">
-        ‎
-    </div>
-    <div class="col" style="color: white;">
-        ‎
-    </div>
+<div class="container">
+  <div class="col" style="color: white;">
+    ‎
+  </div>
+  <div class="col" style="color: white;">
+    ‎
+  </div>
+  <div class="col" style="color: white;">
+    ‎
+  </div>
 </div>
-
 
 <div class="search-bar">
   <div class="search-category" (click)="toggleCategoryMenu()" style="cursor: pointer;">
@@ -17,8 +16,8 @@
       <span>{{ selectedCategory }} </span>
       <i class="las la-angle-down"></i>
     </a>
-    <div class="category-menu" *ngIf="categoryMenuVisible" >
-      <span class="subject" >Rechercher des Formations</span>
+    <div class="category-menu" *ngIf="categoryMenuVisible">
+      <span class="subject">Rechercher des Formations</span>
       <a class="menu-item" (click)="selectCategory('Développement Web')">Développement Web</a>
       <a class="menu-item" (click)="selectCategory('Gestion des Données')">Gestion des Données</a>
       <a class="menu-item" (click)="selectCategory('Design')">Design</a>
@@ -37,7 +36,8 @@
       <a class="menu-item" (click)="selectCategory('Formation professionnelle')">Formation professionnelle</a>
       <a class="menu-item" (click)="selectCategory('Apprentissage des langues')">Apprentissage des langues</a>
       <a class="menu-item" (click)="selectCategory('Éducation continue')">Éducation continue</a>
-      <a class="menu-item" (click)="selectCategory('Formation spécifique à l\'industrie')">Formation spécifique à l'industrie</a>
+      <a class="menu-item" (click)="selectCategory('Formation spécifique à l\'industrie')">Formation spécifique à
+        l'industrie</a>
       <a class="menu-item" (click)="selectCategory('Formation technologique')">Formation technologique</a>
       <a class="menu-item" (click)="selectCategory('Arts et humanités')">Arts et humanités</a>
       <a class="menu-item" (click)="selectCategory('Autre')">Autre</a>
@@ -53,92 +53,68 @@
   </button>
 </div>
 
-
-
-
-
-
-
-
-
-
- 
-
-
-
-
-
-
-
-
 <div class="container1">
   <ng-container *ngIf="searchResults.length > 0; else noResults">
-  <div *ngFor="let item of searchResults.length ? searchResults : formations; index as i" class="card">
-    <div class="image">
-      <img src="{{ imagepath }}{{ item.img }}" alt="">
+    <div *ngFor="let item of searchResults.length ? searchResults : formations; index as i" class="card">
+      <div class="image">
+        <img src="{{ imagepath }}{{ item.img }}" alt="">
+      </div>
+      <div class="title">
+        <h1>{{ item.titre }}</h1>
+      </div>
+      <div class="des">
+        <button data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">En savoir plus...</button>
+      </div>
     </div>
-    <div class="title">
-      <h1>{{ item.titre }}</h1>
-    </div>
-    <div class="des">
-      <button data-bs-toggle="modal" [attr.data-bs-target]="'#exampleModal' + i">En savoir plus...</button>
-    </div>
-  </div>
-</ng-container>
- <ng-template #noResults>
+  </ng-container>
+  <ng-template #noResults>
     <div class="alert alert-warning" role="alert">
       Aucune formation trouvée pour votre recherche.
     </div>
   </ng-template>
 </div>
 
-
-
-
-
-
-
-
-<div *ngFor="let item of searchResults.length ? searchResults : formations; index as i;" class="modal fade" [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
+<div *ngFor="let item of searchResults.length ? searchResults : formations; index as i;" class="modal fade"
+  [id]="'exampleModal' + i" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" style="margin: 10px;">
   <div class="modal-dialog" style="margin: 10px;">
     <div class="modal-content" style="background-color: white; color: black; margin: 10px;">
       <div class="modal-header" style="background-color: white; color: black; margin: 10px;">
-          <h1 class="modal-title fs-5 text-center">{{item.titre}}</h1>
+        <h1 class="modal-title fs-5 text-center">{{item.titre}}</h1>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
 
 
       <div class="modal-body" style="background-color: white; color: black; margin: 10px;">
         <div class="formateur-img-container" style="position: absolute; top: 10px; right: 10px;">
-          <img src="{{imagepath}}{{item.Formateur.img}}" alt="Formateur Icon" class="formateur-img" style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;" (click)="navigateToProfile(item.FormateurId)">
+          <img src="{{imagepath}}{{item.Formateur.img}}" alt="Formateur Icon" class="formateur-img"
+            style="border-radius: 50%; width: 50px; height: 50px; cursor: pointer;"
+            (click)="navigateToProfile(item.FormateurId)">
           <span class="profile-text">Voir le profil</span>
-       </div>
-          <img src="{{imagepath}}{{item.img}}" alt="" class="formation-image" style="margin: 2px;">
-          <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{item.description}}</span></p>
-          <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span class="description">{{item.modeformation}}</span></p>
-          <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{item.domaine}}</span></p>
-          <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{item.besoin}}</span></p>
-          <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{item.pointsf}}</span></p>
-          <p style="margin: 10px;"><strong>Proposée par le Formateur :</strong> <span class="description">{{item.Formateur.firstname | titlecase}} {{item.Formateur.lastname | titlecase}}</span></p>
+        </div>
+        <img src="{{imagepath}}{{item.img}}" alt="" class="formation-image" style="margin: 2px;">
+        <p style="margin: 10px;"><strong>Description:</strong> <span class="description">{{item.description}}</span></p>
+        <p style="margin: 10px;"><strong>Mode de la formation:</strong> <span
+            class="description">{{item.modeformation}}</span></p>
+        <p style="margin: 10px;"><strong>Domaine:</strong> <span class="description">{{item.domaine}}</span></p>
+        <p style="margin: 10px;"><strong>Besoin:</strong> <span class="description">{{item.besoin}}</span></p>
+        <p style="margin: 10px;"><strong>Points:</strong> <span class="description">{{item.pointsf}}</span></p>
+        <p style="margin: 10px;"><strong>Proposée par le Formateur :</strong> <span
+            class="description">{{item.Formateur.firstname | titlecase}} {{item.Formateur.lastname | titlecase}}</span>
+        </p>
       </div>
-      
-
 
       <div class="modal-footer" style="background-color: white; color: black; margin: 10px;">
         <div class="d-flex justify-content-between align-items-center" style="margin: 10px;">
-            <button *ngIf="!item.demandeEnvoyee && item.FormateurId != myId" type="button" class="btn btn-sm btn-primary me-2" (click)="envoyerDemande(item.FormateurId, item.id)">
-              <span style="white-space: nowrap;">Envoyer Demande</span>
-            </button>
-            <button *ngIf="item.demandeEnvoyee" type="button" class="btn btn-sm btn-success me-2" disabled>
-              <span style="white-space: nowrap;">Demande envoyée avec succès!</span>
-            </button>
+          <button *ngIf="!item.demandeEnvoyee && item.FormateurId != myId" type="button"
+            class="btn btn-sm btn-primary me-2" (click)="envoyerDemande(item.FormateurId, item.id)">
+            <span style="white-space: nowrap;">Envoyer Demande</span>
+          </button>
+          <button *ngIf="item.demandeEnvoyee" type="button" class="btn btn-sm btn-success me-2" disabled>
+            <span style="white-space: nowrap;">Demande envoyée avec succès!</span>
+          </button>
         </div>
-    </div>
-
+      </div>
 
     </div>
   </div>
 </div>
-
-
- 
