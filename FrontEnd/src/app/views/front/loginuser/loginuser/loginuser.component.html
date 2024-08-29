@@ -1,398 +1,452 @@
 <div class="card signup_v4 mb-30 space">
-    <div class="card-body ">
+  <div class="card-body ">
 
-        <ul class="nav nav-tabs" id="myTab" role="tablist">
-            <li class="nav-item" role="presentation">
-                <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login" aria-selected="true">Connexion</a>
-            </li>
-            <li class="nav-item" role="presentation">
-                <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register" aria-selected="false">S'inscrire</a>
-            </li>
-        </ul>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+      <li class="nav-item" role="presentation">
+        <a class="nav-link active" id="login-tab" data-toggle="tab" href="#login" role="tab" aria-controls="login"
+          aria-selected="true">Connexion</a>
+      </li>
+      <li class="nav-item" role="presentation">
+        <a class="nav-link" id="register-tab" data-toggle="tab" href="#register" role="tab" aria-controls="register"
+          aria-selected="false">S'inscrire</a>
+      </li>
+    </ul>
 
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
-                <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;" style="color: rgb(8, 8, 8)">Connexion</h4>
-
-
-
-<form #f="ngForm" class="professional-form" (ngSubmit)="loginuser(f)" novalidate>
-    <div class="form-group">
-        <label for="inputEmail">Adresse e-mail :</label>
-        <div class="position-relative">
-            <input type="email" class="form-control border-input" id="inputEmail" placeholder="Entrez votre adresse e-mail" name="email" #email="ngModel" ngModel required email [ngClass]="{'border-error': email.invalid && (email.dirty || email.touched), 'border-success': email.valid && (email.dirty || email.touched)}">
-            <span class="validation-icon">
-                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="email.invalid && (email.dirty || email.touched)"></i>
-                <i class="fas fa-check-circle fa-lg text-success" *ngIf="email.valid && (email.dirty || email.touched)"></i>
-            </span>
-        </div>
-        <div *ngIf="email.errors && (email.dirty || email.touched)">
-            <div *ngIf="email.errors?.['required']" class="text-danger">L'adresse e-mail est requise.</div>
-            <div *ngIf="email.errors?.['email']" class="text-danger">L'adresse e-mail est invalide.</div>
-            <!-- Autres validations personnalisées ici -->
-        </div>
-    </div>
-    <div class="form-group">
-        <label for="inputPassword">Mot de passe :</label>
-        <div class="position-relative">
-            <input type="password" class="form-control border-input" id="inputPassword" placeholder="Entrez votre mot de passe" name="password" #password="ngModel" ngModel required minlength="8" [ngClass]="{'border-error': password.invalid && (password.dirty || password.touched), 'border-success': password.valid && (password.dirty || password.touched)}">
-            <span class="validation-icon">
-                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="password.invalid && (password.dirty || password.touched)"></i>
-                <i class="fas fa-check-circle fa-lg text-success" *ngIf="password.valid && (password.dirty || password.touched)"></i>
-            </span>
-        </div>
-        <div *ngIf="password.errors && (password.dirty || password.touched)">
-            <div *ngIf="password.errors?.['required']" class="text-danger">Le mot de passe est requis.</div>
-            <div *ngIf="password.errors?.['minlength']" class="text-danger">Le mot de passe doit comporter au moins 8 caractères.</div>
-            <!-- Autres validations personnalisées ici -->
-        </div>
-    </div>
-    <div>
-        <button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Connexion</button>
-    </div>
-    <div *ngIf="errmessage" class="error-message danger">
-        {{ errmessage }}
-      </div>
-
-</form>
-
-
-
-
-
-
-
-
-
-
-                <div class="social-area">
-                    <h3 class="title">Ou</h3>
-                    <p class="text">Se connecter avec les réseaux sociaux</p>
-                    <ul class="social-links">
-                        <li>
-                            <a href="https://www.facebook.com/?locale=fr_FR">
-                                <i class="fab fa-facebook-f"></i>
-                            </a>
-                        </li>
-
-                        <li>
-                            <a href="https://www.google.com/intl/fr/gmail/about/">
-                                <i class="fab fa-google-plus-g"></i>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
+    <div class="tab-content" id="myTabContent">
+      <div class="tab-pane fade show active" id="login" role="tabpanel" aria-labelledby="login-tab">
+        <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;" style="color: rgb(8, 8, 8)">Connexion</h4>
+        <form #f="ngForm" class="professional-form" (ngSubmit)="loginuser(f)" novalidate>
+          <div class="form-group">
+            <label for="inputEmail">Adresse e-mail :</label>
+            <div class="position-relative">
+              <input type="email" class="form-control border-input" id="inputEmail"
+                placeholder="Entrez votre adresse e-mail" name="email" #email="ngModel" ngModel required email
+                [ngClass]="{'border-error': email.invalid && (email.dirty || email.touched), 'border-success': email.valid && (email.dirty || email.touched)}">
+              <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger"
+                  *ngIf="email.invalid && (email.dirty || email.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success"
+                  *ngIf="email.valid && (email.dirty || email.touched)"></i>
+              </span>
             </div>
-
-
-
-
-            <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
-                <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;">S'inscrire</h4>
-                <form #f1="ngForm" (ngSubmit)="register(f1)" enctype="multipart/form-data">
-                    <div class="form-row">
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputName" style="color: rgb(8, 8, 8)">Nom</label>
-                            <div class="input-container">
-                                <input type="text" class="form-control border-input input-with-icon" placeholder="Entrez votre nom" name="firstname" ngModel #firstname="ngModel" required [ngClass]="{'border-error': firstname.invalid && (firstname.dirty || firstname.touched), 'border-success': firstname.valid && (firstname.dirty || firstname.touched)}">
-                                <span class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="firstname.valid && (firstname.dirty || firstname.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
-                                <div *ngIf="firstname.errors?.['required']" class="text-danger">Le nom est requis.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputName" style="color: rgb(8, 8, 8)">Prénom</label>
-                            <div class="input-container">
-                            <input type="text" class="form-control border-input input-with-icon" placeholder="Entrez votre prénom" name="lastname" ngModel #lastname="ngModel" required [ngClass]="{'border-error': lastname.invalid && (lastname.dirty || lastname.touched), 'border-success': lastname.valid && (lastname.dirty || lastname.touched)}">
-                            <span class="validation-icon">
-                                <i class="fas fa-times-circle fa-lg text-danger" *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"></i>
-                                <i class="fas fa-check-circle fa-lg text-success" *ngIf="lastname.valid && (lastname.dirty || lastname.touched)"></i>
-                            </span>
-                        </div>
-                            <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
-                                <div *ngIf="lastname.errors?.['required']" class="text-danger">Le prénom est requis.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputDOB" style="color: rgb(8, 8, 8)">Date de naissance</label>
-                            <div class="input-container">
-                                <input type="date" class="form-control border-input input-with-icon" required name="dob" ngModel #dob="ngModel"
-                                       [ngClass]="{'border-error': dob.invalid && (dob.dirty || dob.touched), 'border-success': dob.valid && (dob.dirty || dob.touched)}">
-                            </div>
-                            <div *ngIf="dob.errors && (dob.dirty || dob.touched)">
-                                <div *ngIf="dob.errors?.['required']" class="text-danger">La date de naissance est requise.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputImage" style="color: rgb(8, 8, 8)">Image (téléchargement de documents)</label>
-                            <div class="custom-file">
-                                <input type="file" class="custom-file-input" id="inputImage" (change)="onFileSelected($event)" name="img" ngModel #img="ngModel" accept="image/*">
-                                <label class="custom-file-label" for="inputImage" data-browse="Parcourir">{{img.value ? img.value.split('\\').pop() : 'Choisir un fichier'}}</label>
-                                <span class="placeholder" *ngIf="!img.value">Choisir un fichier</span>
-                                <span class="alert alert-danger" role="alert" *ngIf="img.errors?.['required'] && img.touched">Veuillez sélectionner une image.</span>
-                                <span class="alert alert-danger" role="alert" *ngIf="img.errors?.['pattern'] && img.touched">Le fichier sélectionné n'est pas une image.</span>
-                                <!-- Ajoutez d'autres conditions et messages d'erreur au besoin -->
-                            </div>
-                        </div>
-
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputPortfolio" style="color: rgb(8, 8, 8)">Portfolio URL</label>
-                            <div class="input-container">
-                                <input type="text" class="form-control border-input input-with-icon" placeholder="Entrez l'URL de votre portfolio si disponible" name="portfolio" ngModel #portfolio="ngModel" [ngClass]="{'border-error': portfolio.invalid && (portfolio.dirty || portfolio.touched), 'border-success': portfolio.valid && (portfolio.dirty || portfolio.touched)}">
-                                <span class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="portfolio.invalid && (portfolio.dirty || portfolio.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="portfolio.valid && (portfolio.dirty || portfolio.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="portfolio.errors && (portfolio.dirty || portfolio.touched)">
-                                <div *ngIf="portfolio.errors?.['required']" class="text-danger">L'URL du portfolio est requise.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputLocation" style="color: rgb(8, 8, 8)">Adresse</label>
-                            <div class="input-container">
-                                <input type="text" class="form-control border-input input-with-icon" placeholder="Entrez votre pays, ville, code postal" name="address" ngModel #address="ngModel" required [ngClass]="{'border-error': address.invalid && (address.dirty || address.touched), 'border-success': address.valid && (address.dirty || address.touched)}">
-                                <span  class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="address.invalid && (address.dirty || address.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="address.valid && (address.dirty || address.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="address.errors && (address.dirty || address.touched)">
-                                <div *ngIf="address.errors?.['required']" class="text-danger">L'adresse est requise.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputEmail" style="color: rgb(8, 8, 8)">Adresse mail</label>
-                            <div class="input-container">
-                                <input type="email" class="form-control border-input input-with-icon" placeholder="Entrez votre adresse e-mail" name="email" ngModel #email="ngModel" required [ngClass]="{'border-error': email.invalid && (email.dirty || email.touched), 'border-success': email.valid && (email.dirty || email.touched)}">
-                                <span  class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="email.invalid && (email.dirty || email.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="email.valid && (email.dirty || email.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="email.errors && (email.dirty || email.touched)">
-                                <div *ngIf="email.errors?.['required']" class="text-danger">L'adresse e-mail est requise.</div>
-                                <div *ngIf="email.errors?.['email']" class="text-danger">L'adresse e-mail est invalide.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputPhone" style="color: rgb(8, 8, 8)">N° de Tél</label>
-                            <div class="input-container">
-                                <input type="tel" class="form-control border-input input-with-icon" placeholder="Entrez votre numéro de téléphone" name="tel" ngModel #tel="ngModel" required [ngClass]="{'border-error': tel.invalid && (tel.dirty || tel.touched), 'border-success': tel.valid && (tel.dirty || tel.touched)}">
-                                <span class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="tel.invalid && (tel.dirty || tel.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="tel.valid && (tel.dirty || tel.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="tel.errors && (tel.dirty || tel.touched)">
-                                <div *ngIf="tel.errors?.['required']" class="text-danger">Le numéro de téléphone est requis.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputPassword" style="color: rgb(8, 8, 8)">Mot de passe</label>
-                            <div class="input-container">
-                                <input type="password" class="form-control border-input" placeholder="Entrez votre mot de passe" name="password" ngModel #password="ngModel" required [ngClass]="{'border-error': password.invalid && (password.dirty || password.touched), 'border-success': password.valid && (password.dirty || password.touched)}">
-                                <span class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="password.invalid && (password.dirty || password.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="password.valid && (password.dirty || password.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="password.errors && (password.dirty || password.touched)">
-                                <div *ngIf="password.errors?.['required']" class="text-danger">Le mot de passe est requis.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputStatus" style="color: rgb(8, 8, 8)">Statut professionnel actuel</label>
-                            <div class="input-container">
-                                <select class="form-control border-input" name="statu" ngModel #statu="ngModel" required [ngClass]="{'border-error': statu.invalid && (statu.dirty || statu.touched), 'border-success': statu.valid && (statu.dirty || statu.touched)}">
-                                    <option value="" disabled selected style="color: rgb(8, 8, 8)">Sélectionnez votre statut professionnel</option>
-                                    <option value="Étudiant">Étudiant</option>
-                                    <option value="Employé">Employé</option>
-                                    <option value="Indépendant">Indépendant</option>
-                                    <option value="Autre">Autre</option>
-                                </select>
-                                <span class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="statu.invalid && (statu.dirty || statu.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="statu.valid && (statu.dirty || statu.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="statu.errors && (statu.dirty || statu.touched)">
-                                <div *ngIf="statu.errors?.['required']" class="text-danger">Le statut professionnel est requis.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-                        <div class="form-group col-lg-6">
-    <label for="inputCV" style="color: rgb(8, 8, 8)">CV (téléchargement de documents)</label>
-    <div class="custom-file">
-        <input type="file" class="custom-file-input" id="inputCV" (change)="onCVSelected($event)" name="cv" ngModel #cv="ngModel" accept=".pdf, .doc, .docx" required>
-        <label class="custom-file-label" for="inputCV" data-browse="Parcourir">{{cv.value ? cv.value.split('\\').pop() : ''}}</label>
-        <span class="placeholder">Choisir un fichier</span>
-    </div>
-    <div *ngIf="cv.invalid && (cv.dirty || cv.touched)" class="text-danger">
-        <div *ngIf="cv.errors?.['required']">Le CV est requis.</div>
-        <div *ngIf="cv.errors?.['accept']">Veuillez choisir un fichier PDF, DOC ou DOCX.</div>
-    </div>
-</div>
-
-
-
-
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputEducation" style="color: rgb(8, 8, 8)">Niveau d'éducation</label>
-                            <div class="input-container">
-                                <select class="form-control border-input" name="niveau" ngModel #niveau="ngModel" required [ngClass]="{'border-error': niveau.invalid && (niveau.dirty || niveau.touched), 'border-success': niveau.valid && (niveau.dirty || niveau.touched)}">
-                                    <option value="" disabled selected style="color: rgb(8, 8, 8)">Sélectionnez votre niveau d'éducation</option>
-                                    <option value="Bac">Bac</option>
-                                    <option value="Bac +2">Bac +2</option>
-                                    <option value="Bac +3">Bac +3</option>
-                                    <option value="Bac +5 et plus">Bac +5 et plus</option>
-                                    <option value="Autre">Autre</option>
-                                </select>
-                                <span class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="niveau.invalid && (niveau.dirty || niveau.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="niveau.valid && (niveau.dirty || niveau.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="niveau.errors && (niveau.dirty || niveau.touched)">
-                                <div *ngIf="niveau.errors?.['required']" class="text-danger">Le niveau d'éducation est requis.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputExperience" style="color: rgb(8, 8, 8)">Expérience professionnelle</label>
-                            <div class="input-container">
-                                <textarea class="form-control border-input" rows="3" placeholder="Entrez votre expérience professionnelle" name="experience" ngModel #experience="ngModel" required [ngClass]="{'border-error': experience.invalid && (experience.dirty || experience.touched), 'border-success': experience.valid && (experience.dirty || experience.touched)}"></textarea>
-                                <span class="validation-icon">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="experience.invalid && (experience.dirty || experience.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="experience.valid && (experience.dirty || experience.touched)"></i>
-                                </span>
-                            </div>
-                            <div *ngIf="experience.errors && (experience.dirty || experience.touched)">
-                                <div *ngIf="experience.errors?.['required']" class="text-danger">L'expérience professionnelle est requise.</div>
-                                <!-- Autres validations personnalisées ici -->
-                            </div>
-                        </div>
-
-                        <div class="form-group col-lg-6">
-                            <label for="inputLinkedIn" style="color: rgb(8, 8, 8)">Lien vers LinkedIn</label>
-                            <div class="input-container">
-                                <textarea type="text" class="form-control border-input" placeholder="Entrez le lien vers votre profil LinkedIn si disponible" name="linkedin" ngModel #linkedin="ngModel"></textarea>
-                                <span class="validation-icon ">
-                                    <i class="fas fa-times-circle fa-lg text-danger" *ngIf="linkedin.invalid && (linkedin.dirty || linkedin.touched)"></i>
-                                    <i class="fas fa-check-circle fa-lg text-success" *ngIf="linkedin.valid && (linkedin.dirty || linkedin.touched)"></i>
-                                </span>
-                            </div>
-                            <!-- Ajoutez d'autres validations personnalisées ici si nécessaire -->
-                        </div>
-
-
-                        <div class="form-group form-row">
-                            <div class="col-md-12">
-                                <label class="custom-control custom-checkbox checkbox-lg" style="display: flex; align-items: center;">
-                                    <input type="checkbox" class="custom-control-input" [(ngModel)]="conditionsGeneralesModalVisible">
-                                    <div class="custom-control-label" style="color: rgb(8, 8, 8); margin-left: 5px; margin-bottom: 0;">J'accepte les <span class="hover-link" (click)="openConditionsGeneralesModal()">conditions générales</span></div>
-                                </label>
-                            </div>
-                        </div>
-
-<!-- Fenêtre modale des conditions générales -->
-<div class="modal fade" id="conditionsGeneralesModal" tabindex="-1" role="dialog" aria-labelledby="conditionsGeneralesModalLabel" aria-hidden="true">
-    <div class="modal-dialog modal-lg" role="document">
-      <div class="modal-content" style="background-color: #f9f9f9; position: relative; border-radius: 10px;">
-        <button type="button" class="close" aria-label="Close" (click)="closeConditionsGeneralesModal()" style="font-size: 24px; position: absolute; top: 5px; right: 5px; width: 30px; height: 30px; padding: 0; border: none; background: none; color: #333;">
-          <span aria-hidden="true">&times;</span>
-        </button>
-        <div class="modal-header " style="background-color: #fff; border-bottom: 1px solid #ddd;">
-            <h5 class="modal-title text-center" id="conditionsGeneralesModalLabel" style="color: black; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold;">Conditions Générales de la plateforme The Bridge</h5>
-        </div>
-        <div class="modal-body" style="color: #1a1a1a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: justify; line-height: 1.6;">
-            <p>Bienvenue sur The Bridge, une plateforme dédiée aux professionnels scientifiques pour l'échange d'expériences et de connaissances.</p>
-            <p style="color: #007bff; font-weight: bold;">Objectif de la Plateforme :</p>
-            <ul>
-                <li>Partager leurs compétences et leur expertise avec d'autres membres de la communauté.</li>
-                <li>Collaborer avec des experts de leur domaine pour développer de nouvelles compétences et initiatives.</li>
-                <li>Élargir leur réseau en se connectant avec des professionnels du monde entier.</li>
-            </ul>
-            <p style="color: #007bff; font-weight: bold;">Responsabilités des Utilisateurs :</p>
-            <ul>
-                <li>Respecter les règles de conduite et les normes professionnelles de la communauté.</li>
-                <li>Utiliser la plateforme de manière responsable et éthique.</li>
-                <li>Protéger la confidentialité des informations partagées et respecter les droits de propriété intellectuelle des autres membres.</li>
-                <li>Contribuer de manière constructive à la communauté en partageant vos connaissances et en participant activement aux discussions et aux collaborations.</li>
-            </ul>
-            <p style="color: #007bff; font-weight: bold;">Gestion de Contenu :</p>
-            <p>Tout le contenu partagé sur The Bridge doit être professionnel, respectueux et conforme aux lois en vigueur. The Bridge se réserve le droit de modérer, supprimer ou restreindre tout contenu qui viole ces principes.</p>
-            <p style="color: #007bff; font-weight: bold;">Responsabilité de la Plateforme :</p>
-            <p>The Bridge s'engage à fournir une plateforme sécurisée et efficace pour ses utilisateurs. Cependant, nous ne pouvons garantir l'exactitude, la fiabilité ou la disponibilité continue de tous les contenus et fonctionnalités. En utilisant The Bridge, vous reconnaissez et acceptez que votre utilisation de la plateforme se fait à vos propres risques.</p>
-            <p style="color: #007bff; font-weight: bold;">Modification des Conditions :</p>
-            <p>The Bridge se réserve le droit de mettre à jour ou de modifier ces conditions générales à tout moment. Les utilisateurs seront informés de tout changement par le biais de notifications sur la plateforme ou par d'autres moyens de communication appropriés. En continuant à utiliser The Bridge après ces modifications, vous acceptez les nouvelles conditions.</p>
-            <p style="color: #007bff; font-weight: bold;">Contact :</p>
-            <p>Pour toute question ou préoccupation concernant ces conditions générales, veuillez nous contacter à l'adresse suivante :</p>
-            <p style="font-weight: bold;">The Bridgeword@gmail.com , Tél: 20 200 200</p>
-            <p>Ces conditions générales sont entrées en vigueur le <span id="datePlaceholder" style="color: #007bff;">17 mai 2024</span>.</p>
-        </div>
-
-
-        <div class="modal-footer" style="border-top: 1px solid #ddd;">
-
-          <button type="button" class="btn btn-secondary" (click)="closeConditionsGeneralesModal()" style="background-color: #007bff; border-color: #007bff;">Fermer</button>
-        </div>
-      </div>
-    </div>
-  </div>
-
-
-
-                        <hr class="mt-3 mb-4">
-                        <div class="col-12">
-                            <div class="d-flex flex-wrap justify-content-between align-items-center">
-                                <div class="custom-checkbox d-block">
-                                    <a routerLink="/loginuser" class="nav-link-inline font-size-sm" style="color: rgb(8, 8, 8) ">Déjà un compte? Connexion</a>
-                                </div>
-                                <button class="btn btn-primary mt-3 mt-sm-0" type="submit" [disabled]="f1.invalid">S'inscrire</button>
-                            </div>
-                        </div>
-
+            <div *ngIf="email.errors && (email.dirty || email.touched)">
+              <div *ngIf="email.errors?.['required']" class="text-danger">L'adresse e-mail est requise.</div>
+              <div *ngIf="email.errors?.['email']" class="text-danger">L'adresse e-mail est invalide.</div>
+              <!-- Autres validations personnalisées ici -->
             </div>
+          </div>
+          <div class="form-group">
+            <label for="inputPassword">Mot de passe :</label>
+            <div class="position-relative">
+              <input type="password" class="form-control border-input" id="inputPassword"
+                placeholder="Entrez votre mot de passe" name="password" #password="ngModel" ngModel required
+                minlength="8"
+                [ngClass]="{'border-error': password.invalid && (password.dirty || password.touched), 'border-success': password.valid && (password.dirty || password.touched)}">
+              <span class="validation-icon">
+                <i class="fas fa-times-circle fa-lg text-danger"
+                  *ngIf="password.invalid && (password.dirty || password.touched)"></i>
+                <i class="fas fa-check-circle fa-lg text-success"
+                  *ngIf="password.valid && (password.dirty || password.touched)"></i>
+              </span>
+            </div>
+            <div *ngIf="password.errors && (password.dirty || password.touched)">
+              <div *ngIf="password.errors?.['required']" class="text-danger">Le mot de passe est requis.</div>
+              <div *ngIf="password.errors?.['minlength']" class="text-danger">Le mot de passe doit comporter au moins 8
+                caractères.</div>
+              <!-- Autres validations personnalisées ici -->
+            </div>
+          </div>
+          <div>
+            <button class="btn btn-primary btn-block" type="submit" [disabled]="f.invalid">Connexion</button>
+          </div>
+          <div *ngIf="errmessage" class="error-message danger">
+            {{ errmessage }}
+          </div>
         </form>
+
+        <div class="social-area">
+          <h3 class="title">Ou</h3>
+          <p class="text">Se connecter avec les réseaux sociaux</p>
+          <ul class="social-links">
+            <li>
+              <a href="https://www.facebook.com/?locale=fr_FR">
+                <i class="fab fa-facebook-f"></i>
+              </a>
+            </li>
+            <li>
+              <a href="https://www.google.com/intl/fr/gmail/about/">
+                <i class="fab fa-google-plus-g"></i>
+              </a>
+            </li>
+          </ul>
         </div>
+      </div>
+      <div class="tab-pane fade" id="register" role="tabpanel" aria-labelledby="register-tab">
+        <h4 class="text-center mt-4 mb-4" style="text-transform: uppercase;">S'inscrire</h4>
+        <form #f1="ngForm" (ngSubmit)="register(f1)" enctype="multipart/form-data">
+          <div class="form-row">
+            <div class="form-group col-lg-6">
+              <label for="inputName" style="color: rgb(8, 8, 8)">Nom</label>
+              <div class="input-container">
+                <input type="text" class="form-control border-input input-with-icon" placeholder="Entrez votre nom"
+                  name="firstname" ngModel #firstname="ngModel" required
+                  [ngClass]="{'border-error': firstname.invalid && (firstname.dirty || firstname.touched), 'border-success': firstname.valid && (firstname.dirty || firstname.touched)}">
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="firstname.invalid && (firstname.dirty || firstname.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="firstname.valid && (firstname.dirty || firstname.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="firstname.errors && (firstname.dirty || firstname.touched)">
+                <div *ngIf="firstname.errors?.['required']" class="text-danger">Le nom est requis.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="inputName" style="color: rgb(8, 8, 8)">Prénom</label>
+              <div class="input-container">
+                <input type="text" class="form-control border-input input-with-icon" placeholder="Entrez votre prénom"
+                  name="lastname" ngModel #lastname="ngModel" required
+                  [ngClass]="{'border-error': lastname.invalid && (lastname.dirty || lastname.touched), 'border-success': lastname.valid && (lastname.dirty || lastname.touched)}">
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="lastname.invalid && (lastname.dirty || lastname.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="lastname.valid && (lastname.dirty || lastname.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="lastname.errors && (lastname.dirty || lastname.touched)">
+                <div *ngIf="lastname.errors?.['required']" class="text-danger">Le prénom est requis.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+            <div class="form-group col-lg-6">
+              <label for="inputDOB" style="color: rgb(8, 8, 8)">Date de naissance</label>
+              <div class="input-container">
+                <input type="date" class="form-control border-input input-with-icon" required name="dob" ngModel
+                  #dob="ngModel"
+                  [ngClass]="{'border-error': dob.invalid && (dob.dirty || dob.touched), 'border-success': dob.valid && (dob.dirty || dob.touched)}">
+              </div>
+              <div *ngIf="dob.errors && (dob.dirty || dob.touched)">
+                <div *ngIf="dob.errors?.['required']" class="text-danger">La date de naissance est requise.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+              <label for="inputImage" style="color: rgb(8, 8, 8)">Image (téléchargement de documents)</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputImage" (change)="onFileSelected($event)"
+                  name="img" ngModel #img="ngModel" accept="image/*">
+                <label class="custom-file-label" for="inputImage" data-browse="Parcourir">{{img.value ?
+                  img.value.split('\\').pop() : 'Choisir un fichier'}}</label>
+                <span class="placeholder" *ngIf="!img.value">Choisir un fichier</span>
+                <span class="alert alert-danger" role="alert" *ngIf="img.errors?.['required'] && img.touched">Veuillez
+                  sélectionner une image.</span>
+                <span class="alert alert-danger" role="alert" *ngIf="img.errors?.['pattern'] && img.touched">Le fichier
+                  sélectionné n'est pas une image.</span>
+                <!-- Ajoutez d'autres conditions et messages d'erreur au besoin -->
+              </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+              <label for="inputPortfolio" style="color: rgb(8, 8, 8)">Portfolio URL</label>
+              <div class="input-container">
+                <input type="text" class="form-control border-input input-with-icon"
+                  placeholder="Entrez l'URL de votre portfolio si disponible" name="portfolio" ngModel
+                  #portfolio="ngModel"
+                  [ngClass]="{'border-error': portfolio.invalid && (portfolio.dirty || portfolio.touched), 'border-success': portfolio.valid && (portfolio.dirty || portfolio.touched)}">
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="portfolio.invalid && (portfolio.dirty || portfolio.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="portfolio.valid && (portfolio.dirty || portfolio.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="portfolio.errors && (portfolio.dirty || portfolio.touched)">
+                <div *ngIf="portfolio.errors?.['required']" class="text-danger">L'URL du portfolio est requise.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+
+            <div class="form-group col-lg-6">
+              <label for="inputLocation" style="color: rgb(8, 8, 8)">Adresse</label>
+              <div class="input-container">
+                <input type="text" class="form-control border-input input-with-icon"
+                  placeholder="Entrez votre pays, ville, code postal" name="address" ngModel #address="ngModel" required
+                  [ngClass]="{'border-error': address.invalid && (address.dirty || address.touched), 'border-success': address.valid && (address.dirty || address.touched)}">
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="address.invalid && (address.dirty || address.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="address.valid && (address.dirty || address.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="address.errors && (address.dirty || address.touched)">
+                <div *ngIf="address.errors?.['required']" class="text-danger">L'adresse est requise.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+              <label for="inputEmail" style="color: rgb(8, 8, 8)">Adresse mail</label>
+              <div class="input-container">
+                <input type="email" class="form-control border-input input-with-icon"
+                  placeholder="Entrez votre adresse e-mail" name="email" ngModel #email="ngModel" required
+                  [ngClass]="{'border-error': email.invalid && (email.dirty || email.touched), 'border-success': email.valid && (email.dirty || email.touched)}">
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="email.invalid && (email.dirty || email.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="email.valid && (email.dirty || email.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="email.errors && (email.dirty || email.touched)">
+                <div *ngIf="email.errors?.['required']" class="text-danger">L'adresse e-mail est requise.</div>
+                <div *ngIf="email.errors?.['email']" class="text-danger">L'adresse e-mail est invalide.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+
+            <div class="form-group col-lg-6">
+              <label for="inputPhone" style="color: rgb(8, 8, 8)">N° de Tél</label>
+              <div class="input-container">
+                <input type="tel" class="form-control border-input input-with-icon"
+                  placeholder="Entrez votre numéro de téléphone" name="tel" ngModel #tel="ngModel" required
+                  [ngClass]="{'border-error': tel.invalid && (tel.dirty || tel.touched), 'border-success': tel.valid && (tel.dirty || tel.touched)}">
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="tel.invalid && (tel.dirty || tel.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success" *ngIf="tel.valid && (tel.dirty || tel.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="tel.errors && (tel.dirty || tel.touched)">
+                <div *ngIf="tel.errors?.['required']" class="text-danger">Le numéro de téléphone est requis.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+
+            <div class="form-group col-lg-6">
+              <label for="inputPassword" style="color: rgb(8, 8, 8)">Mot de passe</label>
+              <div class="input-container">
+                <input type="password" class="form-control border-input" placeholder="Entrez votre mot de passe"
+                  name="password" ngModel #password="ngModel" required
+                  [ngClass]="{'border-error': password.invalid && (password.dirty || password.touched), 'border-success': password.valid && (password.dirty || password.touched)}">
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="password.invalid && (password.dirty || password.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="password.valid && (password.dirty || password.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="password.errors && (password.dirty || password.touched)">
+                <div *ngIf="password.errors?.['required']" class="text-danger">Le mot de passe est requis.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+
+            <div class="form-group col-lg-6">
+              <label for="inputStatus" style="color: rgb(8, 8, 8)">Statut professionnel actuel</label>
+              <div class="input-container">
+                <select class="form-control border-input" name="statu" ngModel #statu="ngModel" required
+                  [ngClass]="{'border-error': statu.invalid && (statu.dirty || statu.touched), 'border-success': statu.valid && (statu.dirty || statu.touched)}">
+                  <option value="" disabled selected style="color: rgb(8, 8, 8)">Sélectionnez votre statut professionnel
+                  </option>
+                  <option value="Étudiant">Étudiant</option>
+                  <option value="Employé">Employé</option>
+                  <option value="Indépendant">Indépendant</option>
+                  <option value="Autre">Autre</option>
+                </select>
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="statu.invalid && (statu.dirty || statu.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="statu.valid && (statu.dirty || statu.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="statu.errors && (statu.dirty || statu.touched)">
+                <div *ngIf="statu.errors?.['required']" class="text-danger">Le statut professionnel est requis.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+              <label for="inputCV" style="color: rgb(8, 8, 8)">CV (téléchargement de documents)</label>
+              <div class="custom-file">
+                <input type="file" class="custom-file-input" id="inputCV" (change)="onCVSelected($event)" name="cv"
+                  ngModel #cv="ngModel" accept=".pdf, .doc, .docx" required>
+                <label class="custom-file-label" for="inputCV" data-browse="Parcourir">{{cv.value ?
+                  cv.value.split('\\').pop() : ''}}</label>
+                <span class="placeholder">Choisir un fichier</span>
+              </div>
+              <div *ngIf="cv.invalid && (cv.dirty || cv.touched)" class="text-danger">
+                <div *ngIf="cv.errors?.['required']">Le CV est requis.</div>
+                <div *ngIf="cv.errors?.['accept']">Veuillez choisir un fichier PDF, DOC ou DOCX.</div>
+              </div>
+            </div>
+
+
+
+
+
+            <div class="form-group col-lg-6">
+              <label for="inputEducation" style="color: rgb(8, 8, 8)">Niveau d'éducation</label>
+              <div class="input-container">
+                <select class="form-control border-input" name="niveau" ngModel #niveau="ngModel" required
+                  [ngClass]="{'border-error': niveau.invalid && (niveau.dirty || niveau.touched), 'border-success': niveau.valid && (niveau.dirty || niveau.touched)}">
+                  <option value="" disabled selected style="color: rgb(8, 8, 8)">Sélectionnez votre niveau d'éducation
+                  </option>
+                  <option value="Bac">Bac</option>
+                  <option value="Bac +2">Bac +2</option>
+                  <option value="Bac +3">Bac +3</option>
+                  <option value="Bac +5 et plus">Bac +5 et plus</option>
+                  <option value="Autre">Autre</option>
+                </select>
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="niveau.invalid && (niveau.dirty || niveau.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="niveau.valid && (niveau.dirty || niveau.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="niveau.errors && (niveau.dirty || niveau.touched)">
+                <div *ngIf="niveau.errors?.['required']" class="text-danger">Le niveau d'éducation est requis.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+              <label for="inputExperience" style="color: rgb(8, 8, 8)">Expérience professionnelle</label>
+              <div class="input-container">
+                <textarea class="form-control border-input" rows="3"
+                  placeholder="Entrez votre expérience professionnelle" name="experience" ngModel #experience="ngModel"
+                  required
+                  [ngClass]="{'border-error': experience.invalid && (experience.dirty || experience.touched), 'border-success': experience.valid && (experience.dirty || experience.touched)}"></textarea>
+                <span class="validation-icon">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="experience.invalid && (experience.dirty || experience.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="experience.valid && (experience.dirty || experience.touched)"></i>
+                </span>
+              </div>
+              <div *ngIf="experience.errors && (experience.dirty || experience.touched)">
+                <div *ngIf="experience.errors?.['required']" class="text-danger">L'expérience professionnelle est
+                  requise.</div>
+                <!-- Autres validations personnalisées ici -->
+              </div>
+            </div>
+
+            <div class="form-group col-lg-6">
+              <label for="inputLinkedIn" style="color: rgb(8, 8, 8)">Lien vers LinkedIn</label>
+              <div class="input-container">
+                <textarea type="text" class="form-control border-input"
+                  placeholder="Entrez le lien vers votre profil LinkedIn si disponible" name="linkedin" ngModel
+                  #linkedin="ngModel"></textarea>
+                <span class="validation-icon ">
+                  <i class="fas fa-times-circle fa-lg text-danger"
+                    *ngIf="linkedin.invalid && (linkedin.dirty || linkedin.touched)"></i>
+                  <i class="fas fa-check-circle fa-lg text-success"
+                    *ngIf="linkedin.valid && (linkedin.dirty || linkedin.touched)"></i>
+                </span>
+              </div>
+              <!-- Ajoutez d'autres validations personnalisées ici si nécessaire -->
+            </div>
+
+
+            <div class="form-group form-row">
+              <div class="col-md-12">
+                <label class="custom-control custom-checkbox checkbox-lg" style="display: flex; align-items: center;">
+                  <input type="checkbox" class="custom-control-input" [(ngModel)]="conditionsGeneralesModalVisible">
+                  <div class="custom-control-label" style="color: rgb(8, 8, 8); margin-left: 5px; margin-bottom: 0;">
+                    J'accepte les <span class="hover-link" (click)="openConditionsGeneralesModal()">conditions
+                      générales</span></div>
+                </label>
+              </div>
+            </div>
+
+            <!-- Fenêtre modale des conditions générales -->
+            <div class="modal fade" id="conditionsGeneralesModal" tabindex="-1" role="dialog"
+              aria-labelledby="conditionsGeneralesModalLabel" aria-hidden="true">
+              <div class="modal-dialog modal-lg" role="document">
+                <div class="modal-content" style="background-color: #f9f9f9; position: relative; border-radius: 10px;">
+                  <button type="button" class="close" aria-label="Close" (click)="closeConditionsGeneralesModal()"
+                    style="font-size: 24px; position: absolute; top: 5px; right: 5px; width: 30px; height: 30px; padding: 0; border: none; background: none; color: #333;">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                  <div class="modal-header " style="background-color: #fff; border-bottom: 1px solid #ddd;">
+                    <h5 class="modal-title text-center" id="conditionsGeneralesModalLabel"
+                      style="color: black; font-family: Arial, sans-serif; font-size: 20px; font-weight: bold;">
+                      Conditions Générales de la plateforme The Bridge</h5>
+                  </div>
+                  <div class="modal-body"
+                    style="color: #1a1a1a; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; text-align: justify; line-height: 1.6;">
+                    <p>Bienvenue sur The Bridge, une plateforme dédiée aux professionnels scientifiques pour l'échange
+                      d'expériences et de connaissances.</p>
+                    <p style="color: #007bff; font-weight: bold;">Objectif de la Plateforme :</p>
+                    <ul>
+                      <li>Partager leurs compétences et leur expertise avec d'autres membres de la communauté.</li>
+                      <li>Collaborer avec des experts de leur domaine pour développer de nouvelles compétences et
+                        initiatives.</li>
+                      <li>Élargir leur réseau en se connectant avec des professionnels du monde entier.</li>
+                    </ul>
+                    <p style="color: #007bff; font-weight: bold;">Responsabilités des Utilisateurs :</p>
+                    <ul>
+                      <li>Respecter les règles de conduite et les normes professionnelles de la communauté.</li>
+                      <li>Utiliser la plateforme de manière responsable et éthique.</li>
+                      <li>Protéger la confidentialité des informations partagées et respecter les droits de propriété
+                        intellectuelle des autres membres.</li>
+                      <li>Contribuer de manière constructive à la communauté en partageant vos connaissances et en
+                        participant activement aux discussions et aux collaborations.</li>
+                    </ul>
+                    <p style="color: #007bff; font-weight: bold;">Gestion de Contenu :</p>
+                    <p>Tout le contenu partagé sur The Bridge doit être professionnel, respectueux et conforme aux lois
+                      en vigueur. The Bridge se réserve le droit de modérer, supprimer ou restreindre tout contenu qui
+                      viole ces principes.</p>
+                    <p style="color: #007bff; font-weight: bold;">Responsabilité de la Plateforme :</p>
+                    <p>The Bridge s'engage à fournir une plateforme sécurisée et efficace pour ses utilisateurs.
+                      Cependant, nous ne pouvons garantir l'exactitude, la fiabilité ou la disponibilité continue de
+                      tous les contenus et fonctionnalités. En utilisant The Bridge, vous reconnaissez et acceptez que
+                      votre utilisation de la plateforme se fait à vos propres risques.</p>
+                    <p style="color: #007bff; font-weight: bold;">Modification des Conditions :</p>
+                    <p>The Bridge se réserve le droit de mettre à jour ou de modifier ces conditions générales à tout
+                      moment. Les utilisateurs seront informés de tout changement par le biais de notifications sur la
+                      plateforme ou par d'autres moyens de communication appropriés. En continuant à utiliser The Bridge
+                      après ces modifications, vous acceptez les nouvelles conditions.</p>
+                    <p style="color: #007bff; font-weight: bold;">Contact :</p>
+                    <p>Pour toute question ou préoccupation concernant ces conditions générales, veuillez nous contacter
+                      à l'adresse suivante :</p>
+                    <p style="font-weight: bold;">The Bridgeword@gmail.com , Tél: 20 200 200</p>
+                    <p>Ces conditions générales sont entrées en vigueur le <span id="datePlaceholder"
+                        style="color: #007bff;">17 mai 2024</span>.</p>
+                  </div>
+
+
+                  <div class="modal-footer" style="border-top: 1px solid #ddd;">
+
+                    <button type="button" class="btn btn-secondary" (click)="closeConditionsGeneralesModal()"
+                      style="background-color: #007bff; border-color: #007bff;">Fermer</button>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <hr class="mt-3 mb-4">
+            <div class="col-12">
+              <div class="d-flex flex-wrap justify-content-between align-items-center">
+                <div class="custom-checkbox d-block">
+                  <a routerLink="/loginuser" class="nav-link-inline font-size-sm" style="color: rgb(8, 8, 8) ">Déjà un
+                    compte? Connexion</a>
+                </div>
+                <button class="btn btn-primary mt-3 mt-sm-0" type="submit" [disabled]="f1.invalid">S'inscrire</button>
+              </div>
+            </div>
+          </div>
+        </form>
+      </div>
     </div>
 
-</div>
-
-
-
+  </div>
