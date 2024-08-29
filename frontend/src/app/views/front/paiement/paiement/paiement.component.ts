@@ -74,7 +74,7 @@ export class PaiementComponent implements OnInit {
       console.error('Veuillez fournir un ID de formateur et un nombre de points valides.');
     }
   }
-  
+
 
   showConfirmationMessage(): void {
     // Afficher un message de confirmation à l'utilisateur
@@ -84,25 +84,7 @@ export class PaiementComponent implements OnInit {
     alert('Encore une fois, merci pour votre soutien!');
 
   }
-  
-//   showConfirmationMessage(): void {
-//     // Afficher un message de confirmation à l'utilisateur
-//     const confirmationAlert = document.createElement('div');
-//     confirmationAlert.classList.add('alert', 'alert-success', 'fade', 'show');
-//     confirmationAlert.setAttribute('role', 'alert');
-//     confirmationAlert.textContent = 'Paiement effectué avec succès!';
-  
-//     // Ajouter la boîte d'alerte à l'élément body
-//     document.body.appendChild(confirmationAlert);
-  
-//     // Masquer la boîte d'alerte après un certain délai (par exemple, 3 secondes)
-//     setTimeout(() => {
-//       confirmationAlert.classList.remove('show');
-//       setTimeout(() => {
-//         confirmationAlert.remove();
-//       }, 500);
-//     }, 3000);
-//   }
- }
-   
- 
+
+}
+
+
