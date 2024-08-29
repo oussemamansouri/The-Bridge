@@ -39,36 +39,3 @@ export class FormationComponent implements OnInit {
   }
 
 
-  // selectedFormation: any;
-
-  // showDetails(formationTitle: string) {
-  //   // Récupérer les détails de la formation en fonction du titre
-  //   this.selectedFormation = this.getFormationDetails(formationTitle);
-
-  //   // Afficher la boîte modale
-  //   $('#formationModal').modal('show');
-
-  // }
-
-  // getFormationDetails(formationTitle: string): any {
-    
-  //   if (formationTitle === 'Développement Web') {
-  //     return {
-  //       title: 'Développement Web',
-  //       image: 'assets/formation/dev.jpg',
-  //       description: 'Formation sur le développement web.',
-  //       price: '$99'
-  //     };
-  //   } else if (formationTitle === 'Formation en Cyber Sécurité') {
-  //     return {
-  //       title: 'Formation en Cyber Sécurité',
-  //       image: 'assets/formation/cyber-securite.jpeg',
-  //       description: 'Formation sur la cybersécurité.',
-  //       price: '$149'
-  //     };
-  //   } else {
-  //     return null;
-  //   }
-  // }
-
-
