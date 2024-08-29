@@ -1,5 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500&display=swap');
-    
+
 .formcarry-container {
   box-sizing: border-box;
   margin: 40px auto 0 auto;
@@ -58,7 +58,7 @@
   color: var(--fc-normal-text-color);
   border-radius: 6px;
   padding: 8px 12px;
-  
+
   font-family: "Inter", sans-serif;
   font-size:14px;
   transition: 125ms background, 125ms color, 125ms box-shadow;
@@ -100,7 +100,6 @@
 
 .formcarry-container select {
   background-image: url("data:image/svg+xml,%3Csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11.9997 14.5001L8.46387 10.9642L9.64303 9.78589L11.9997 12.1434L14.3564 9.78589L15.5355 10.9642L11.9997 14.5001Z' fill='%236C6F93'/%3E%3C/svg%3E%0A");
-  /* background-position: calc(100% - 20px) calc(1em + 4px), calc(100% - 15px) calc(1em + 4px); */
   background-size: 24px 24px;
   background-position: 98%;
   background-repeat: no-repeat;
@@ -139,7 +138,7 @@
   color: #fff;
   cursor: pointer;
   box-shadow: 0 0 0 0 transparent;
-  
+
   transition: 125ms all;
 }
 
@@ -163,11 +162,11 @@
 }
 
 .formcarry-container input:focus:required:invalid,
-.formcarry-container input:focus:invalid, 
+.formcarry-container input:focus:invalid,
 .formcarry-container select:focus:required:invalid,
 .formcarry-container select:focus:invalid
 {
-  color: hsl(var(--fc-error-hsl)); 
+  color: hsl(var(--fc-error-hsl));
   border-color: hsl(var(--fc-error-hsl));
   box-shadow: 0px 0px 0px 3px hsla(var(--fc-error-hsl), 12%);
 }
