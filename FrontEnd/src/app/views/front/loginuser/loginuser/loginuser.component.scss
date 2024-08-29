@@ -94,21 +94,6 @@
 .professional-form .form-group {
   margin-bottom: 20px ;
 }
-/* .btn-primary {
-  background-color: #007bff;
-  border-color: #007bff;
-  color: #fff;
-  transition: all 0.3s ease-in-out;
-}
-
-.btn-primary:hover {
-  background-color: #0056b3;
-  border-color: #0056b3;
-}
-
-.btn-primary:focus {
-  box-shadow: 0 0 0 0.2rem rgba(0, 123, 255, 0.5);
-} */
 
 /* Couleur de la bordure en cas d'erreur */
 .border-error {
@@ -119,8 +104,6 @@
 .border-success {
   border-color: #28a745 !important; /* Vert */
 }
-
-
 
 /* Positionnement de l'icône */
 .input-container {
@@ -138,15 +121,6 @@
 .input-with-icon {
   padding-right: 30px; /* Ajustez cette valeur pour réserver de l'espace pour l'icône */
 }
-
-
-
-
-
-
-
-
-
 
 .custom-file-input {
   cursor: pointer;
@@ -191,10 +165,6 @@
   border-radius: 0 .25rem .25rem 0;
 }
 
-
-
-
-
 .placeholder {
   position: absolute;
   top: 0;
@@ -209,8 +179,6 @@
   border: 1px solid #ced4da;
   border-radius: .25rem;
 }
-
-
 .hover-link {
   color: rgb(0, 60, 255);
   text-decoration: none;
@@ -220,12 +188,6 @@
   text-decoration: underline;
   cursor: pointer;
 }
-
-
-
-
-
-
 
 .error-message {
   background-color: #f8d7da; /* Couleur de fond */
