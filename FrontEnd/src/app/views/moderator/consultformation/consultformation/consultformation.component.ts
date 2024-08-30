@@ -10,25 +10,25 @@ import { DataService } from 'src/app/views/services/data.service';
 })
 export class ConsultformationComponent implements OnInit {
 
-  dataArray:any=[]
-  dataformation={
-    titre:'',
-    description:'',
-    pointsf:0,
-    modeformation:'',
-    besoin:'',
-    domaine:'',
-    id:'',
-    FormateurId:''
+  dataArray: any = []
+  dataformation = {
+    titre: '',
+    description: '',
+    pointsf: 0,
+    modeformation: '',
+    besoin: '',
+    domaine: '',
+    id: '',
+    FormateurId: ''
   }
   successMessage: string = '';
   errorMessage: string = '';
-  messagesuccess=''
-  imagepath:any='http://localhost:3000/'
-  constructor(private ds:DataService,private route:Router) {
+  messagesuccess = ''
+  imagepath: any = 'http://localhost:3000/'
+  constructor(private ds: DataService, private route: Router) {
 
-    this.ds.getAllformation().subscribe(data=>{
-      this.dataArray=data
+    this.ds.getAllformation().subscribe(data => {
+      this.dataArray = data
     })
 
   }
@@ -52,17 +52,17 @@ export class ConsultformationComponent implements OnInit {
   }
 
 
-  getdata(titre:string,description:string,pointsf:number,modeformation:string,besoin:string,domaine:string,id:any,FormateurId:any){
-    this.messagesuccess=''
-    this.dataformation.titre=titre
-    this.dataformation.description=description
-    this.dataformation.pointsf=pointsf
-    this.dataformation.modeformation=modeformation
-    this.dataformation.besoin=besoin
-    this.dataformation.domaine=domaine
-    this.dataformation.id=id
-    this.dataformation.FormateurId=FormateurId
-   console.log(this.dataformation)
+  getdata(titre: string, description: string, pointsf: number, modeformation: string, besoin: string, domaine: string, id: any, FormateurId: any) {
+    this.messagesuccess = ''
+    this.dataformation.titre = titre
+    this.dataformation.description = description
+    this.dataformation.pointsf = pointsf
+    this.dataformation.modeformation = modeformation
+    this.dataformation.besoin = besoin
+    this.dataformation.domaine = domaine
+    this.dataformation.id = id
+    this.dataformation.FormateurId = FormateurId
+    console.log(this.dataformation)
   }
 
   updatenewformation(f: any) {
@@ -87,9 +87,7 @@ export class ConsultformationComponent implements OnInit {
     );
   }
 
-
-
-  details(id:any){
-    this.route.navigate(['moderator/detailsformation/'+id])
+  details(id: any) {
+    this.route.navigate(['moderator/detailsformation/' + id])
   }
 }
