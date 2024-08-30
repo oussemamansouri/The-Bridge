@@ -7,22 +7,22 @@ import { AuthmoderateurService } from '../services/authmoderateur.service';
   providedIn: 'root'
 })
 export class GuardmoderatorGuard implements CanActivate {
-  constructor(private asm:AuthmoderateurService,private router:Router){
+  constructor(private asm: AuthmoderateurService, private router: Router) {
 
   }
 
   canActivate(
-    route: ActivatedRouteSnapshot,state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
-      return new Promise((resolve,reject)=>{
-        if(this.asm.moderateurLoggedIn()==true){
-          resolve(true)
-        }
-        else {
-          this.router.navigate(['/loginuser'])
-          localStorage.removeItem('token')
-          resolve(false)
-        }
-      })
-    }
-    
+    route: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean | UrlTree> | Promise<boolean | UrlTree> | boolean | UrlTree {
+    return new Promise((resolve, reject) => {
+      if (this.asm.moderateurLoggedIn() == true) {
+        resolve(true)
+      }
+      else {
+        this.router.navigate(['/loginuser'])
+        localStorage.removeItem('token')
+        resolve(false)
+      }
+    })
+  }
+
 }
