@@ -1,253 +1,247 @@
-
 <!-- [ Main Content ] start -->
 <div class="pc-container">
-    <div class="pc-content">
-      <!-- [ breadcrumb ] start -->
-      <div class="page-header">
-        <div class="page-block">
-          <div class="row align-items-center">
-            <div class="col-md-12">
-              <ul class="breadcrumb">
-                <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
-                <li class="breadcrumb-item"><a routerLink="/Moderator">Moderateur</a></li>
-                <li class="breadcrumb-item" aria-current="page">Mon compte</li>
-              </ul>
-            </div>
-            <div class="col-md-12">
-              <div class="page-header-title">
-                <h2 class="mb-0 text-center">Mon compte</h2>
-              </div>
+  <div class="pc-content">
+    <!-- [ breadcrumb ] start -->
+    <div class="page-header">
+      <div class="page-block">
+        <div class="row align-items-center">
+          <div class="col-md-12">
+            <ul class="breadcrumb">
+              <li class="breadcrumb-item"><a routerLink="/">Accueil</a></li>
+              <li class="breadcrumb-item"><a routerLink="/Moderator">Moderateur</a></li>
+              <li class="breadcrumb-item" aria-current="page">Mon compte</li>
+            </ul>
+          </div>
+          <div class="col-md-12">
+            <div class="page-header-title">
+              <h2 class="mb-0 text-center">Mon compte</h2>
             </div>
           </div>
         </div>
       </div>
-      <!-- [ breadcrumb ] end -->
-      <!-- [ Main Content ] start -->
-      <div class="row">
-        <!-- [ sample-page ] start -->
-        <div class="col-sm-12">
-          <div class="card">
-            <div class="card-header pb-0">
-              <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
-                <li class="nav-item">
-                  <a class="nav-link active" id="profile-tab-1" data-bs-toggle="tab" href="#profile-1" role="tab" aria-selected="true">
-                    <i class="ti ti-user me-2"></i>Profile
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="profile-tab-2" data-bs-toggle="tab" href="#profile-2" role="tab" aria-selected="true">
-                    <i class="ti ti-file-text me-2"></i>Modifier compte
-                  </a>
-                </li>
-                <li class="nav-item">
-                  <a class="nav-link" id="profile-tab-4" data-bs-toggle="tab" href="#profile-4" role="tab" aria-selected="true">
-                    <i class="ti ti-lock me-2"></i>Changer le mot de passe
-                  </a>
-                </li>
-
-
-              </ul>
-            </div>
-            <div class="card-body">
-              <div class="tab-content">
-                <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
-                  <div class="row">
-                    <div class="col-lg-4 col-xxl-3">
-                      <div class="card">
-                        <div class="card-body position-relative">
-
-
-                          <div class="text-center mt-3">
-                            <div class="chat-avtar d-inline-flex mx-auto">
-                                <img class="rounded-circle img-fluid wid-70" src="{{imagepath}}{{profile.img}}" alt="User image">
-                            </div>
-                            <h5 class="mb-0">Moderateur</h5>
-                            <p class="text-muted text-sm">Superviseur de la Communauté</p>
-                            <hr class="my-3">
-
-
-                            <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                              <i class="ti ti-mail"></i>
-                              <p class="mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="86e7e8f5eee7e8c6e1ebe7efeaa8e5e9eb">[{{profile.email}}]</a></p>
-                            </div>
-                            <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                              <i class="ti ti-phone"></i>
-                              <p class="mb-0">(+216) {{profile.tel}}</p>
-                            </div>
-                            <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                              <i class="ti ti-map-pin"></i>
-                              <p class="mb-0">Beja,Tunisia</p>
-                            </div>
-
+    </div>
+    <!-- [ breadcrumb ] end -->
+    <!-- [ Main Content ] start -->
+    <div class="row">
+      <!-- [ sample-page ] start -->
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header pb-0">
+            <ul class="nav nav-tabs profile-tabs" id="myTab" role="tablist">
+              <li class="nav-item">
+                <a class="nav-link active" id="profile-tab-1" data-bs-toggle="tab" href="#profile-1" role="tab"
+                  aria-selected="true">
+                  <i class="ti ti-user me-2"></i>Profile
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab-2" data-bs-toggle="tab" href="#profile-2" role="tab"
+                  aria-selected="true">
+                  <i class="ti ti-file-text me-2"></i>Modifier compte
+                </a>
+              </li>
+              <li class="nav-item">
+                <a class="nav-link" id="profile-tab-4" data-bs-toggle="tab" href="#profile-4" role="tab"
+                  aria-selected="true">
+                  <i class="ti ti-lock me-2"></i>Changer le mot de passe
+                </a>
+              </li>
+            </ul>
+          </div>
+          <div class="card-body">
+            <div class="tab-content">
+              <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
+                <div class="row">
+                  <div class="col-lg-4 col-xxl-3">
+                    <div class="card">
+                      <div class="card-body position-relative">
+                        <div class="text-center mt-3">
+                          <div class="chat-avtar d-inline-flex mx-auto">
+                            <img class="rounded-circle img-fluid wid-70" src="{{imagepath}}{{profile.img}}"
+                              alt="User image">
+                          </div>
+                          <h5 class="mb-0">Moderateur</h5>
+                          <p class="text-muted text-sm">Superviseur de la Communauté</p>
+                          <hr class="my-3">
+                          <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                            <i class="ti ti-mail"></i>
+                            <p class="mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                data-cfemail="86e7e8f5eee7e8c6e1ebe7efeaa8e5e9eb">[{{profile.email}}]</a></p>
+                          </div>
+                          <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                            <i class="ti ti-phone"></i>
+                            <p class="mb-0">(+216) {{profile.tel}}</p>
+                          </div>
+                          <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                            <i class="ti ti-map-pin"></i>
+                            <p class="mb-0">Beja,Tunisia</p>
                           </div>
                         </div>
                       </div>
-
-
-
                     </div>
-                    <div class="col-lg-8 col-xxl-9">
-                      <div class="card">
-                        <div class="card-header">
-                          <h5>À propos de moi</h5>
-                        </div>
-                        <div class="card-body">
-                          <p class="mb-0">En tant que modérateur de la plateforme Connected, je m'engage à maintenir un environnement sûr, respectueux et inclusif pour tous les utilisateurs. Avec une approche proactive de la résolution des conflits et une communication transparente, je veille à ce que les lignes directrices de la communauté soient respectées tout en soutenant et en promouvant des interactions positives entre les membres.</p>
-                        </div>
+                  </div>
+                  <div class="col-lg-8 col-xxl-9">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5>À propos de moi</h5>
                       </div>
-                      <div class="card">
-                        <div class="card-header">
-                          <h5>Informations personnelles</h5>
-                        </div>
-                        <div class="card-body">
-                          <ul class="list-group list-group-flush">
-                            <li class="list-group-item px-0 pt-0">
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p class="mb-1 text-muted">Nom</p>
-                                  <p class="mb-0">{{profile.lastname}}</p>
-                                </div>
-                                <div class="col-md-6">
-                                  <p class="mb-1 text-muted">Prenom</p>
-                                  <p class="mb-0">{{profile.firstname}}</p>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item px-0">
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p class="mb-1 text-muted">Téléphone</p>
-                                  <p class="mb-0">(+216) {{profile.tel}}</p>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item px-0">
-                              <div class="row">
-                                <div class="col-md-6">
-                                  <p class="mb-1 text-muted">Email</p>
-                                  <p class="mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="e5848b968d848bcb818dddd4a58288848c89cb868a88">[{{profile.email}}]</a></p>
-                                </div>
-                                <div class="col-md-6">
-                                  <p class="mb-1 text-muted">Nom d'utilisateur</p>
-                                  <p class="mb-0">{{profile.username}}</p>
-                                </div>
-                              </div>
-                            </li>
-                            <li class="list-group-item px-0 pb-0">
-                              <p class="mb-1 text-muted">Adresse</p>
-                              <p class="mb-0">Beja,Tunisia</p>
-                            </li>
-                          </ul>
-                        </div>
+                      <div class="card-body">
+                        <p class="mb-0">En tant que modérateur de la plateforme Connected, je m'engage à maintenir un
+                          environnement sûr, respectueux et inclusif pour tous les utilisateurs. Avec une approche
+                          proactive de la résolution des conflits et une communication transparente, je veille à ce que
+                          les lignes directrices de la communauté soient respectées tout en soutenant et en promouvant
+                          des interactions positives entre les membres.</p>
                       </div>
-
-
-
-
-
+                    </div>
+                    <div class="card">
+                      <div class="card-header">
+                        <h5>Informations personnelles</h5>
+                      </div>
+                      <div class="card-body">
+                        <ul class="list-group list-group-flush">
+                          <li class="list-group-item px-0 pt-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Nom</p>
+                                <p class="mb-0">{{profile.lastname}}</p>
+                              </div>
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Prenom</p>
+                                <p class="mb-0">{{profile.firstname}}</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item px-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Téléphone</p>
+                                <p class="mb-0">(+216) {{profile.tel}}</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item px-0">
+                            <div class="row">
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Email</p>
+                                <p class="mb-0"><a href="/cdn-cgi/l/email-protection" class="__cf_email__"
+                                    data-cfemail="e5848b968d848bcb818dddd4a58288848c89cb868a88">[{{profile.email}}]</a>
+                                </p>
+                              </div>
+                              <div class="col-md-6">
+                                <p class="mb-1 text-muted">Nom d'utilisateur</p>
+                                <p class="mb-0">{{profile.username}}</p>
+                              </div>
+                            </div>
+                          </li>
+                          <li class="list-group-item px-0 pb-0">
+                            <p class="mb-1 text-muted">Adresse</p>
+                            <p class="mb-0">Beja,Tunisia</p>
+                          </li>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
-                <div class="tab-pane" id="profile-2" role="tabpanel" aria-labelledby="profile-tab-2">
-                  <div class="row">
-                    <div class="col-lg-6">
-                      <div class="card">
+              </div>
+              <div class="tab-pane" id="profile-2" role="tabpanel" aria-labelledby="profile-tab-2">
+                <div class="row">
+                  <div class="col-lg-6">
+                    <div class="card">
 
-                        <div class="card-body">
-                          <div class="row">
-                            <div class="col-sm-12 text-center mb-3">
-                              <div class="profile-upload-container">
-                                <!-- Image de l'avatar -->
+                      <div class="card-body">
+                        <div class="row">
+                          <div class="col-sm-12 text-center mb-3">
+                            <div class="profile-upload-container">
+                              <!-- Image de l'avatar -->
 
+                              <!-- Bouton d'importation de l'image -->
+                              <label for="uploadAvatar" class="upload-avatar-button">
+                                <img src="{{imagepath}}{{profile.img}}" alt="Avatar" class="profile-avatar img-fluid">
 
-                                <!-- Bouton d'importation de l'image -->
-                                <label for="uploadAvatar" class="upload-avatar-button">
-                                  <img src="{{imagepath}}{{profile.img}}" alt="Avatar" class="profile-avatar img-fluid">
+                                <i class="icon ti ti-camera f-24 mb-1"></i>
+                                <!-- <span>Importer une photo</span> -->
+                              </label>
 
-                                    <i class="icon ti ti-camera f-24 mb-1"></i>
-                                    <!-- <span>Importer une photo</span> -->
-                                </label>
-
-                                <!-- Input caché pour le téléchargement de l'image -->
-                                <input type="file" id="uploadAvatar" class="hidden-input" accept="assets/image/*" (change)="updateimage($event)">
-                                  <div>
-                                    <h3 style="padding: 15px;">{{profile.role | titlecase}}</h3>
-                                  </div>
+                              <!-- Input caché pour le téléchargement de l'image -->
+                              <input type="file" id="uploadAvatar" class="hidden-input" accept="assets/image/*"
+                                (change)="updateimage($event)">
+                              <div>
+                                <h3 style="padding: 15px;">{{profile.role | titlecase}}</h3>
+                              </div>
                             </div>
-                            </div>
-
-
-
                           </div>
                         </div>
                       </div>
                     </div>
+                  </div>
 
-
-                    <div class="col-lg-6">
-                      <div class="card">
-                          <div class="card-header">
-                            <h5>Informations personnelles</h5>
-                          </div>
-                          <form #f="ngForm" (ngSubmit)="update(f)">
-                              <div class="card-body">
-                                  <div class="row">
-                                    <div class="col-sm-6">
-                                      <div class="form-group">
-                                          <label class="form-label">Nom</label>
-                                          <input type="text" class="form-control" [(ngModel)]="profile.lastname" name="lastname" #lastname="ngModel" ngModel>
-                                      </div>
-                                    </div>
-                                    <div class="col-sm-6">
-                                    <div class="form-group">
-                                        <label class="form-label">Prénom</label>
-                                        <input type="text" class="form-control" [(ngModel)]="profile.firstname" name="firstname" #firstname="ngModel" ngModel>
-                                    </div>
-                                  </div>
-                                  <div class="col-sm-6">
-                                  <div class="form-group">
-                                      <label class="form-label">Nom d'utilisateur</label>
-                                      <input type="text" class="form-control" [(ngModel)]="profile.username" name="username" #username="ngModel" ngModel>
-                                  </div>
-                                </div>
-                                <div class="col-sm-6">
-                                </div>
-                                <div class="col-sm-6">
-                                  <div class="form-group">
-                                      <label class="form-label">Email</label>
-                                      <input type="text" class="form-control" [(ngModel)]="profile.email" name="email" #email="ngModel" ngModel>
-                                  </div>
-                                </div>
-                              <div class="col-sm-6">
-                              <div class="form-group">
-                                  <label class="form-label">Telephone</label>
-                                  <input type="text" class="form-control" [(ngModel)]="profile.tel" name="tel" #tel="ngModel" ngModel>
-                              </div>
-                                  </div>
-                              </div>
-                              <div class="card-footer d-flex justify-content-end">
-                                <button class="btn btn-outline-secondary" type="reset" >Annuler</button>
-                                <button class="btn btn-primary ml-2" type="submit">Mettre à jour le profile</button>
-                              </div>
-                              <!-- <div class="card-footer"> -->
-                                  <div class="alert alert-success" role="alert" *ngIf="secmessage">
-                                      {{secmessage}}
-                                  </div>
-                                  <div class="alert alert-danger" role="alert" *ngIf="errmessage">
-                                      {{errmessage}}
-                                  </div>
-                              <!-- </div> -->
-
+                  <div class="col-lg-6">
+                    <div class="card">
+                      <div class="card-header">
+                        <h5>Informations personnelles</h5>
                       </div>
+                      <form #f="ngForm" (ngSubmit)="update(f)">
+                        <div class="card-body">
+                          <div class="row">
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                <label class="form-label">Nom</label>
+                                <input type="text" class="form-control" [(ngModel)]="profile.lastname" name="lastname"
+                                  #lastname="ngModel" ngModel>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                <label class="form-label">Prénom</label>
+                                <input type="text" class="form-control" [(ngModel)]="profile.firstname" name="firstname"
+                                  #firstname="ngModel" ngModel>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                <label class="form-label">Nom d'utilisateur</label>
+                                <input type="text" class="form-control" [(ngModel)]="profile.username" name="username"
+                                  #username="ngModel" ngModel>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                <label class="form-label">Email</label>
+                                <input type="text" class="form-control" [(ngModel)]="profile.email" name="email"
+                                  #email="ngModel" ngModel>
+                              </div>
+                            </div>
+                            <div class="col-sm-6">
+                              <div class="form-group">
+                                <label class="form-label">Telephone</label>
+                                <input type="text" class="form-control" [(ngModel)]="profile.tel" name="tel"
+                                  #tel="ngModel" ngModel>
+                              </div>
+                            </div>
+                          </div>
+                          <div class="card-footer d-flex justify-content-end">
+                            <button class="btn btn-outline-secondary" type="reset">Annuler</button>
+                            <button class="btn btn-primary ml-2" type="submit">Mettre à jour le profile</button>
+                          </div>
+                          <!-- <div class="card-footer"> -->
+                          <div class="alert alert-success" role="alert" *ngIf="secmessage">
+                            {{secmessage}}
+                          </div>
+                          <div class="alert alert-danger" role="alert" *ngIf="errmessage">
+                            {{errmessage}}
+                          </div>
+                        </div>
                       </form>
                     </div>
                   </div>
-                  </div>
-                  </div>
+                </div>
+              </div>
 
-                <div class="tab-pane" id="profile-4" role="tabpanel" aria-labelledby="profile-tab-4">
-                  <form  #f2="ngForm" (ngSubmit)="updatepassword(f2)">
-                    <div class="card">
+              <div class="tab-pane" id="profile-4" role="tabpanel" aria-labelledby="profile-tab-4">
+                <form #f2="ngForm" (ngSubmit)="updatepassword(f2)">
+                  <div class="card">
                     <div class="card-header">
                       <h5>Changer de mot de passe</h5>
                     </div>
@@ -256,24 +250,29 @@
                         <div class="col-sm-6">
                           <div class="form-group">
                             <label class="form-label">Ancien mot de passe</label>
-                            <input type="password" class="form-control" name="oldPassword" [(ngModel)]="old" #oldPassword="ngModel" ngModel >
+                            <input type="password" class="form-control" name="oldPassword" [(ngModel)]="old"
+                              #oldPassword="ngModel" ngModel>
                           </div>
                           <div class="form-group">
                             <label class="form-label">Nouveau mot de passe</label>
-                            <input name="newPassword" type="password" class="form-control" [(ngModel)]="new" #newPassword="ngModel" ngModel>
+                            <input name="newPassword" type="password" class="form-control" [(ngModel)]="new"
+                              #newPassword="ngModel" ngModel>
                           </div>
                           <div class="form-group">
                             <label class="form-label">Confirmer le mot de passe</label>
-                            <input name="repeatPassword" type="password" class="form-control"  [(ngModel)]="repe" #repeatPassword="ngModel" ngModel >
+                            <input name="repeatPassword" type="password" class="form-control" [(ngModel)]="repe"
+                              #repeatPassword="ngModel" ngModel>
                           </div>
                         </div>
                         <div class="col-sm-6">
                           <h5>Le nouveau mot de passe doit contenir :</h5>
                           <ul class="list-group list-group-flush">
                             <li class="list-group-item"><i class="ti ti-minus me-2"></i> Au moins 8 caractères</li>
-                            <li class="list-group-item"><i class="ti ti-minus me-2"></i> Au moins 1 lettre minuscule (a-z)
+                            <li class="list-group-item"><i class="ti ti-minus me-2"></i> Au moins 1 lettre minuscule
+                              (a-z)
                             </li>
-                            <li class="list-group-item"><i class="ti ti-minus me-2"></i> Au moins 1 lettre majuscule(A-Z)</li>
+                            <li class="list-group-item"><i class="ti ti-minus me-2"></i> Au moins 1 lettre
+                              majuscule(A-Z)</li>
                             <li class="list-group-item"><i class="ti ti-minus me-2"></i> Au moins 1 chiffre (0-9)</li>
                             <li class="list-group-item"><i class="ti ti-minus me-2"></i> Au moins 1 caractère spécial
                             </li>
@@ -289,11 +288,10 @@
                       {{secmessagepass}}
                     </div>
                     <div class="alert alert-danger" role="alert" *ngIf="errmessagepass">
-                          {{errmessagepass}}
+                      {{errmessagepass}}
                     </div>
                   </div>
-                  </form>
-                </div>
+                </form>
               </div>
             </div>
           </div>
@@ -301,6 +299,4 @@
       </div>
     </div>
   </div>
-
-
-
+</div>
