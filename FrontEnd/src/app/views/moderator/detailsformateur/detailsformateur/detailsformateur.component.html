@@ -1,154 +1,117 @@
 <div class="tab-content">
-    <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
-      <div class="row">
-        <div class="col-lg-4 col-xxl-3">
-          <div class="card">
-            <div class="card-body position-relative">
-              <div class="text-center mt-3">
-                <div class="chat-avtar d-inline-flex mx-auto">
-                  <img class="rounded-circle img-fluid wid-70" src="{{imagepath}}{{dataobject.img}}" >
-                </div>
-           
-                <hr class="my-3">
-                <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                  <i class="ti ti-mail"></i>
-                  <p class="mb-0"><a href="mailto:{{ dataobject.email }}">{{ dataobject.email }}</a></p>
-                </div>
-                <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
-                  <i class="ti ti-phone"></i>
-                  <p class="mb-0">{{ dataobject.tel }}</p>
-                </div>
+  <div class="tab-pane show active" id="profile-1" role="tabpanel" aria-labelledby="profile-tab-1">
+    <div class="row">
+      <div class="col-lg-4 col-xxl-3">
+        <div class="card">
+          <div class="card-body position-relative">
+            <div class="text-center mt-3">
+              <div class="chat-avtar d-inline-flex mx-auto">
+                <img class="rounded-circle img-fluid wid-70" src="{{imagepath}}{{dataobject.img}}">
+              </div>
+
+              <hr class="my-3">
+              <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                <i class="ti ti-mail"></i>
+                <p class="mb-0"><a href="mailto:{{ dataobject.email }}">{{ dataobject.email }}</a></p>
+              </div>
+              <div class="d-inline-flex align-items-center justify-content-between w-100 mb-3">
+                <i class="ti ti-phone"></i>
+                <p class="mb-0">{{ dataobject.tel }}</p>
               </div>
             </div>
           </div>
         </div>
-        <div class="col-lg-8 col-xxl-9">
-          
-          <div class="card">
-            <div class="card-header">
-              <h5>Informations personnelles de {{ dataobject.firstname }} {{ dataobject.lastname }}</h5>
-            </div>
-            <div class="card-body">
-              <ul class="list-group list-group-flush">
-                <li class="list-group-item px-0 pt-0">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="mb-1 text-muted">Nom</p>
-                      <p class="mb-0">{{ dataobject.firstname }}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="mb-1 text-muted">Prenom</p>
-                        <p class="mb-0">{{ dataobject.lastname }}</p>
-                      </div>
+      </div>
+      <div class="col-lg-8 col-xxl-9">
+        <div class="card">
+          <div class="card-header">
+            <h5>Informations personnelles de {{ dataobject.firstname }} {{ dataobject.lastname }}</h5>
+          </div>
+          <div class="card-body">
+            <ul class="list-group list-group-flush">
+              <li class="list-group-item px-0 pt-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Nom</p>
+                    <p class="mb-0">{{ dataobject.firstname }}</p>
                   </div>
-                </li>
-                <li class="list-group-item px-0">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="mb-1 text-muted">Date de naissance</p>
-                      <p class="mb-0">{{ dataobject.dob }}</p>
-                    </div>
-                    <div class="col-md-6">
-                        <p class="mb-1 text-muted">Adresse</p>
-                        <p class="mb-0">{{ dataobject.address }}</p>
-                      </div>
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Prenom</p>
+                    <p class="mb-0">{{ dataobject.lastname }}</p>
                   </div>
-                </li>
-                <li class="list-group-item px-0">
-                  <div class="row">
-                    <div class="col-md-6">
-                      <p class="mb-1 text-muted">Portfolio URL</p>
-                      <p class="mb-0">{{dataobject.portfolio}}</p>
-                    </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Date de naissance</p>
+                    <p class="mb-0">{{ dataobject.dob }}</p>
                   </div>
-                </li>
-                <li class="list-group-item px-0">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p class="mb-1 text-muted">Statut professionnel actuel</p>
-                        <p class="mb-0">{{dataobject.statu}}</p>
-                      </div>
-                    </div>
-                </li>
-                <li class="list-group-item px-0">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p class="mb-1 text-muted">Lien vers LinkedIn</p>
-                        <p class="mb-0">{{dataobject.linkedin}}</p>
-                      </div>
-                    </div>
-                </li>
-                <li class="list-group-item px-0">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p class="mb-1 text-muted">Niveau d'éducation</p>
-                        <p class="mb-0">{{dataobject.niveau}}</p>
-                      </div>
-                    </div>
-                </li>
-                <li class="list-group-item px-0">
-                    <div class="row">
-                      <div class="col-md-6">
-                        <p class="mb-1 text-muted">Expérience professionnelle</p>
-                        <p class="mb-0">{{dataobject.experience}}</p>
-                      </div>
-                    </div>
-                </li>
-                <li class="list-group-item px-0">
-                  <!-- <div class="row">
-                    <div class="col-md-6">
-                      <p class="mb-1 text-muted">CV</p>
-                      <p class="mb-0">{{ dataobject.cv }}</p>
-                    </div>
-                  </div> -->
-                  <!-- <div style="display: flex; justify-content: center;">
-                    <div class="chat-avtar d-inline-flex" (click)="openCV()" style="color: black;">
-                        Voir votre CV
-                        <i class="fas fa-eye ml-2" style="font-size: 24px; color: blue;"></i>
-                    </div>
-                  </div> -->
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Adresse</p>
+                    <p class="mb-0">{{ dataobject.address }}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Portfolio URL</p>
+                    <p class="mb-0">{{dataobject.portfolio}}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Statut professionnel actuel</p>
+                    <p class="mb-0">{{dataobject.statu}}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Lien vers LinkedIn</p>
+                    <p class="mb-0">{{dataobject.linkedin}}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Niveau d'éducation</p>
+                    <p class="mb-0">{{dataobject.niveau}}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="row">
+                  <div class="col-md-6">
+                    <p class="mb-1 text-muted">Expérience professionnelle</p>
+                    <p class="mb-0">{{dataobject.experience}}</p>
+                  </div>
+                </div>
+              </li>
+              <li class="list-group-item px-0">
+                <div class="cv-actions">
+                  <!-- Bouton pour voir le CV -->
+                  <div class="cv-action" (click)="openCV()">
+                    Voir votre CV
+                    <i class="fas fa-eye ml-2" style="font-size: 24px; color: blue;"></i>
+                  </div>
 
-                  <div class="cv-actions">
-                    <!-- Bouton pour voir le CV -->
-                    <div class="cv-action" (click)="openCV()">
-                      Voir votre CV
-                      <i class="fas fa-eye ml-2" style="font-size: 24px; color: blue;"></i>
-                    </div>
-                  
-                    <!-- Bouton pour télécharger le CV -->
-                    <div class="cv-action" (click)="downloadCV()">
-                      Télécharger votre CV
-                      <i class="fas fa-download ml-2" style="font-size: 24px; color: blue;"></i>
-                    </div>
+                  <!-- Bouton pour télécharger le CV -->
+                  <div class="cv-action" (click)="downloadCV()">
+                    Télécharger votre CV
+                    <i class="fas fa-download ml-2" style="font-size: 24px; color: blue;"></i>
                   </div>
-                  
-                </li>
-              </ul>
-            </div>
+                </div>
+              </li>
+            </ul>
           </div>
         </div>
       </div>
     </div>
   </div>
-  
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+</div>
